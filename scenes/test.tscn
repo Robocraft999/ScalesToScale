@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=4 uid="uid://333vqfbf2bv7"]
+
+[ext_resource type="Script" path="res://scripts/test.gd" id="1_q0kfk"]
+[ext_resource type="Texture2D" uid="uid://jsqanghxckw6" path="res://icon.svg" id="2_aaret"]
+[ext_resource type="TileSet" uid="uid://p75osdbfaruv" path="res://resources/test_tile_set.tres" id="2_y1o7q"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="3_ba8ry"]
+[ext_resource type="Texture2D" uid="uid://loarm7an4wt3" path="res://resources/sprites/Collectible.png" id="5_i7e3c"]
+[ext_resource type="Script" path="res://scripts/collectible.gd" id="5_yjecb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yli7k"]
+size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jtt55"]
+
+[node name="test" type="Node"]
+script = ExtResource("1_q0kfk")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="BGLayer" type="TileMapLayer" parent="Node"]
+tile_map_data = PackedByteArray("AAAAAAAAAgACAAMAAAABAAAAAgACAAMAAAACAAAAAgACAAMAAAACAAEAAgACAAMAAAADAAEAAgACAAMAAAAEAAEAAgACAAMAAAAFAAEAAgACAAMAAAAGAAEAAgACAAMAAAAAAAoAAgAFAAUAAAABAAoAAgAFAAUAAAACAAoAAgAFAAUAAAADAAoAAgAFAAUAAAAEAAoAAgAFAAUAAAAFAAoAAgAFAAUAAAAGAAoAAgAFAAUAAAAHAAoAAgAFAAUAAAAIAAoAAgAFAAUAAAAJAAoAAgAFAAUAAAAAAAsAAgAFAAUAAAABAAsAAgAFAAUAAAACAAsAAgAFAAUAAAADAAsAAgAFAAUAAAAEAAsAAgAFAAUAAAAFAAsAAgAFAAUAAAAGAAsAAgAFAAUAAAAHAAsAAgAFAAUAAAAIAAsAAgAFAAUAAAAJAAsAAgAFAAUAAAAKAAsAAgAFAAUAAAAKAAoAAgADAAYAAAAKAAkAAgADAAYAAAALAAkAAgADAAYAAAALAAgAAgADAAYAAAAMAAgAAgADAAYAAAANAAgAAgADAAYAAAAOAAgAAgADAAYAAAAPAAgAAgADAAYAAAAPAAcAAgADAAYAAAAQAAcAAgADAAYAAAAQAAYAAgADAAYAAAARAAYAAgADAAYAAAARAAUAAgADAAYAAAASAAUAAgADAAYAAAATAAUAAgADAAYAAAAQAAAAAgAEAAIAAAARAAAAAgAEAAIAAAASAAAAAgAEAAIAAAATAAAAAgAEAAIAAAAMAAoAAgADAAIAAAAMAAsAAgADAAIAAAANAAsAAgADAAIAAAAOAAsAAgADAAIAAAAPAAsAAgADAAIAAAAPAAoAAgADAAIAAAAQAAoAAgADAAIAAAARAAoAAgADAAIAAAARAAkAAgADAAIAAAASAAkAAgADAAIAAAAQAAkAAgADAAIAAAAPAAkAAgADAAIAAAAOAAoAAgADAAIAAAAQAAsAAgADAAIAAAARAAsAAgADAAIAAAAOAAkAAgADAAIAAAANAAoAAgADAAIAAAAMAAkAAgADAAIAAAANAAkAAgADAAIAAAA=")
+tile_set = ExtResource("2_y1o7q")
+
+[node name="FGLayer" type="TileMapLayer" parent="Node"]
+tile_set = ExtResource("2_y1o7q")
+collision_enabled = false
+
+[node name="Coin" type="Area2D" parent="."]
+position = Vector2(120, 152)
+collision_mask = 3
+script = ExtResource("5_yjecb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coin"]
+shape = SubResource("RectangleShape2D_yli7k")
+
+[node name="Sprite2D" type="Sprite2D" parent="Coin"]
+scale = Vector2(0.3125, 0.3125)
+texture = ExtResource("5_i7e3c")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(8, 153)
+collision_layer = 3
+script = ExtResource("3_ba8ry")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_jtt55")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("2_aaret")
+
+[node name="Inventory" type="Node" parent="Player"]
