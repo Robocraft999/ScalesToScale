@@ -16,7 +16,7 @@ class_name Player
 @export var DASH_DURATION_MILLIS := 250
 @export var DASH_REFRESH_MILLIS  := 1500
 # Distance traveled in total
-@export var DASH_VELOCITY        := 300
+@export var DASH_VELOCITY        := 500
 
 # msec ticks at which the jump was last buffered
 var jump_buffer_time  := 0
@@ -28,11 +28,20 @@ var jump_double_ready := true
 var dash_start_time   := 0
 var active_dash_direction := Vector2.ZERO
 
+func dash_time_since_started():
+	return Time.get_ticks_msec() - dash_start_time
+
+func dash_active_time_remaining():
+	return DASH_DURATION_MILLIS - dash_time_since_started() if is_dash_active() else 0
+
+func dash_timeout_remaining():
+	return 0 if is_dash_ready() else DASH_REFRESH_MILLIS - dash_time_since_started()
+
 func is_dash_ready():
 	return Time.get_ticks_msec() - dash_start_time > DASH_REFRESH_MILLIS
 
 func is_dash_active():
-	return Time.get_ticks_msec() - dash_start_time <= DASH_DURATION_MILLIS
+	return Time.get_ticks_msec() - dash_start_time < DASH_DURATION_MILLIS
 
 func get_actual_gravity() -> Vector2:
 	if velocity.y < 0:
@@ -67,17 +76,20 @@ func _physics_jump() -> void:
 	pass
 
 func _physics_dash() -> void:
-	if is_dash_ready() and Input.is_action_just_pressed("dash"):
-		dash_start_time = Time.get_ticks_msec()
+	if is_dash_ready() and Input.is_action_pressed("dash"):
 		var direction_x = Input.get_axis("move_left", "move_right")
 		# TODO: Dash downwards
 		var direction_y = -1 if Input.is_action_pressed("jump") else 0
 		
 		active_dash_direction = Vector2(direction_x, direction_y).normalized()
+		
+		if active_dash_direction != Vector2.ZERO:
+			dash_start_time = Time.get_ticks_msec()
+			velocity.y = active_dash_direction.y * DASH_VELOCITY
 		pass
 	
 	if is_dash_active():
-		velocity += active_dash_direction * DASH_VELOCITY
+		velocity.x += active_dash_direction.x * DASH_VELOCITY
 	pass
 
 func _physics_process(delta: float) -> void:
