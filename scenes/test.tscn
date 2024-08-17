@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=4 uid="uid://333vqfbf2bv7"]
+[gd_scene load_steps=10 format=4 uid="uid://333vqfbf2bv7"]
 
 [ext_resource type="Script" path="res://scripts/test.gd" id="1_q0kfk"]
 [ext_resource type="Texture2D" uid="uid://jsqanghxckw6" path="res://icon.svg" id="2_aaret"]
 [ext_resource type="TileSet" uid="uid://p75osdbfaruv" path="res://resources/test_tile_set.tres" id="2_y1o7q"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="3_ba8ry"]
 [ext_resource type="PackedScene" uid="uid://cvg3yiw0w3rjb" path="res://scenes/objects/collectible.tscn" id="3_h7wox"]
+[ext_resource type="AudioStream" uid="uid://bwqdbhehtihcc" path="res://sfx/dash.wav" id="6_hndjv"]
 [ext_resource type="PackedScene" uid="uid://dce48rt84l5ft" path="res://scenes/objects/scaler.tscn" id="7_xs4ma"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jtt55"]
@@ -52,6 +53,9 @@ scale = Vector2(0.08, 0.08)
 texture = ExtResource("2_aaret")
 
 [node name="Inventory" type="Node" parent="Player"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource("6_hndjv")
 
 [node name="StaticBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(216, 155)

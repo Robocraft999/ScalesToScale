@@ -86,6 +86,7 @@ func _physics_dash() -> void:
 		if active_dash_direction != Vector2.ZERO:
 			dash_start_time = Time.get_ticks_msec()
 			velocity.y = active_dash_direction.y * DASH_VELOCITY.y
+			$AudioStreamPlayer2D.play(0.20)
 		pass
 	
 	if is_dash_active():
