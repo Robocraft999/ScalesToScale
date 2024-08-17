@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://333vqfbf2bv7"]
+[gd_scene load_steps=11 format=4 uid="uid://333vqfbf2bv7"]
 
 [ext_resource type="Script" path="res://scripts/test.gd" id="1_q0kfk"]
 [ext_resource type="Texture2D" uid="uid://jsqanghxckw6" path="res://icon.svg" id="2_aaret"]
@@ -6,11 +6,15 @@
 [ext_resource type="Script" path="res://scripts/player.gd" id="3_ba8ry"]
 [ext_resource type="Texture2D" uid="uid://loarm7an4wt3" path="res://resources/sprites/Collectible.png" id="5_i7e3c"]
 [ext_resource type="Script" path="res://scripts/collectible.gd" id="5_yjecb"]
+[ext_resource type="Script" path="res://scripts/scaler.gd" id="7_1jevr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yli7k"]
 size = Vector2(10, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jtt55"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o6i2r"]
+size = Vector2(10, 10)
 
 [node name="test" type="Node"]
 script = ExtResource("1_q0kfk")
@@ -25,15 +29,15 @@ tile_set = ExtResource("2_y1o7q")
 tile_set = ExtResource("2_y1o7q")
 collision_enabled = false
 
-[node name="Coin" type="Area2D" parent="."]
+[node name="ScaleScale" type="Area2D" parent="."]
 position = Vector2(120, 152)
 collision_mask = 3
 script = ExtResource("5_yjecb")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Coin"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScaleScale"]
 shape = SubResource("RectangleShape2D_yli7k")
 
-[node name="Sprite2D" type="Sprite2D" parent="Coin"]
+[node name="Sprite2D" type="Sprite2D" parent="ScaleScale"]
 scale = Vector2(0.3125, 0.3125)
 texture = ExtResource("5_i7e3c")
 
@@ -51,3 +55,43 @@ scale = Vector2(0.08, 0.08)
 texture = ExtResource("2_aaret")
 
 [node name="Inventory" type="Node" parent="Player"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(200, 121)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_o6i2r")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Scaler" type="Node2D" parent="StaticBody2D"]
+script = ExtResource("7_1jevr")
+
+[node name="xLine" type="Line2D" parent="StaticBody2D/Scaler"]
+points = PackedVector2Array(0, 0, 10, 0)
+width = 0.2
+default_color = Color(1, 0, 0, 1)
+
+[node name="xRect" type="ColorRect" parent="StaticBody2D/Scaler"]
+offset_left = 9.0
+offset_top = -1.0
+offset_right = 11.0
+offset_bottom = 1.0
+color = Color(1, 0, 0, 1)
+
+[node name="yLine" type="Line2D" parent="StaticBody2D/Scaler"]
+points = PackedVector2Array(0, 0, 0, 10)
+width = 0.2
+default_color = Color(0, 1, 0, 1)
+
+[node name="yRect" type="ColorRect" parent="StaticBody2D/Scaler"]
+offset_left = -1.0
+offset_top = 9.0
+offset_right = 1.0
+offset_bottom = 11.0
+color = Color(0, 1, 0, 1)
