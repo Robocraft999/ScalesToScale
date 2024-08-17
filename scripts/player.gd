@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Player
 
+signal dash_started
+
 @export_category("Speed, Velocity, Physics")
 @export var SPEED = 100.0
 @export var JUMP_VELOCITY = -250.0
@@ -13,10 +15,12 @@ class_name Player
 @export var JUMP_COYOTE_TIMEOUT_MILLIS := 250
 @export_category("Dash")
 # How long a dash will last
-@export var DASH_DURATION_MILLIS := 250
-@export var DASH_REFRESH_MILLIS  := 1500
+@export var DASH_DURATION_MILLIS  := 250
+@export var DASH_REFRESH_MILLIS   := 1500
 # Distance traveled in total
-@export var DASH_VELOCITY        := Vector2(500.0, 200.0)
+@export var DASH_VELOCITY           := Vector2(500.0, 200.0)
+@export var GHOST_DURATION_MILLIS   := 200
+@export var GHOST_SPAWN_PERCENTAGES: Array[int] = [5, 10, 15, 30, 50, 70, 80, 85, 95]
 
 # msec ticks at which the jump was last buffered
 var jump_buffer_time  := 0
@@ -27,6 +31,7 @@ var jump_double_ready := true
 # msec ticks when the dash was last started
 var dash_start_time   := 0
 var active_dash_direction := Vector2.ZERO
+var dash_next_ghost_percentage_index = 0
 
 func dash_time_since_started() -> int:
 	return Time.get_ticks_msec() - dash_start_time
@@ -75,6 +80,23 @@ func _physics_jump() -> void:
 	
 	pass
 
+func dash_trail_effect() -> void:
+	var time_passed = float(dash_time_since_started())
+	var percentage_passed = int(100 * time_passed / float(DASH_DURATION_MILLIS))
+	var target_percentage = GHOST_SPAWN_PERCENTAGES[dash_next_ghost_percentage_index]
+	if target_percentage < percentage_passed:
+		dash_next_ghost_percentage_index += 1
+		
+		var ghost_image = $Sprite2D.duplicate()
+		var alpha_tween = ghost_image.create_tween()
+		var duration = float(GHOST_DURATION_MILLIS) / 1000.0
+		alpha_tween.tween_property(ghost_image, "modulate", Color.TRANSPARENT, duration)
+		alpha_tween.tween_callback(ghost_image.queue_free)
+		get_parent().add_child(ghost_image)
+		ghost_image.position = position
+		pass
+	pass
+
 func _physics_dash() -> void:
 	if is_dash_ready() and Input.is_action_pressed("dash"):
 		var direction_x = Input.get_axis("move_left", "move_right")
@@ -84,13 +106,18 @@ func _physics_dash() -> void:
 		active_dash_direction = Vector2(direction_x, direction_y).normalized()
 		
 		if active_dash_direction != Vector2.ZERO:
+			# DASH
 			dash_start_time = Time.get_ticks_msec()
 			velocity.y = active_dash_direction.y * DASH_VELOCITY.y
-			$AudioStreamPlayer2D.play(0.20)
+			$AudioStreamPlayer2D.play(0.30)
+			dash_next_ghost_percentage_index = 0
+			dash_started.emit()
 		pass
 	
 	if is_dash_active():
 		velocity.x += active_dash_direction.x * DASH_VELOCITY.x
+		dash_trail_effect()
+		pass
 	pass
 
 func _physics_process(delta: float) -> void:
