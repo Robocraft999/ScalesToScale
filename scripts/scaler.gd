@@ -1,52 +1,37 @@
 extends Node2D
 
-var draggingX := false
-var draggingY := false
+var editing := false
 
-const MAX_OFFSET = 15
-const MIN_OFFSET = 10
+const STEP = 0.25
+const MAX_SCALE = 3
 
-const MAX_SCALE = 2
+var offset := Vector2.ZERO
 
-var scaler_offset := Vector2(MIN_OFFSET,MIN_OFFSET)
-var item_offset := scaler_offset
-
-@onready var xRect = $xRect
-@onready var yRect = $yRect
-@onready var parent: Node2D = $".."
+@onready var parent: CollisionObject2D = $".."
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	xRect.mouse_entered.connect(func(): draggingX = true)
-	yRect.mouse_entered.connect(func(): draggingY = true)
+	parent.mouse_entered.connect(func(): editing = true)
+	parent.mouse_exited.connect(func(): editing = false)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if draggingX:
-		if Input.is_action_pressed("mouse_left"):
-			var requested_offset = get_global_mouse_position() - global_position
-			scaler_offset.x = clamp(requested_offset.x, MIN_OFFSET, MAX_OFFSET)
-			item_offset.x = scaler_offset.x
-		else:
-			draggingX = false
-	else:
-		scaler_offset.x = MIN_OFFSET
-		
-	if draggingY:
-		if Input.is_action_pressed("mouse_left"):
-			var requested_offset = get_global_mouse_position() - global_position
-			scaler_offset.y = clamp(requested_offset.y, MIN_OFFSET, MAX_OFFSET)
-			item_offset.y = scaler_offset.y
-		else:
-			draggingY = false
-	else:
-		scaler_offset.y = MIN_OFFSET
-	
-	xRect.position.x = scaler_offset.x
-	$xLine.points[1].x = scaler_offset.x
-	yRect.position.y = scaler_offset.y
-	$yLine.points[1].y = scaler_offset.y
-	parent.scale.x = lerp(1, MAX_SCALE, (item_offset.x-MIN_OFFSET) / (MAX_OFFSET-MIN_OFFSET))
-	parent.scale.y = lerp(1, MAX_SCALE, (item_offset.y-MIN_OFFSET) / (MAX_OFFSET-MIN_OFFSET))
+	var toggled = Input.is_action_pressed("scale_toggle")
+	if editing:
+		if Input.is_action_just_released("mouse_wheel_up"):
+			if toggled:
+				offset.y += STEP
+			else:
+				offset.x += STEP
+		elif Input.is_action_just_released("mouse_wheel_down"):
+			if toggled:
+				offset.y -= STEP
+			else:
+				offset.x -= STEP
+		offset.x = clamp(offset.x, 0, 1)
+		offset.y = clamp(offset.y, 0, 1)
+
+	parent.scale.x = lerp(1, MAX_SCALE, offset.x)
+	parent.scale.y = lerp(1, MAX_SCALE, offset.y)
 	global_scale = Vector2.ONE
