@@ -7,12 +7,14 @@
 script = ExtResource("1_kxixm")
 
 [node name="xArrow" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(8, 0)
 texture = ExtResource("2_8ympx")
 region_enabled = true
 region_rect = Rect2(240, 240, 16, 16)
 
 [node name="yArrow" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0, -8)
 texture = ExtResource("2_8ympx")
 region_enabled = true

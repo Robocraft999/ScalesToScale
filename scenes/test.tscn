@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://333vqfbf2bv7"]
+[gd_scene load_steps=16 format=4 uid="uid://333vqfbf2bv7"]
 
 [ext_resource type="Script" path="res://scripts/test.gd" id="1_q0kfk"]
 [ext_resource type="Texture2D" uid="uid://jsqanghxckw6" path="res://icon.svg" id="2_aaret"]
@@ -8,6 +8,8 @@
 [ext_resource type="AudioStream" uid="uid://bwqdbhehtihcc" path="res://sfx/dash.wav" id="6_hndjv"]
 [ext_resource type="Texture2D" uid="uid://cpmv4oo5l0bfv" path="res://sprites/scaleobstacle_small.png" id="7_ig075"]
 [ext_resource type="PackedScene" uid="uid://dce48rt84l5ft" path="res://scenes/objects/scaler.tscn" id="7_xs4ma"]
+[ext_resource type="Texture2D" uid="uid://b37g3do7v7hgs" path="res://sprites/arrow_clockwise.png" id="9_g74kb"]
+[ext_resource type="Script" path="res://scripts/restart_button.gd" id="9_usgnc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_taspc"]
 corner_radius_top_left = 15
@@ -103,3 +105,16 @@ region_rect = Rect2(0, 0, 14, 14)
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="RestartButton" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -24.0
+offset_bottom = 24.0
+grow_horizontal = 0
+icon = ExtResource("9_g74kb")
+expand_icon = true
+script = ExtResource("9_usgnc")
+
+[connection signal="pressed" from="RestartButton" to="RestartButton" method="_on_pressed"]
