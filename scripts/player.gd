@@ -81,18 +81,31 @@ func _physics_jump() -> void:
 	pass
 
 func dash_trail_effect() -> void:
+	
+	# Is it time to spawn another ghost image?
 	var time_passed = float(dash_time_since_started())
 	var percentage_passed = int(100 * time_passed / float(DASH_DURATION_MILLIS))
 	var target_percentage = GHOST_SPAWN_PERCENTAGES[dash_next_ghost_percentage_index]
+	
+	
 	if target_percentage < percentage_passed:
+		# Next percentage index
 		dash_next_ghost_percentage_index += 1
 		
+		# Create a copy of the players sprite
 		var ghost_image = $Sprite2D.duplicate()
+		
+		# Tween the alpha to make the ghost image slowly disappear
+		# Also free the image when it's completely transparent
 		var alpha_tween = ghost_image.create_tween()
 		var duration = float(GHOST_DURATION_MILLIS) / 1000.0
 		alpha_tween.tween_property(ghost_image, "modulate", Color.TRANSPARENT, duration)
 		alpha_tween.tween_callback(ghost_image.queue_free)
+		
+		# Add to parent scene
 		get_parent().add_child(ghost_image)
+		
+		# Copy player position
 		ghost_image.position = position
 		pass
 	pass
