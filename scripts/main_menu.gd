@@ -11,7 +11,7 @@ func _on_quit_button_pressed():
 	get_tree().quit()
 
 func _on_start_button_pressed():
-	pass # TODO: Start game
+	OptionsManager.get_scene_manager().load_level_scene_by_index(1)
 
 func _on_level_button_pressed():
 	pass # TODO: Level selection
