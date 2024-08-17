@@ -7,7 +7,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if $Player.is_dash_active():
 		$DashBar.value = abs(1 - ($Player.DASH_DURATION_MILLIS - $Player.dash_active_time_remaining()) / float($Player.DASH_DURATION_MILLIS))
 	elif $Player.dash_timeout_remaining() == 0:
