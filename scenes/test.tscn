@@ -1,7 +1,8 @@
-[gd_scene load_steps=24 format=4 uid="uid://333vqfbf2bv7"]
+[gd_scene load_steps=25 format=4 uid="uid://333vqfbf2bv7"]
 
 [ext_resource type="Script" path="res://scripts/test.gd" id="1_q0kfk"]
 [ext_resource type="Texture2D" uid="uid://sj0nvs17ukpj" path="res://sprites/background/parallax_1.png" id="2_6qo41"]
+[ext_resource type="Script" path="res://scripts/cloud_layer.gd" id="2_nqbyb"]
 [ext_resource type="TileSet" uid="uid://p75osdbfaruv" path="res://resources/test_tile_set.tres" id="2_y1o7q"]
 [ext_resource type="PackedScene" uid="uid://cvg3yiw0w3rjb" path="res://scenes/objects/collectible.tscn" id="3_h7wox"]
 [ext_resource type="Texture2D" uid="uid://cl2utl4r8pdxk" path="res://sprites/background/parallax_2.png" id="3_ytqaf"]
@@ -55,6 +56,8 @@ transform = Transform2D(1, 0, 0, 1, 320, 180)
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0, 0)
 motion_mirroring = Vector2(640, 0)
+script = ExtResource("2_nqbyb")
+cloud_speed = -3.75
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 texture = ExtResource("2_6qo41")
@@ -62,6 +65,8 @@ texture = ExtResource("2_6qo41")
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.1, 0.1)
 motion_mirroring = Vector2(640, 0)
+script = ExtResource("2_nqbyb")
+cloud_speed = -5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
 texture = ExtResource("3_ytqaf")
@@ -69,6 +74,8 @@ texture = ExtResource("3_ytqaf")
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.2, 0.2)
 motion_mirroring = Vector2(640, 0)
+script = ExtResource("2_nqbyb")
+cloud_speed = -6.25
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
 texture = ExtResource("4_u47fn")
@@ -76,6 +83,8 @@ texture = ExtResource("4_u47fn")
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.3, 0.3)
 motion_mirroring = Vector2(640, 0)
+script = ExtResource("2_nqbyb")
+cloud_speed = -7.0
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
 texture = ExtResource("5_shc07")
