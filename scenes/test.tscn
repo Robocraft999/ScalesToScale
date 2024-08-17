@@ -15,6 +15,14 @@ size = Vector2(10, 10)
 [node name="test" type="Node"]
 script = ExtResource("1_q0kfk")
 
+[node name="DashBar" type="ProgressBar" parent="."]
+offset_left = 87.0
+offset_top = 320.0
+offset_right = 320.0
+offset_bottom = 344.0
+value = 50.0
+show_percentage = false
+
 [node name="Node" type="Node" parent="."]
 
 [node name="BGLayer" type="TileMapLayer" parent="Node"]

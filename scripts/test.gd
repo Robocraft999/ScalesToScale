@@ -8,4 +8,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$Label.text = "Dash ready: %s, player velocity: %s" % [str($Player.is_dash_ready()), $Player.velocity]
+	if $Player.is_dash_active():
+		$DashBar.value = abs(1 - ($Player.DASH_DURATION_MILLIS - $Player.dash_active_time_remaining()) / float($Player.DASH_DURATION_MILLIS))
+		print($DashBar.value)
+	elif $Player.dash_timeout_remaining() == 0:
+		$DashBar.value = 100
+	else:
+		var time_passed = ($Player.DASH_REFRESH_MILLIS - $Player.dash_timeout_remaining())
+		var percentage = time_passed / float($Player.DASH_REFRESH_MILLIS)
+		$DashBar.value  = percentage * 100.0
