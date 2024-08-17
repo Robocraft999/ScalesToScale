@@ -121,14 +121,14 @@ func try_scale() -> void:
 	# check if scaled up or down
 	var scale_down = new_scale.x - parent.scale.x < -0.01 or new_scale.y - parent.scale.y < -0.01
 	
-	if scale_down:
-		scale_objects(Vector2.ZERO)
-		# TODO: Review y-scaling
-		var motion_down = Vector2(0, collider_size.y * new_scale.y/2 - 0.1)
-		return
-	
 	# get expansion size (half)
 	var expansion = Vector2(collider_size.x * new_scale.x/2 - collider_size.x * parent.scale.x/2, collider_size.y * new_scale.y/2 - collider_size.y * parent.scale.y/2)
+	
+	if scale_down:
+		var motion_down = Vector2(0, collider_size.y * new_scale.y/4 - 0.1)
+		scale_objects(Vector2.ZERO if expansion.x != 0 else motion_down)
+		return
+	
 	# Debug line
 	line.clear_points()
 	line.add_point(position)
