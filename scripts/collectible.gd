@@ -10,6 +10,7 @@ func _ready() -> void:
 func _on_area_entered(node: Node2D):
 	#print(node)
 	if node is Player:
+		handle(node)
 		queue_free()
 	pass
 	

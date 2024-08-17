@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://bpn1x8cdvpmgd"]
+[gd_scene load_steps=16 format=4 uid="uid://bpn1x8cdvpmgd"]
 
 [ext_resource type="Script" path="res://scripts/levels/tutorial_0.gd" id="1_m43d6"]
 [ext_resource type="TileSet" uid="uid://p75osdbfaruv" path="res://resources/test_tile_set.tres" id="1_sjhpa"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://6h3oh0xecxoo" path="res://sprites/keycap_up_arrow.png" id="5_pmvrd"]
 [ext_resource type="Script" path="res://scripts/animated_keycap.gd" id="6_vscq7"]
 [ext_resource type="Texture2D" uid="uid://d3efk20a8x1qs" path="res://sprites/keycap_left_arrow.png" id="6_xr2ns"]
+[ext_resource type="Script" path="res://scripts/collectible.gd" id="9_ofmtq"]
+[ext_resource type="Texture2D" uid="uid://loarm7an4wt3" path="res://resources/sprites/Collectible.png" id="10_fnph6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uns3m"]
 size = Vector2(15, 22)
@@ -41,7 +43,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_lccx0"]
 resource_name = "Tutorial0"
-length = 15.0
+length = 20.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -72,6 +74,9 @@ _data = {
 "RESET": SubResource("Animation_wqt0i"),
 "Tutorial0": SubResource("Animation_lccx0")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3mgu4"]
+size = Vector2(16, 16)
 
 [node name="Tutorial0" type="Node2D"]
 script = ExtResource("1_m43d6")
@@ -140,5 +145,15 @@ libraries = {
 }
 autoplay = "Tutorial0"
 
-[node name="AnimatedKeyCap" type="Sprite2D" parent="."]
-script = ExtResource("6_vscq7")
+[node name="Collectible" type="Area2D" parent="." node_paths=PackedStringArray("type")]
+position = Vector2(112, 256)
+collision_mask = 2
+script = ExtResource("9_ofmtq")
+type = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectible"]
+shape = SubResource("RectangleShape2D_3mgu4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Collectible"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_fnph6")

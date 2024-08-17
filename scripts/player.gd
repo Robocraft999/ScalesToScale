@@ -72,7 +72,7 @@ func _physics_jump() -> void:
 		velocity.y = JUMP_VELOCITY
 		jump_buffer_time = 0
 		jump_coyote_time = 0
-	elif Input.is_action_just_pressed("jump") and jump_double_ready and not is_on_floor():
+	elif Input.is_action_just_pressed("jump") and jump_double_ready and not is_on_floor() and ProgressStore.double_jump_enabled:
 		velocity.y = DOUBLE_JUMP_VELOCITY
 		jump_double_ready = false
 	elif Input.is_action_just_pressed("jump") and not is_on_floor():
@@ -137,8 +137,9 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_actual_gravity() * delta
-	
-	_physics_jump()
+
+	if ProgressStore.jump_enabled:
+		_physics_jump()
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -148,6 +149,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
-	_physics_dash()
+	if ProgressStore.dash_enabled:
+		_physics_dash()
 
 	move_and_slide()
