@@ -1,27 +1,25 @@
-[gd_scene load_steps=16 format=4 uid="uid://333vqfbf2bv7"]
+[gd_scene load_steps=17 format=4 uid="uid://333vqfbf2bv7"]
 
 [ext_resource type="Script" path="res://scripts/test.gd" id="1_q0kfk"]
-[ext_resource type="Texture2D" uid="uid://jsqanghxckw6" path="res://icon.svg" id="2_aaret"]
 [ext_resource type="TileSet" uid="uid://p75osdbfaruv" path="res://resources/test_tile_set.tres" id="2_y1o7q"]
-[ext_resource type="Script" path="res://scripts/player.gd" id="3_ba8ry"]
 [ext_resource type="PackedScene" uid="uid://cvg3yiw0w3rjb" path="res://scenes/objects/collectible.tscn" id="3_h7wox"]
 [ext_resource type="PackedScene" uid="uid://bnt67b4wf47qu" path="res://scenes/objects/player.tscn" id="4_j0igw"]
+[ext_resource type="Texture2D" uid="uid://cpmv4oo5l0bfv" path="res://sprites/scaleobstacle_small.png" id="5_26fnp"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="7_i41tc"]
 [ext_resource type="PackedScene" uid="uid://dce48rt84l5ft" path="res://scenes/objects/scaler.tscn" id="7_xs4ma"]
-[ext_resource type="Texture2D" uid="uid://blbtmnpemccg8" path="res://sprites/scale_obstacle.png" id="8_050qc"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="8_svklm"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="9_76nb0"]
+[ext_resource type="Texture2D" uid="uid://b37g3do7v7hgs" path="res://sprites/arrow_clockwise.png" id="10_wxfkh"]
+[ext_resource type="Script" path="res://scripts/restart_button.gd" id="11_guhv7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o6i2r"]
-size = Vector2(10, 10)
+size = Vector2(14, 14)
 
 [sub_resource type="Resource" id="Resource_gquns"]
 script = ExtResource("8_svklm")
 duration = 0.6
 transition = 8
 ease = 1
-[ext_resource type="Texture2D" uid="uid://b37g3do7v7hgs" path="res://sprites/arrow_clockwise.png" id="9_g74kb"]
-[ext_resource type="Script" path="res://scripts/restart_button.gd" id="9_usgnc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_taspc"]
 corner_radius_top_left = 15
@@ -39,11 +37,6 @@ corner_radius_bottom_left = 15
 [sub_resource type="Theme" id="Theme_egryi"]
 ProgressBar/styles/background = SubResource("StyleBoxFlat_taspc")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_wqyle")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jtt55"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o6i2r"]
-size = Vector2(14, 14)
 
 [node name="test" type="Node"]
 script = ExtResource("1_q0kfk")
@@ -73,7 +66,6 @@ metadata/_edit_group_ = true
 shape = SubResource("RectangleShape2D_o6i2r")
 
 [node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
-visible = false
 offset_left = -5.0
 offset_top = -5.0
 offset_right = 5.0
@@ -83,7 +75,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 texture_filter = 1
 texture_repeat = 2
-texture = ExtResource("7_ig075")
+texture = ExtResource("5_26fnp")
 region_enabled = true
 region_rect = Rect2(0, 0, 14, 14)
 
@@ -129,8 +121,8 @@ anchor_right = 1.0
 offset_left = -24.0
 offset_bottom = 24.0
 grow_horizontal = 0
-icon = ExtResource("9_g74kb")
+icon = ExtResource("10_wxfkh")
 expand_icon = true
-script = ExtResource("9_usgnc")
+script = ExtResource("11_guhv7")
 
-[connection signal="pressed" from="RestartButton" to="RestartButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/RestartButton" to="CanvasLayer/RestartButton" method="_on_pressed"]
