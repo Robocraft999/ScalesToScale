@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=4 uid="uid://bpn1x8cdvpmgd"]
+[gd_scene load_steps=13 format=4 uid="uid://bpn1x8cdvpmgd"]
 
+[ext_resource type="Script" path="res://scripts/levels/tutorial_0.gd" id="1_m43d6"]
 [ext_resource type="TileSet" uid="uid://p75osdbfaruv" path="res://resources/test_tile_set.tres" id="1_sjhpa"]
 [ext_resource type="PackedScene" uid="uid://bnt67b4wf47qu" path="res://scenes/objects/player.tscn" id="2_0echh"]
 [ext_resource type="Texture2D" uid="uid://53ne81gplau0" path="res://sprites/dragon_flag.png" id="3_aw1e5"]
@@ -73,6 +74,7 @@ _data = {
 }
 
 [node name="Tutorial0" type="Node2D"]
+script = ExtResource("1_m43d6")
 
 [node name="DragonFlag" type="StaticBody2D" parent="."]
 position = Vector2(608, 213)

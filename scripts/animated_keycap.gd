@@ -5,7 +5,7 @@ class_name AnimatedKeyCap
 
 var is_active := false
 
-func _procedwadasdss(_delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_pressed(watched_action_name) and not is_active:
 		var growth_tween = create_tween().bind_node(self)
 		growth_tween.tween_property(self, "scale", Vector2(1.07, 1.07), 0.2)
