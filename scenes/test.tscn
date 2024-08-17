@@ -115,22 +115,13 @@ collision_enabled = false
 
 [node name="Collectible" parent="ScaleScale" instance=ExtResource("3_h7wox")]
 
-[node name="Player" parent="." instance=ExtResource("4_j0igw")]
-
 [node name="StaticBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(200, 57)
+position = Vector2(63, 149)
 input_pickable = true
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_o6i2r")
-
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
-metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 texture_filter = 1
@@ -140,6 +131,8 @@ region_enabled = true
 region_rect = Rect2(0, 0, 14, 14)
 
 [node name="Scaler" parent="StaticBody2D" instance=ExtResource("7_xs4ma")]
+
+[node name="Player" parent="." instance=ExtResource("4_j0igw")]
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
@@ -166,10 +159,16 @@ script = ExtResource("9_76nb0")
 
 [node name="DashBar" type="ProgressBar" parent="CanvasLayer"]
 unique_name_in_owner = true
-offset_left = 87.0
-offset_top = 320.0
-offset_right = 320.0
-offset_bottom = 344.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -116.5
+offset_top = -24.0
+offset_right = 116.5
+grow_horizontal = 2
+grow_vertical = 0
 theme = SubResource("Theme_egryi")
 value = 50.0
 show_percentage = false
