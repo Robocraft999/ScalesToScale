@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/scene_manager.gd" id="1_qtxrc"]
 [ext_resource type="PackedScene" uid="uid://333vqfbf2bv7" path="res://scenes/test.tscn" id="2_4mxv4"]
-[ext_resource type="PackedScene" uid="uid://bkdnp463xpco0" path="res://scenes/main_menu.tscn" id="2_10n0m"]
+[ext_resource type="PackedScene" path="res://scenes/main_menu.tscn" id="2_10n0m"]
 
 [node name="root" type="Node"]
 
