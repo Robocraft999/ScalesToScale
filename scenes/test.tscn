@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://333vqfbf2bv7"]
+[gd_scene load_steps=13 format=4 uid="uid://333vqfbf2bv7"]
 
 [ext_resource type="Script" path="res://scripts/test.gd" id="1_q0kfk"]
 [ext_resource type="Texture2D" uid="uid://jsqanghxckw6" path="res://icon.svg" id="2_aaret"]
@@ -7,6 +7,23 @@
 [ext_resource type="PackedScene" uid="uid://cvg3yiw0w3rjb" path="res://scenes/objects/collectible.tscn" id="3_h7wox"]
 [ext_resource type="AudioStream" uid="uid://bwqdbhehtihcc" path="res://sfx/dash.wav" id="6_hndjv"]
 [ext_resource type="PackedScene" uid="uid://dce48rt84l5ft" path="res://scenes/objects/scaler.tscn" id="7_xs4ma"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_taspc"]
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wqyle"]
+bg_color = Color(0.972406, 0.363683, 0.404291, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="Theme" id="Theme_egryi"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_taspc")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_wqyle")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jtt55"]
 
@@ -21,6 +38,7 @@ offset_left = 87.0
 offset_top = 320.0
 offset_right = 320.0
 offset_bottom = 344.0
+theme = SubResource("Theme_egryi")
 value = 50.0
 show_percentage = false
 
