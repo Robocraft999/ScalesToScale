@@ -64,8 +64,6 @@ func _physics_process(delta: float) -> void:
 	
 	var motion = try_scale()
 	if motion != Vector2.ZERO:
-		if motion.y != 0:
-			print(parent.position, motion, collider_size.y * parent.scale.y/2)
 		parent.move_and_collide(motion)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -29,7 +29,7 @@ ProgressBar/styles/fill = SubResource("StyleBoxFlat_wqyle")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jtt55"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o6i2r"]
-size = Vector2(10, 10)
+size = Vector2(14, 14)
 
 [node name="test" type="Node"]
 script = ExtResource("1_q0kfk")
@@ -96,7 +96,7 @@ texture_filter = 1
 texture_repeat = 2
 texture = ExtResource("7_ig075")
 region_enabled = true
-region_rect = Rect2(0, 0, 10, 10)
+region_rect = Rect2(0, 0, 14, 14)
 
 [node name="Scaler" parent="StaticBody2D" instance=ExtResource("7_xs4ma")]
 
