@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://dce48rt84l5ft"]
+
+[ext_resource type="Script" path="res://scripts/scaler.gd" id="1_kxixm"]
+
+[node name="Scaler" type="Node2D"]
+script = ExtResource("1_kxixm")
+
+[node name="xLine" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 10, 0)
+width = 0.2
+default_color = Color(1, 0, 0, 1)
+
+[node name="xRect" type="ColorRect" parent="."]
+offset_left = 9.0
+offset_top = -1.0
+offset_right = 11.0
+offset_bottom = 1.0
+color = Color(1, 0, 0, 1)
+
+[node name="yLine" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, 10)
+width = 0.2
+default_color = Color(0, 1, 0, 1)
+
+[node name="yRect" type="ColorRect" parent="."]
+offset_left = -1.0
+offset_top = 9.0
+offset_right = 1.0
+offset_bottom = 11.0
+color = Color(0, 1, 0, 1)

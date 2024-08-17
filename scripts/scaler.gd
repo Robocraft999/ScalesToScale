@@ -13,7 +13,7 @@ var item_offset := scaler_offset
 
 @onready var xRect = $xRect
 @onready var yRect = $yRect
-@onready var item: StaticBody2D = $".."
+@onready var parent: Node2D = $".."
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -47,6 +47,6 @@ func _process(delta: float) -> void:
 	$xLine.points[1].x = scaler_offset.x
 	yRect.position.y = scaler_offset.y
 	$yLine.points[1].y = scaler_offset.y
-	item.scale.x = lerp(1, MAX_SCALE, (item_offset.x-MIN_OFFSET) / (MAX_OFFSET-MIN_OFFSET))
-	item.scale.y = lerp(1, MAX_SCALE, (item_offset.y-MIN_OFFSET) / (MAX_OFFSET-MIN_OFFSET))
+	parent.scale.x = lerp(1, MAX_SCALE, (item_offset.x-MIN_OFFSET) / (MAX_OFFSET-MIN_OFFSET))
+	parent.scale.y = lerp(1, MAX_SCALE, (item_offset.y-MIN_OFFSET) / (MAX_OFFSET-MIN_OFFSET))
 	global_scale = Vector2.ONE
