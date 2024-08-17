@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://333vqfbf2bv7"]
+[gd_scene load_steps=14 format=4 uid="uid://333vqfbf2bv7"]
 
 [ext_resource type="Script" path="res://scripts/test.gd" id="1_q0kfk"]
 [ext_resource type="Texture2D" uid="uid://jsqanghxckw6" path="res://icon.svg" id="2_aaret"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cvg3yiw0w3rjb" path="res://scenes/objects/collectible.tscn" id="3_h7wox"]
 [ext_resource type="AudioStream" uid="uid://bwqdbhehtihcc" path="res://sfx/dash.wav" id="6_hndjv"]
 [ext_resource type="PackedScene" uid="uid://dce48rt84l5ft" path="res://scenes/objects/scaler.tscn" id="7_xs4ma"]
+[ext_resource type="Texture2D" uid="uid://blbtmnpemccg8" path="res://sprites/scale_obstacle.png" id="8_050qc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_taspc"]
 corner_radius_top_left = 15
@@ -92,6 +93,13 @@ offset_top = -5.0
 offset_right = 5.0
 offset_bottom = 5.0
 metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("8_050qc")
+region_enabled = true
+region_rect = Rect2(0, 0, 10, 10)
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
