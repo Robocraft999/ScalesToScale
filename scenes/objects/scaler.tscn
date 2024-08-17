@@ -17,3 +17,5 @@ position = Vector2(0, -8)
 texture = ExtResource("2_8ympx")
 region_enabled = true
 region_rect = Rect2(224, 240, 16, 16)
+
+[node name="Line2D" type="Line2D" parent="."]
