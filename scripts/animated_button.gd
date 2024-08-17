@@ -6,7 +6,9 @@ var shrinkTween: Tween
 
 func _ready() -> void:
 	focus_entered.connect(_on_focus_entered)
+	mouse_entered.connect(_on_focus_entered)
 	focus_exited.connect(_on_focus_exited)
+	mouse_exited.connect(_on_focus_exited)
 
 func _process(delta: float) -> void:
 	pivot_offset = size / 2
