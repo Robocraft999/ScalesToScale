@@ -58,7 +58,8 @@ texture = ExtResource("2_aaret")
 [node name="Inventory" type="Node" parent="Player"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(200, 121)
+position = Vector2(216, 155)
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_o6i2r")
