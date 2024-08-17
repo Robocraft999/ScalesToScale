@@ -5,9 +5,21 @@
 [ext_resource type="TileSet" uid="uid://p75osdbfaruv" path="res://resources/test_tile_set.tres" id="2_y1o7q"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="3_ba8ry"]
 [ext_resource type="PackedScene" uid="uid://cvg3yiw0w3rjb" path="res://scenes/objects/collectible.tscn" id="3_h7wox"]
-[ext_resource type="AudioStream" uid="uid://bwqdbhehtihcc" path="res://sfx/dash.wav" id="6_hndjv"]
-[ext_resource type="Texture2D" uid="uid://cpmv4oo5l0bfv" path="res://sprites/scaleobstacle_small.png" id="7_ig075"]
+[ext_resource type="PackedScene" uid="uid://bnt67b4wf47qu" path="res://scenes/objects/player.tscn" id="4_j0igw"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="7_i41tc"]
 [ext_resource type="PackedScene" uid="uid://dce48rt84l5ft" path="res://scenes/objects/scaler.tscn" id="7_xs4ma"]
+[ext_resource type="Texture2D" uid="uid://blbtmnpemccg8" path="res://sprites/scale_obstacle.png" id="8_050qc"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="8_svklm"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="9_76nb0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o6i2r"]
+size = Vector2(10, 10)
+
+[sub_resource type="Resource" id="Resource_gquns"]
+script = ExtResource("8_svklm")
+duration = 0.6
+transition = 8
+ease = 1
 [ext_resource type="Texture2D" uid="uid://b37g3do7v7hgs" path="res://sprites/arrow_clockwise.png" id="9_g74kb"]
 [ext_resource type="Script" path="res://scripts/restart_button.gd" id="9_usgnc"]
 
@@ -36,15 +48,6 @@ size = Vector2(14, 14)
 [node name="test" type="Node"]
 script = ExtResource("1_q0kfk")
 
-[node name="DashBar" type="ProgressBar" parent="."]
-offset_left = 87.0
-offset_top = 320.0
-offset_right = 320.0
-offset_bottom = 344.0
-theme = SubResource("Theme_egryi")
-value = 50.0
-show_percentage = false
-
 [node name="Node" type="Node" parent="."]
 
 [node name="BGLayer" type="TileMapLayer" parent="Node"]
@@ -59,23 +62,7 @@ collision_enabled = false
 
 [node name="Collectible" parent="ScaleScale" instance=ExtResource("3_h7wox")]
 
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(8, 153)
-collision_layer = 2
-script = ExtResource("3_ba8ry")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-scale = Vector2(0.5, 0.5)
-shape = SubResource("RectangleShape2D_jtt55")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-scale = Vector2(0.08, 0.08)
-texture = ExtResource("2_aaret")
-
-[node name="Inventory" type="Node" parent="Player"]
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player"]
-stream = ExtResource("6_hndjv")
+[node name="Player" parent="." instance=ExtResource("4_j0igw")]
 
 [node name="StaticBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(200, 57)
@@ -106,7 +93,36 @@ region_rect = Rect2(0, 0, 14, 14)
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="RestartButton" type="Button" parent="."]
+[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
+position = Vector2(8, 153)
+script = ExtResource("7_i41tc")
+follow_mode = 2
+follow_target = NodePath("../Player")
+tween_resource = SubResource("Resource_gquns")
+follow_damping = true
+follow_damping_value = Vector2(0.5, 0.5)
+draw_limits = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+physics_interpolation_mode = 1
+position = Vector2(8, 153)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+script = ExtResource("9_76nb0")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DashBar" type="ProgressBar" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 87.0
+offset_top = 320.0
+offset_right = 320.0
+offset_bottom = 344.0
+theme = SubResource("Theme_egryi")
+value = 50.0
+show_percentage = false
+
+[node name="RestartButton" type="Button" parent="CanvasLayer"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
