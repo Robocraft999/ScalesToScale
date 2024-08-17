@@ -18,7 +18,7 @@ signal dash_started
 @export var DASH_DURATION_MILLIS  := 250
 @export var DASH_REFRESH_MILLIS   := 1500
 # Distance traveled in total
-@export var DASH_VELOCITY           := Vector2(500.0, 200.0)
+@export var DASH_VELOCITY           := Vector2(300.0, 300.0)
 @export var GHOST_DURATION_MILLIS   := 200
 @export var GHOST_SPAWN_PERCENTAGES: Array[int] = [5, 10, 15, 30, 50, 70, 80, 85, 95]
 
