@@ -110,9 +110,6 @@ func try_scale() -> Vector2:
 	line.add_point(position)
 	line.add_point(position + expansion)
 	
-	if not positionTween.is_running() and not scaleTween.is_running():
-		return Vector2.ZERO
-	
 	# check if can expand to both sides
 	if not test_move(expansion * -1) and not test_move(expansion):
 		scale_objects(Vector2.ZERO)
