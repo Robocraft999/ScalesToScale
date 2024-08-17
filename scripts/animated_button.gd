@@ -4,6 +4,8 @@ class_name AnimatedButton
 var growTween: Tween
 var shrinkTween: Tween
 
+@export var focus_player: AudioStreamPlayer
+
 func _ready() -> void:
 	focus_entered.connect(_on_focus_entered)
 	mouse_entered.connect(_on_focus_entered)
@@ -19,6 +21,7 @@ func _on_focus_entered() -> void:
 
 	growTween = get_tree().create_tween().bind_node(self).set_trans(Tween.TRANS_BOUNCE)
 	growTween.tween_property(self, "scale", Vector2(1.02, 1.02), 0.5)
+	focus_player.play()
 	pass
 
 
