@@ -2,8 +2,8 @@ extends Node2D
 
 var editing := false
 
-const STEP = 0.25
-const MAX_SCALE = 5
+@export var STEP = 0.25
+@export var MAX_SCALE = 5
 
 var offset := Vector2.ZERO
 var offset_offset = offset
