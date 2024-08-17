@@ -1,12 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1jm8vxalt1c6"]
+[gd_scene load_steps=5 format=3 uid="uid://c1jm8vxalt1c6"]
 
 [ext_resource type="Script" path="res://scripts/scene_manager.gd" id="1_qtxrc"]
 [ext_resource type="PackedScene" uid="uid://333vqfbf2bv7" path="res://scenes/test.tscn" id="2_4mxv4"]
-[ext_resource type="PackedScene" path="res://scenes/main_menu.tscn" id="2_10n0m"]
+[ext_resource type="PackedScene" uid="uid://2nqpmv02h2ib" path="res://scenes/main_menu.tscn" id="2_10n0m"]
+[ext_resource type="PackedScene" uid="uid://bpn1x8cdvpmgd" path="res://scenes/levels/tutorial_0.tscn" id="3_exf5w"]
 
 [node name="root" type="Node"]
 
 [node name="SceneManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_qtxrc")
-editor_scenes = Array[PackedScene]([ExtResource("2_10n0m"), ExtResource("2_4mxv4")])
+editor_scenes = Array[PackedScene]([ExtResource("2_10n0m"), ExtResource("3_exf5w"), ExtResource("2_4mxv4")])
