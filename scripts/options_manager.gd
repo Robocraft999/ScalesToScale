@@ -32,7 +32,7 @@ func get_all_in_folder(path):
 	var file_name = dir.get_next()
 	while file_name != "":
 		# print("Found file: ", file_name)
-		if !file_name.begins_with(".") and !file_name.ends_with(".import"):
+		if !file_name.begins_with(".") and !file_name.ends_with(".import") and not dir.current_is_dir():
 			var full_path = path + "/" + file_name
 			# Remove .remap extension if present
 			if full_path.ends_with(".remap"):
