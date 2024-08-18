@@ -15,8 +15,8 @@
 [ext_resource type="Script" path="res://scripts/end_animator.gd" id="13_4l13b"]
 [ext_resource type="Script" path="res://scripts/shaker.gd" id="13_kipkx"]
 [ext_resource type="Script" path="res://scripts/shaker_animator.gd" id="14_37g71"]
-[ext_resource type="PackedScene" path="res://scenes/objects/restart_button.tscn" id="16_er8j7"]
-[ext_resource type="PackedScene" path="res://scenes/objects/button_focus_player.tscn" id="17_uy40b"]
+[ext_resource type="PackedScene" uid="uid://4ot2rbv3j22q" path="res://scenes/objects/restart_button.tscn" id="16_er8j7"]
+[ext_resource type="PackedScene" uid="uid://dcnk5ak1x2etg" path="res://scenes/objects/button_focus_player.tscn" id="17_uy40b"]
 
 [sub_resource type="Animation" id="Animation_wqt0i"]
 length = 0.001

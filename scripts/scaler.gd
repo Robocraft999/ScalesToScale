@@ -17,6 +17,7 @@ var new_scale     := Vector2.ONE
 
 var scaleTween: Tween
 var positionTween: Tween
+var sprite_recp_tween: Tween
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,10 +26,13 @@ func _ready() -> void:
 	line.default_color = Color.DARK_BLUE
 	scaleTween = create_tween()
 	positionTween = create_tween()
+	sprite_recp_tween = create_tween()
 	scaleTween.tween_interval(0.1)
 	positionTween.tween_interval(0.1)
+	sprite_recp_tween.tween_interval(0.1)
 	scaleTween.stop()
 	positionTween.stop()
+	sprite_recp_tween.stop()
 	#line.z_index = 5
 	#parent.mouse_entered.connect(func(): editing = true)
 	#parent.mouse_exited.connect(func(): editing = false)
@@ -96,7 +100,7 @@ func _physics_process(delta: float) -> void:
 	
 	# Don't distort the sprite, it's in tiling mode anyway
 	sprite.global_scale = Vector2.ONE
-	sprite.region_rect.size = sprite_region_size * new_scale
+	#sprite.region_rect.size = sprite_region_size * new_scale
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -128,6 +132,7 @@ func try_scale() -> void:
 	
 	if scale_down:
 		var motion_down = Vector2(0, collider_size.y * new_scale.y/4 - 0.1)
+		motion_down = Vector2.ZERO
 		scale_objects(Vector2.ZERO if expansion.x != 0 else motion_down)
 		return
 	
@@ -165,7 +170,9 @@ func scale_objects(new_position):
 	scaleTween = create_tween()
 	scaleTween.tween_property(parent, "scale", new_scale, .2)
 	positionTween = create_tween()
-	positionTween.set_ease(Tween.EASE_OUT).tween_property(parent, "position", parent.position + new_position, .2)
+	positionTween.set_ease(Tween.EASE_OUT).tween_property(parent, "position", parent.position + new_position, .1)
+	sprite_recp_tween = create_tween()
+	sprite_recp_tween.tween_property(sprite, "region_rect:size", sprite_region_size * new_scale, .2)
 	#create_tween().tween_property(region_rect, "size", sprite_region_size * new_scale, 0.2)
 	#parent.scale = new_scale
 	
