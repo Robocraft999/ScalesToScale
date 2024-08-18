@@ -7,9 +7,9 @@ func _ready() -> void:
 
 func _trigger_animation(body: Node2D):
 	if body is Player:
-		$EditableLevel/Camera2D.follow_node = $EditableLevel/ScalableBox
+		$EditableLevel/Camera2D.follow_node = $EditableLevel/ExampleBox
 		$TypewriterAnimationPlayer.play("typewriter_animation")
 		$TypewriterTrigger.body_entered.disconnect(_trigger_animation)
 		await $TypewriterAnimationPlayer.animation_finished
-		$EditableLevel/Camera2D.follow_node = %Player
+		$EditableLevel/Camera2D.follow_node = %Playerd
 	pass
