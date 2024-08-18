@@ -91,7 +91,6 @@ position = Vector2(758, 323)
 unique_name_in_owner = true
 position = Vector2(256, 1.60693)
 allow_movement = false
-SPEED = 150.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="EditableLevel"]
 root_node = NodePath("../..")

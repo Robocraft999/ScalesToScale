@@ -10,7 +10,7 @@ signal landed_on_floor(impact_velocity: Vector2)
 @export var allow_movement := true
 
 @export_category("Speed, Velocity, Physics")
-@export var SPEED = 100.0
+@export var SPEED = 150.0
 @export var JUMP_VELOCITY = -300.0
 @export var DOUBLE_JUMP_VELOCITY = -250.0
 

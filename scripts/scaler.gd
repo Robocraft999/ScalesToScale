@@ -2,8 +2,7 @@ extends Node2D
 
 var editing := false
 
-@export var STEP = 0.25
-@export var MAX_SCALE = 5
+@export var MAX_SCALE = Vector2(5.0, 5.0)
 
 var target_offset := Vector2.ZERO
 var current_offset = target_offset
@@ -14,6 +13,7 @@ var new_scale     := Vector2.ONE
 @onready var sprite: Sprite2D = $"../Sprite2D"
 @onready var sprite_region_size: Vector2 = sprite.region_rect.size
 @onready var collider_size: Vector2 = parent.get_child(0).shape.get_rect().size
+@onready var STEP = Vector2.ONE / (MAX_SCALE - Vector2.ONE)
 
 var scaleTween: Tween
 var positionTween: Tween
@@ -63,14 +63,14 @@ func _physics_process(delta: float) -> void:
 			# Calculate new desired offset
 			if Input.is_action_just_released("mouse_wheel_up"):
 				if toggled and ProgressStore.vertical_scale_enabled:
-					target_offset.y += STEP
+					target_offset.y += STEP.y
 				elif not toggled and ProgressStore.horizontal_scale_enabled:
-					target_offset.x += STEP
+					target_offset.x += STEP.x
 			elif Input.is_action_just_released("mouse_wheel_down"):
 				if toggled and ProgressStore.vertical_scale_enabled:
-					target_offset.y -= STEP
+					target_offset.y -= STEP.y
 				elif not toggled and ProgressStore.horizontal_scale_enabled:
-					target_offset.x -= STEP
+					target_offset.x -= STEP.x
 			
 			# At most one entire step per 'frame'
 			target_offset.x = clamp(target_offset.x, 0, 1)
@@ -81,11 +81,13 @@ func _physics_process(delta: float) -> void:
 			
 			
 			# Absolute target scale
-			new_scale = Vector2(lerp(1, MAX_SCALE, target_offset.x), lerp(1, MAX_SCALE, target_offset.y))
+			
+			# Don't use vector lerp
+			new_scale = Vector2(lerp(1., MAX_SCALE.x, target_offset.x), lerp(1., MAX_SCALE.y, target_offset.y))
 			
 			try_scale()
 			
-			new_scale = Vector2(lerp(1, MAX_SCALE, target_offset.x), lerp(1, MAX_SCALE, target_offset.y))
+			new_scale = Vector2(lerp(1., MAX_SCALE.x, target_offset.x), lerp(1., MAX_SCALE.y, target_offset.y))
 	else:
 		# Hide all arrows if the box is not focused
 		$yArrow.visible = false

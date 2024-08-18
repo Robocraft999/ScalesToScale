@@ -193,6 +193,7 @@ follow_node = NodePath("../Player")
 [node name="CameraShaker" type="Node2D" parent="EditableLevel/Camera2D"]
 unique_name_in_owner = true
 script = ExtResource("13_kipkx")
+property_name = &"offset"
 
 [node name="EndAnimator" type="Node" parent="EditableLevel"]
 script = ExtResource("13_4l13b")
