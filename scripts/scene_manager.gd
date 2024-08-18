@@ -6,8 +6,14 @@ var loadable_scenes : Array[LoadableScene];
 var current_scene : LoadedScene;
 
 func _ready() -> void:
+	editor_scenes = OptionsManager.get_all_scenes_in_folder("res://scenes")
 	populate_loadable_scenes_list()
-	load_level_scene_by_index(0);
+	for l_scene in loadable_scenes:
+		print(l_scene.scene_name)
+		
+	print(get_tree().current_scene.name)
+	#load_level_scene_by_index(0);
+	#load_level_scene_by_name("MainMenu")
 
 func populate_loadable_scenes_list():
 	for scene in editor_scenes:
@@ -38,6 +44,9 @@ func load_level_scene(scene_to_load : LoadableScene, scene_index : int):
 	if(current_scene != null):
 		current_scene.scene.queue_free();
 		current_scene = null;
+	else:
+		if get_tree().current_scene != null:
+			get_tree().current_scene.queue_free()
 
 	var new_scene : Node = scene_to_load.scene.instantiate();
 
@@ -57,7 +66,10 @@ func load_level_scene(scene_to_load : LoadableScene, scene_index : int):
 	return current_scene;
 	
 func reload_current_scene():
-	load_level_scene_by_index(current_scene.scene_index)
+	if current_scene == null:
+		load_level_scene_by_name(get_tree().current_scene.name)
+	else:
+		load_level_scene_by_index(current_scene.scene_index)
 		
 func add_level_scene_to_scene_array(scene):
 	if(scene == null):

@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 OptionsManager="*res://scripts/options_manager.gd"
 ProgressStore="*res://scripts/progress.gd"
+SceneLoader="*res://scripts/scene_manager.gd"
 
 [display]
 

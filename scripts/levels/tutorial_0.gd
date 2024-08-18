@@ -18,7 +18,7 @@ func _on_dragon_flag_body_entered(body: Node2D) -> void:
 		var tween = create_tween()
 		tween.tween_property(cam, "zoom", Vector2(3,3), 3)
 		tween.chain().tween_property(body, "position", Vector2(body.position.x, 0), 3)
-		tween.finished.connect(func(): OptionsManager.get_scene_manager())
+		tween.finished.connect(func(): SceneLoader.load_level_scene_by_name("MainMenu"))
 		await get_tree().create_timer(0.5).timeout
 		body.allow_movement = false
 		pass

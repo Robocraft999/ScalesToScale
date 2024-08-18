@@ -1,16 +1,43 @@
 extends Node
 
-@onready var scene_manager: SceneManager = $"../root/SceneManager"
-var scene_manager_scene = preload("res://scenes/objects/scene_manager.tscn")
-#var main_menu_scene = preload("res://scenes/main_menu.tscn")
+func _ready() -> void:
+	for scene: PackedScene in get_all_in_folder("res://scenes/levels"):
+		print(scene.resource_path)
+	
+func get_all_scenes_in_folder(path) -> Array[PackedScene]:
+	var wrapped: Array[PackedScene] = []
+	for resource: PackedScene in get_all_in_folder(path):
+		wrapped.append(resource)
+	return wrapped
 
-func get_scene_manager() -> SceneManager:
-	if not scene_manager:
-		get_tree().change_scene_to_file("res://scenes/root.tscn")
-		
-		# Doesn't work, because SceneManager can't unload current Scene
-		#scene_manager = scene_manager_scene.instantiate()
-		#scene_manager.populate_loadable_scenes_list()
-		#get_tree().root.add_child(scene_manager)
-		#scene_manager = $"/root/SceneManager"
-	return scene_manager
+func get_all_in_folder(path):
+	var items = []
+	var dir = DirAccess.open(path)
+	if not dir:
+		push_error("Invalid dir: " + path)
+		return items  # Return an empty list if the directory is invalid
+
+	# print("Opening directory: ", path)
+	dir.list_dir_begin()
+	var file_name = dir.get_next()
+	while file_name != "":
+		# print("Found file: ", file_name)
+		if !file_name.begins_with(".") and !file_name.ends_with(".import"):
+			var full_path = path + "/" + file_name
+			# Remove .remap extension if present
+			if full_path.ends_with(".remap"):
+				full_path = full_path.substr(0, full_path.length() - 6)
+			# print("Checking path: ", full_path)
+			if ResourceLoader.exists(full_path):
+				# print("Path exists: ", full_path)
+				var res = ResourceLoader.load(full_path)
+				if res:
+					# print("Loaded resource: ", full_path)
+					items.append(res)
+				else:
+					push_error("Failed to load resource: ", full_path)
+			else:
+				push_error("Resource does not exist: ", full_path)
+		file_name = dir.get_next()
+	dir.list_dir_end()
+	return items
