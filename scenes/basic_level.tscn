@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://2dj1d442mvd5"]
+[gd_scene load_steps=6 format=3 uid="uid://2dj1d442mvd5"]
 
 [ext_resource type="PackedScene" uid="uid://bb53neelkiux7" path="res://scenes/parallax_background.tscn" id="1_d14oh"]
 [ext_resource type="PackedScene" uid="uid://4ot2rbv3j22q" path="res://scenes/objects/restart_button.tscn" id="2_i0t8j"]
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="3_g0bjy"]
 [ext_resource type="PackedScene" uid="uid://dcnk5ak1x2etg" path="res://scenes/objects/button_focus_player.tscn" id="3_jadun"]
+[ext_resource type="Script" path="res://scripts/animated_button.gd" id="4_581hl"]
 
 [node name="BasicLevel" type="Node"]
 
@@ -12,5 +14,27 @@
 
 [node name="RestartButton" parent="CanvasLayer" instance=ExtResource("2_i0t8j")]
 
+[node name="PauseMenu" type="CenterContainer" parent="CanvasLayer"]
+process_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.5
+offset_top = -20.0
+offset_right = 78.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_g0bjy")
+
+[node name="AnimatedButton" type="Button" parent="CanvasLayer/PauseMenu"]
+layout_mode = 2
+text = "Back to Main Menu"
+script = ExtResource("4_581hl")
+
 [node name="ButtonFocusPlayer" parent="." instance=ExtResource("3_jadun")]
 unique_name_in_owner = true
+
+[connection signal="pressed" from="CanvasLayer/PauseMenu/AnimatedButton" to="CanvasLayer/PauseMenu" method="_on_animated_button_pressed"]
