@@ -7,6 +7,7 @@ var current_scene : LoadedScene;
 
 func _ready() -> void:
 	editor_scenes = OptionsManager.get_all_scenes_in_folder("res://scenes")
+	editor_scenes.append_array(OptionsManager.get_all_scenes_in_folder("res://scenes/levels"))
 	populate_loadable_scenes_list()
 	#load_level_scene_by_index(0);
 	#load_level_scene_by_name("MainMenu")
