@@ -85,6 +85,19 @@ size_flags_horizontal = 4
 text = "Back"
 script = ExtResource("1_4pjmh")
 
+[node name="Test" type="Button" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+flat = true
+script = ExtResource("1_4pjmh")
+
 [node name="ButtonFocusPlayer" parent="." instance=ExtResource("3_0omlt")]
 unique_name_in_owner = true
 
@@ -96,3 +109,4 @@ unique_name_in_owner = true
 [connection signal="pressed" from="CanvasLayer/CenterContainer/VBoxContainer/MarginContainer/VBoxContainer/Row2/Level5" to="." method="_on_level_5_pressed"]
 [connection signal="pressed" from="CanvasLayer/CenterContainer/VBoxContainer/MarginContainer/VBoxContainer/Row2/Level6" to="." method="_on_level_6_pressed"]
 [connection signal="pressed" from="CanvasLayer/CenterContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="CanvasLayer/Test" to="." method="_on_test_pressed"]

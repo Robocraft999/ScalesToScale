@@ -33,3 +33,7 @@ func _on_level_5_pressed() -> void:
 
 func _on_level_6_pressed() -> void:
 	print("TODO: missing Level 6 or SceneName entry")
+
+
+func _on_test_pressed() -> void:
+	SceneLoader.load_level_scene_by_name(OptionsManager.SceneName.TEST)
