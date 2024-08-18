@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://dcnk5ak1x2etg"]
 
-[ext_resource type="AudioStream" uid="uid://brxu32wgtne0k" path="res://sfx/select.wav" id="1_dmilx"]
+[ext_resource type="AudioStream" uid="uid://dq65qvv14uw2k" path="res://sfx/select2.wav" id="1_hd0p5"]
 
 [node name="ButtonFocusPlayer" type="AudioStreamPlayer"]
-stream = ExtResource("1_dmilx")
+stream = ExtResource("1_hd0p5")
+volume_db = -10.0
