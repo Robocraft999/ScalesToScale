@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://cihn71dj4l8x"]
+
+[ext_resource type="Shader" uid="uid://56knq6vfw3tj" path="res://shaders/transition.tres" id="1_cilw0"]
+[ext_resource type="Script" path="res://scripts/transition.gd" id="1_i2sjg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nepy2"]
+shader = ExtResource("1_cilw0")
+shader_parameter/Dings = 0.0
+
+[node name="transition" type="CanvasLayer"]
+layer = 2
+visible = false
+script = ExtResource("1_i2sjg")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_nepy2")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -180.0
+offset_right = 320.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2

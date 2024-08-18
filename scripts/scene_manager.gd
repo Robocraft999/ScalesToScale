@@ -2,6 +2,7 @@ extends Node
 class_name SceneManager
 
 @export var editor_scenes : Array[PackedScene];
+@onready var transition_scene = preload("res://scenes/transition.tscn").instantiate()
 var loadable_scenes : Array[LoadableScene];
 var current_scene : LoadedScene;
 
@@ -9,34 +10,38 @@ func _ready() -> void:
 	editor_scenes = OptionsManager.get_all_scenes_in_folder("res://scenes")
 	editor_scenes.append_array(OptionsManager.get_all_scenes_in_folder("res://scenes/levels"))
 	populate_loadable_scenes_list()
-	#load_level_scene_by_index(0);
-	#load_level_scene_by_name("MainMenu")
+	
+	get_tree().root.add_child.call_deferred(transition_scene)
 
 func populate_loadable_scenes_list():
 	for scene in editor_scenes:
 		add_level_scene_to_scene_array(scene);
 		
-func load_level_scene_by_index(scene_index : int):
+func load_level_scene_by_index(scene_index : int, should_use_transition: bool = true):
 	if(scene_index < 0 || scene_index > loadable_scenes.size()):
 		return null;
 	
-	return load_level_scene(loadable_scenes[scene_index], scene_index);
+	return await load_level_scene(loadable_scenes[scene_index], scene_index, should_use_transition);
 
 func load_next_level_scene():
-	return load_level_scene_by_index((current_scene.scene_index + 1) % editor_scenes.size())
+	return await load_level_scene_by_index((current_scene.scene_index + 1) % editor_scenes.size())
 
-func load_level_scene_by_name(scene_name : String):
+func load_level_scene_by_name(scene_name : String, should_use_transition: bool = true):
 	var i : int = 0;
 	while i < loadable_scenes.size():
 		if(scene_name == loadable_scenes[i].scene_name):
-			return load_level_scene(loadable_scenes[i], i);
+			return await load_level_scene(loadable_scenes[i], i, should_use_transition);
 		i += 1;
 
 	return null;
 
-func load_level_scene(scene_to_load : LoadableScene, scene_index : int):
+func load_level_scene(scene_to_load : LoadableScene, scene_index : int, should_use_transition: bool):
 	if(!scene_to_load.scene.can_instantiate()):
 		return null;
+		
+	if should_use_transition:
+		transition_scene.start()
+		await transition_scene.half_done
 
 	if(current_scene != null):
 		current_scene.scene.queue_free();
