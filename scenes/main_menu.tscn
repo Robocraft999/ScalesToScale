@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/animated_button.gd" id="1_fg5ul"]
 [ext_resource type="Script" path="res://scripts/levels/main_menu.gd" id="1_qfm38"]
-[ext_resource type="PackedScene" uid="uid://dcnk5ak1x2etg" path="res://scenes/objects/button_focus_player.tscn" id="3_okun1"]
+[ext_resource type="PackedScene" path="res://scenes/objects/button_focus_player.tscn" id="3_okun1"]
 [ext_resource type="PackedScene" uid="uid://bb53neelkiux7" path="res://scenes/parallax_background.tscn" id="4_lg3ml"]
 
 [node name="MainMenu" type="Node"]
