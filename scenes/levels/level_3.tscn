@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://i4v1475bcmmn"]
+[gd_scene load_steps=21 format=4 uid="uid://i4v1475bcmmn"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_3.gd" id="1_4xn4p"]
 [ext_resource type="PackedScene" uid="uid://2dj1d442mvd5" path="res://scenes/basic_level.tscn" id="2_ahqc2"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://scripts/shaker.gd" id="8_waaut"]
 [ext_resource type="Texture2D" uid="uid://cpmv4oo5l0bfv" path="res://sprites/scaleobstacle_small.png" id="9_8wymp"]
 [ext_resource type="PackedScene" uid="uid://dce48rt84l5ft" path="res://scenes/objects/scaler.tscn" id="10_tw8kf"]
+[ext_resource type="Script" path="res://scripts/wall_glue.gd" id="12_fsgck"]
 
 [sub_resource type="Animation" id="Animation_w4hg0"]
 length = 0.001
@@ -270,6 +271,10 @@ region_rect = Rect2(0, 0, 14, 14)
 [node name="Scaler" parent="EditableLevel/LadderBox" instance=ExtResource("10_tw8kf")]
 MAX_SCALE = Vector2(4, 1)
 
+[node name="WallGlue" type="Node" parent="EditableLevel/LadderBox"]
+script = ExtResource("12_fsgck")
+direction = Vector2(1, 0)
+
 [node name="PlatformBox" type="CharacterBody2D" parent="EditableLevel"]
 position = Vector2(407, 216)
 collision_mask = 3
@@ -288,6 +293,10 @@ region_rect = Rect2(0, 0, 14, 14)
 
 [node name="Scaler" parent="EditableLevel/PlatformBox" instance=ExtResource("10_tw8kf")]
 MAX_SCALE = Vector2(4, 1)
+
+[node name="WallGlue" type="Node" parent="EditableLevel/PlatformBox"]
+script = ExtResource("12_fsgck")
+direction = Vector2(-1, 0)
 
 [node name="Label" type="Label" parent="."]
 offset_left = 332.0
