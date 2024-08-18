@@ -30,7 +30,7 @@ func apply_property_diff(difference: Vector2):
 	pass
 
 func _process(delta: float) -> void:
-	if OptionsManager.enable_screen_shake:
+	if Global.enable_screen_shake:
 		shake_strength = lerp(shake_strength, Vector2.ZERO, shake_decay_rate * delta)
 
 		apply_property_diff(-last_offset)

@@ -7,8 +7,8 @@ var loadable_scenes : Array[LoadableScene];
 var current_scene : LoadedScene;
 
 func _ready() -> void:
-	editor_scenes = OptionsManager.get_all_scenes_in_folder("res://scenes")
-	editor_scenes.append_array(OptionsManager.get_all_scenes_in_folder("res://scenes/levels"))
+	editor_scenes = Global.get_all_scenes_in_folder("res://scenes")
+	editor_scenes.append_array(Global.get_all_scenes_in_folder("res://scenes/levels"))
 	populate_loadable_scenes_list()
 	
 	get_tree().root.add_child.call_deferred(transition_scene)

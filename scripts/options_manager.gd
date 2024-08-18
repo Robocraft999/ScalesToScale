@@ -1,6 +1,7 @@
 extends Node
 
 var enable_screen_shake := true
+var time_scale = 1
 
 const SceneName  = {
 	MAIN_MENU = "MainMenu",
