@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://c7ymucposmqju"]
+[gd_scene load_steps=12 format=4 uid="uid://c7ymucposmqju"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_1.gd" id="1_0rqyx"]
 [ext_resource type="PackedScene" uid="uid://bnt67b4wf47qu" path="res://scenes/objects/player.tscn" id="1_somil"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://vy0hwr3ojkhq" path="res://scenes/objects/dragon_flag.tscn" id="6_fu5ed"]
 [ext_resource type="Script" path="res://scripts/shaker.gd" id="7_v1k65"]
 [ext_resource type="Script" path="res://scripts/end_animator.gd" id="8_tjx58"]
+[ext_resource type="Script" path="res://scripts/shaker_animator.gd" id="9_3uocr"]
 
 [sub_resource type="Animation" id="Animation_gymx7"]
 resource_name = "enter_animation"
@@ -75,6 +76,7 @@ script = ExtResource("1_0rqyx")
 position = Vector2(758, 323)
 
 [node name="Player" parent="." instance=ExtResource("1_somil")]
+unique_name_in_owner = true
 position = Vector2(256, 367)
 SPEED = 150.0
 
@@ -108,3 +110,6 @@ autoplay = "enter_animation"
 
 [node name="EndAnimator" type="Node" parent="."]
 script = ExtResource("8_tjx58")
+
+[node name="ShakerAnimator" type="Node" parent="."]
+script = ExtResource("9_3uocr")

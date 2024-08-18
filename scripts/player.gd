@@ -2,6 +2,9 @@ extends CharacterBody2D
 class_name Player
 
 signal dash_started
+signal jumped
+signal double_jumped
+signal landed_on_floor(impact_velocity: Vector2)
 
 
 @export var allow_movement := true
@@ -35,6 +38,10 @@ var jump_double_ready := true
 var dash_start_time   := 0
 var active_dash_direction := Vector2.ZERO
 var dash_next_ghost_percentage_index = 0
+
+# For landing detection
+var was_on_floor := true
+var last_velocity := Vector2.ZERO
 
 func dash_time_since_started() -> int:
 	return Time.get_ticks_msec() - dash_start_time
@@ -72,13 +79,18 @@ func _physics_jump() -> void:
 						and Time.get_ticks_msec() - jump_coyote_time < JUMP_COYOTE_TIMEOUT_MILLIS \
 						and not is_on_floor()
 	if regular_jump or buffered_jump or coyote_jump:
+		# Jump now
 		velocity.y = JUMP_VELOCITY
 		jump_buffer_time = 0
 		jump_coyote_time = 0
+		jumped.emit()
 	elif Input.is_action_just_pressed("jump") and jump_double_ready and not is_on_floor() and ProgressStore.double_jump_enabled:
+		# Double Jump
 		velocity.y = DOUBLE_JUMP_VELOCITY
 		jump_double_ready = false
+		double_jumped.emit()
 	elif Input.is_action_just_pressed("jump") and not is_on_floor():
+		# Buffer the jump action
 		jump_buffer_time = Time.get_ticks_msec()
 	
 	pass
@@ -160,3 +172,12 @@ func _physics_process(delta: float) -> void:
 		_physics_dash()
 
 	move_and_slide()
+	
+	# Emit signals
+	if not was_on_floor and is_on_floor():
+		landed_on_floor.emit(last_velocity)
+	
+	# Set the 'past iteration' variables
+	last_velocity = self.velocity
+	was_on_floor = is_on_floor()
+	pass
