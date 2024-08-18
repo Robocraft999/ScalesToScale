@@ -4,7 +4,7 @@ class_name AnimatedButton
 var growTween: Tween
 var shrinkTween: Tween
 
-@export var focus_player: AudioStreamPlayer
+@onready var focus_player = %ButtonFocusPlayer
 
 func _ready() -> void:
 	focus_entered.connect(_on_focus_entered)
