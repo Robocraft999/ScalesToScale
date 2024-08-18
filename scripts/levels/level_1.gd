@@ -5,6 +5,11 @@ extends Node2D
 func _ready() -> void:
 	$DragonFlag.body_entered.connect(_on_dragon_flag_body_entered)
 
+func start_animation_finished() -> void:
+	%CameraShaker.shake_strength = 15.0
+	%CameraShaker.shake_x = false
+	%CameraShaker.shake_decay_rate = 5.0
+
 func _on_dragon_flag_body_entered(body: Node2D) -> void:
 	if body is Player:
 		var cam: BetterCamera2D = $Camera2D

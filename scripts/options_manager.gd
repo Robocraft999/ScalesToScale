@@ -1,5 +1,7 @@
 extends Node
 
+var enable_screen_shake := true
+
 func _ready() -> void:
 	for scene: PackedScene in get_all_in_folder("res://scenes/levels"):
 		print(scene.resource_path)

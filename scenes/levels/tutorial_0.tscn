@@ -107,6 +107,7 @@ script = ExtResource("1_m43d6")
 [node name="ParallaxBackground" parent="." instance=ExtResource("12_ucxvc")]
 
 [node name="DragonFlag" parent="." instance=ExtResource("2_2k8pp")]
+position = Vector2(608, 216)
 
 [node name="RightKeyCap" type="Sprite2D" parent="."]
 position = Vector2(136, 40)
