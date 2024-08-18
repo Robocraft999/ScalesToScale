@@ -18,7 +18,7 @@ signal landed_on_floor(impact_velocity: Vector2)
 # How long the jump will be bufferedda
 @export var JUMP_BUFFER_TIMEOUT_MILLIS := 250
 # How long the coyote jump grace timing is
-@export var JUMP_COYOTE_TIMEOUT_MILLIS := 250
+@export var JUMP_COYOTE_TIMEOUT_MILLIS := 125
 @export_category("Dash")
 # How long a dash will last
 @export var DASH_DURATION_MILLIS  := 250
