@@ -15,6 +15,9 @@ const SceneName  = {
 func _ready() -> void:
 	for scene: PackedScene in get_all_in_folder("res://scenes/levels"):
 		print(scene.resource_path)
+		
+func lerp(from: Vector2, to: Vector2, weight: Vector2) -> Vector2:
+	return Vector2(lerp(from.x, to.x, weight.x), lerp(from.y, to.y, weight.y))
 	
 func get_all_scenes_in_folder(path) -> Array[PackedScene]:
 	var wrapped: Array[PackedScene] = []
