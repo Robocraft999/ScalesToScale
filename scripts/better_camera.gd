@@ -26,10 +26,10 @@ func _process(_delta: float) -> void:
 		var distance = self.position - follow_node.position
 		var screen_distance = abs(distance / screen_size)
 		if screen_distance.x > dead_zone.x:
-			self.position.x = lerp(self.position.x, follow_node.position.x, screen_distance.x)
+			self.position.x = lerp(self.position.x, follow_node.position.x, 0.1)
 		
 		if screen_distance.y > dead_zone.y:
-			self.position.y = lerp(self.position.y, follow_node.position.y, screen_distance.y)
+			self.position.y = lerp(self.position.y, follow_node.position.y, 0.1)
 		pass
 	elif mode == "Point":
 		self.position = point
