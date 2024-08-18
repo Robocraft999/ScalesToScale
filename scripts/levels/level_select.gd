@@ -1,5 +1,7 @@
 extends Node
 
+func _ready() -> void:
+	$CanvasLayer/CenterContainer/VBoxContainer/Tutorial.grab_focus()
 
 func _on_back_pressed() -> void:
 	SceneLoader.load_level_scene_by_name(OptionsManager.SceneName.MAIN_MENU)
