@@ -113,7 +113,10 @@ func dash_trail_effect() -> void:
 		dash_next_ghost_percentage_index += 1
 		
 		# Create a copy of the players sprite
-		var ghost_image = $AnimatedSprite2D.duplicate()
+		var ghost_image: AnimatedSprite2D = $AnimatedSprite2D.duplicate()
+		ghost_image.scale = $AnimatedSprite2D.global_scale
+		if self.looking_direction == -1.0:
+			ghost_image.scale *= -1
 		
 		# Tween the alpha to make the ghost image slowly disappear
 		# Also free the image when it's completely transparent
@@ -126,7 +129,8 @@ func dash_trail_effect() -> void:
 		get_parent().add_child(ghost_image)
 		
 		# Copy player position
-		ghost_image.position = position
+		ghost_image.position = $AnimatedSprite2D.global_position
+		
 		pass
 	pass
 
