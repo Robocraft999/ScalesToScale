@@ -8,10 +8,6 @@ var current_scene : LoadedScene;
 func _ready() -> void:
 	editor_scenes = OptionsManager.get_all_scenes_in_folder("res://scenes")
 	populate_loadable_scenes_list()
-	for l_scene in loadable_scenes:
-		print(l_scene.scene_name)
-		
-	print(get_tree().current_scene.name)
 	#load_level_scene_by_index(0);
 	#load_level_scene_by_name("MainMenu")
 
