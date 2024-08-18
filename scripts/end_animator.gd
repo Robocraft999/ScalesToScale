@@ -1,7 +1,7 @@
 extends Node
 class_name EndAnimator
 
-@onready var flag = $"../DragonFlag"
+@onready var flag = $"../../EditableScene/DragonFlag"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
