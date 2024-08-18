@@ -3,10 +3,10 @@ class_name Shaker
 
 @export_range(0.0, 50.0, 1, "or_greater")    var shake_decay_rate := 1.0
 @export_range(1.0, 50.0, 1, "or_greater")    var shake_roughness  := 50
-@export_range(0.0, 100.0, 1.0, "or_greater") var shake_strength   := 0.0
-@export var shake_x                 := true
-@export var shake_y                 := true
-@export var target: NodePath         = ".."
+@export var shake_strength           := Vector2.ZERO
+@export var shake_x                  := true
+@export var shake_y                  := true
+@export var target: NodePath          = ".."
 @export var property_name: StringName = &"position"
 
 @onready var noise = FastNoiseLite.new()
@@ -31,7 +31,7 @@ func apply_property_diff(difference: Vector2):
 
 func _process(delta: float) -> void:
 	if OptionsManager.enable_screen_shake:
-		shake_strength = lerp(shake_strength, 0.0, shake_decay_rate * delta)
+		shake_strength = lerp(shake_strength, Vector2.ZERO, shake_decay_rate * delta)
 
 		apply_property_diff(-last_offset)
 		last_offset = get_shake() * shake_strength
