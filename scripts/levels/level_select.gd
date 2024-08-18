@@ -4,7 +4,7 @@ func _ready() -> void:
 	$CanvasLayer/CenterContainer/VBoxContainer/Tutorial.grab_focus()
 
 func _on_back_pressed() -> void:
-	SceneLoader.load_level_scene_by_name(OptionsManager.SceneName.MAIN_MENU)
+	SceneLoader.load_level_scene_by_name(OptionsManager.SceneName.MAIN_MENU, false)
 
 
 func _on_tutorial_pressed() -> void:

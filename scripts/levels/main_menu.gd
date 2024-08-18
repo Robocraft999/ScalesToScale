@@ -14,4 +14,4 @@ func _on_start_button_pressed():
 	SceneLoader.load_level_scene_by_name(OptionsManager.SceneName.TUTORIAL)
 
 func _on_level_button_pressed():
-	SceneLoader.load_level_scene_by_name(OptionsManager.SceneName.LEVEL_SELECT)
+	SceneLoader.load_level_scene_by_name(OptionsManager.SceneName.LEVEL_SELECT, false)
