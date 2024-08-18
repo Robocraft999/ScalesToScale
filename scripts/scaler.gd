@@ -40,7 +40,7 @@ func is_tweening():
 
 func _physics_process(delta: float) -> void:
 	# if mouse is in body
-	if editing and not is_tweening():
+	if editing:
 		# What axis are we editing?
 		var toggled = Input.is_action_pressed("scale_toggle")
 		if toggled:
@@ -50,36 +50,38 @@ func _physics_process(delta: float) -> void:
 			$yArrow.visible = false
 			$xArrow.visible = true
 		
-		# Store last offset in variable
-		# The last target offset is now the current offset
-		current_offset = target_offset
-		
-		# Calculate new desired offset
-		if Input.is_action_just_released("mouse_wheel_up"):
-			if toggled:
-				target_offset.y += STEP
-			else:
-				target_offset.x += STEP
-		elif Input.is_action_just_released("mouse_wheel_down"):
-			if toggled:
-				target_offset.y -= STEP
-			else:
-				target_offset.x -= STEP
-		
-		# At most one entire step per 'frame'
-		target_offset.x = clamp(target_offset.x, 0, 1)
-		target_offset.y = clamp(target_offset.y, 0, 1)
-		
-		# current_offset now holds the desired absolute new target
-		current_offset -= target_offset
-		
-		
-		# Absolute target scale
-		new_scale = Vector2(lerp(1, MAX_SCALE, target_offset.x), lerp(1, MAX_SCALE, target_offset.y))
-		
-		try_scale()
-		
-		new_scale = Vector2(lerp(1, MAX_SCALE, target_offset.x), lerp(1, MAX_SCALE, target_offset.y))
+		if not is_tweening():
+			
+			# Store last offset in variable
+			# The last target offset is now the current offset
+			current_offset = target_offset
+			
+			# Calculate new desired offset
+			if Input.is_action_just_released("mouse_wheel_up"):
+				if toggled:
+					target_offset.y += STEP
+				else:
+					target_offset.x += STEP
+			elif Input.is_action_just_released("mouse_wheel_down"):
+				if toggled:
+					target_offset.y -= STEP
+				else:
+					target_offset.x -= STEP
+			
+			# At most one entire step per 'frame'
+			target_offset.x = clamp(target_offset.x, 0, 1)
+			target_offset.y = clamp(target_offset.y, 0, 1)
+			
+			# current_offset now holds the desired absolute new target
+			current_offset -= target_offset
+			
+			
+			# Absolute target scale
+			new_scale = Vector2(lerp(1, MAX_SCALE, target_offset.x), lerp(1, MAX_SCALE, target_offset.y))
+			
+			try_scale()
+			
+			new_scale = Vector2(lerp(1, MAX_SCALE, target_offset.x), lerp(1, MAX_SCALE, target_offset.y))
 	else:
 		# Hide all arrows if the box is not focused
 		$yArrow.visible = false
