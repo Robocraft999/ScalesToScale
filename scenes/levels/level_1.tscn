@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://c7ymucposmqju"]
+[gd_scene load_steps=13 format=4 uid="uid://c7ymucposmqju"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_1.gd" id="1_0rqyx"]
 [ext_resource type="PackedScene" uid="uid://bnt67b4wf47qu" path="res://scenes/objects/player.tscn" id="1_somil"]
@@ -67,6 +67,8 @@ _data = {
 "enter_animation": SubResource("Animation_gymx7")
 }
 
+[sub_resource type="Curve2D" id="Curve2D_gu137"]
+
 [node name="Level 1" type="Node2D"]
 script = ExtResource("1_0rqyx")
 
@@ -114,3 +116,8 @@ script = ExtResource("8_tjx58")
 
 [node name="ShakerAnimator" type="Node" parent="."]
 script = ExtResource("9_3uocr")
+
+[node name="RescuePath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_gu137")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="RescuePath"]
