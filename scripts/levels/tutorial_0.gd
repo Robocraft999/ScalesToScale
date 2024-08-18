@@ -8,4 +8,3 @@ func _ready() -> void:
 func handle(_player: Player):
 	ProgressStore.jump_enabled = true
 	$UpKeyCap.visible = true
-	pass

@@ -2,6 +2,14 @@ extends Node
 
 var enable_screen_shake := true
 
+const SceneName  = {
+	MAIN_MENU = "MainMenu",
+	TUTORIAL = "Tutorial0",
+	TEST = "test",
+	LEVEL1 = "Level 1",
+	LEVEL_SELECT = "level_select"
+}
+
 func _ready() -> void:
 	for scene: PackedScene in get_all_in_folder("res://scenes/levels"):
 		print(scene.resource_path)
