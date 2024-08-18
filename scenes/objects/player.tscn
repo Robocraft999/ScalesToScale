@@ -1,12 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://bnt67b4wf47qu"]
+[gd_scene load_steps=14 format=3 uid="uid://bnt67b4wf47qu"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_au815"]
-[ext_resource type="Texture2D" uid="uid://jsqanghxckw6" path="res://icon.svg" id="2_g8dv3"]
 [ext_resource type="AudioStream" uid="uid://bwqdbhehtihcc" path="res://sfx/dash.wav" id="3_843k5"]
 [ext_resource type="Texture2D" uid="uid://cdjplfesf7m8t" path="res://sprites/dragon_colored_walk.png" id="4_hlfl6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jtt55"]
-size = Vector2(49.3333, 27.3333)
+size = Vector2(23.1111, 21.3333)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i2sgo"]
 atlas = ExtResource("4_hlfl6")
@@ -68,23 +67,19 @@ animations = [{
 "texture": SubResource("AtlasTexture_3af40")
 }],
 "loop": true,
-"name": &"default",
+"name": &"walking",
 "speed": 12.0
 }]
 
 [node name="Player" type="CharacterBody2D"]
+scale = Vector2(3, 2)
 collision_layer = 2
 script = ExtResource("1_au815")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2.5, -2.75)
+position = Vector2(-3.33334, 0)
 scale = Vector2(0.75, 0.75)
 shape = SubResource("RectangleShape2D_jtt55")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-scale = Vector2(0.12, 0.12)
-texture = ExtResource("2_g8dv3")
 
 [node name="Inventory" type="Node" parent="."]
 
@@ -92,8 +87,6 @@ texture = ExtResource("2_g8dv3")
 stream = ExtResource("3_843k5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(17, -8)
+scale = Vector2(0.333333, 0.5)
 sprite_frames = SubResource("SpriteFrames_uqm2t")
-autoplay = "default"
-frame = 2
-frame_progress = 0.68567
+animation = &"walking"

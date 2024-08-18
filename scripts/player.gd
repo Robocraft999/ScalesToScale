@@ -43,6 +43,11 @@ var dash_next_ghost_percentage_index = 0
 var was_on_floor := true
 var last_velocity := Vector2.ZERO
 
+# for the sprite
+# 1 : left
+# -1: right
+var looking_direction := 1.0
+
 func dash_time_since_started() -> int:
 	return Time.get_ticks_msec() - dash_start_time
 
@@ -148,6 +153,25 @@ func _physics_dash() -> void:
 		pass
 	pass
 
+func update_direction():
+	var new_looking_direction = 0.0
+	if self.velocity.x < 0:
+		new_looking_direction = 1.0
+	if self.velocity.x > 0:
+		new_looking_direction = -1.0
+	if new_looking_direction != 0.0 and new_looking_direction != looking_direction:
+		self.scale.x *= -1 # flip it
+		looking_direction = new_looking_direction
+		pass
+	pass
+
+func update_animations():
+	if velocity.x == 0.0:
+		# TODO: Proper walking state
+		$AnimatedSprite2D.pause()
+	if not $AnimatedSprite2D.is_playing() and velocity.x != 0.0:
+		$AnimatedSprite2D.play()
+
 func _physics_process(delta: float) -> void:
 	
 	if not allow_movement:
@@ -172,6 +196,10 @@ func _physics_process(delta: float) -> void:
 		_physics_dash()
 
 	move_and_slide()
+	
+	update_direction()
+	
+	update_animations()
 	
 	# Emit signals
 	if not was_on_floor and is_on_floor():

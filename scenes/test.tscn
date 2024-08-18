@@ -68,7 +68,7 @@ region_rect = Rect2(0, 0, 14, 14)
 [node name="Scaler" parent="StaticBody2D" instance=ExtResource("7_xs4ma")]
 
 [node name="Player" parent="." instance=ExtResource("4_j0igw")]
-position = Vector2(31, 136)
+position = Vector2(48, 142)
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0

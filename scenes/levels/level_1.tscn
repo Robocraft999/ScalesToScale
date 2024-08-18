@@ -78,6 +78,7 @@ position = Vector2(758, 323)
 [node name="Player" parent="." instance=ExtResource("1_somil")]
 unique_name_in_owner = true
 position = Vector2(256, 1.60693)
+scale = Vector2(3, 2)
 allow_movement = false
 SPEED = 150.0
 
