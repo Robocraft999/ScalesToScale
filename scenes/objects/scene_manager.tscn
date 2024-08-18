@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://0rf2trq5htho"]
+
+[ext_resource type="Script" path="res://scripts/scene_manager.gd" id="1_i4jlo"]
+[ext_resource type="PackedScene" uid="uid://2nqpmv02h2ib" path="res://scenes/main_menu.tscn" id="2_hv2fu"]
+
+[node name="SceneManager" type="Node"]
+script = ExtResource("1_i4jlo")
+editor_scenes = Array[PackedScene]([ExtResource("2_hv2fu")])
