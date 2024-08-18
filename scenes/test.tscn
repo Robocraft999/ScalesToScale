@@ -52,6 +52,7 @@ collision_enabled = false
 
 [node name="StaticBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(63, 149)
+collision_mask = 3
 input_pickable = true
 metadata/_edit_group_ = true
 
