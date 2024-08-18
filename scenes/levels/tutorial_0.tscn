@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://bpn1x8cdvpmgd"]
+[gd_scene load_steps=18 format=4 uid="uid://bpn1x8cdvpmgd"]
 
 [ext_resource type="Script" path="res://scripts/levels/tutorial_0.gd" id="1_m43d6"]
 [ext_resource type="TileSet" uid="uid://p75osdbfaruv" path="res://resources/test_tile_set.tres" id="1_sjhpa"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://loarm7an4wt3" path="res://resources/sprites/Collectible.png" id="10_fnph6"]
 [ext_resource type="Script" path="res://scripts/better_camera.gd" id="11_yt4kr"]
 [ext_resource type="PackedScene" uid="uid://bb53neelkiux7" path="res://scenes/parallax_background.tscn" id="12_ucxvc"]
+[ext_resource type="Script" path="res://scripts/end_animator.gd" id="13_4l13b"]
 
 [sub_resource type="Animation" id="Animation_wqt0i"]
 length = 0.001
@@ -182,4 +183,5 @@ position_smoothing_enabled = true
 script = ExtResource("11_yt4kr")
 follow_node = NodePath("../Player")
 
-[connection signal="body_entered" from="DragonFlag" to="." method="_on_dragon_flag_body_entered"]
+[node name="EndAnimator" type="Node" parent="."]
+script = ExtResource("13_4l13b")

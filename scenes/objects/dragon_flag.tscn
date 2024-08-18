@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://vy0hwr3ojkhq"]
+[gd_scene load_steps=4 format=3 uid="uid://vy0hwr3ojkhq"]
 
+[ext_resource type="Script" path="res://scripts/dragon_flag.gd" id="1_mga2q"]
 [ext_resource type="Texture2D" uid="uid://53ne81gplau0" path="res://sprites/dragon_flag.png" id="1_vuvr2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uns3m"]
@@ -8,6 +9,7 @@ size = Vector2(15, 22)
 [node name="DragonFlag" type="Area2D"]
 collision_layer = 4
 collision_mask = 2
+script = ExtResource("1_mga2q")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_vuvr2")
