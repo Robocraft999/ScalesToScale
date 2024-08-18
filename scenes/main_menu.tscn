@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://2nqpmv02h2ib"]
+[gd_scene load_steps=5 format=3 uid="uid://2nqpmv02h2ib"]
 
 [ext_resource type="Script" path="res://scripts/animated_button.gd" id="1_fg5ul"]
 [ext_resource type="Script" path="res://scripts/levels/main_menu.gd" id="1_qfm38"]
-[ext_resource type="PackedScene" uid="uid://dcnk5ak1x2etg" path="res://scenes/objects/button_focus_player.tscn" id="3_okun1"]
+[ext_resource type="PackedScene" path="res://scenes/objects/button_focus_player.tscn" id="3_okun1"]
+[ext_resource type="PackedScene" uid="uid://bb53neelkiux7" path="res://scenes/parallax_background.tscn" id="4_lg3ml"]
 
 [node name="MainMenu" type="Node"]
 script = ExtResource("1_qfm38")
@@ -48,3 +49,5 @@ script = ExtResource("1_fg5ul")
 
 [node name="ButtonFocusPlayer" parent="." instance=ExtResource("3_okun1")]
 unique_name_in_owner = true
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("4_lg3ml")]
