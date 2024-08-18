@@ -1,9 +1,13 @@
-[gd_scene load_steps=8 format=4 uid="uid://c7ymucposmqju"]
+[gd_scene load_steps=12 format=4 uid="uid://c7ymucposmqju"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_1.gd" id="1_0rqyx"]
 [ext_resource type="PackedScene" uid="uid://bnt67b4wf47qu" path="res://scenes/objects/player.tscn" id="1_somil"]
 [ext_resource type="TileSet" uid="uid://p75osdbfaruv" path="res://resources/test_tile_set.tres" id="2_6q5gi"]
-[ext_resource type="PackedScene" uid="uid://dt08sgcd0yof0" path="res://scenes/basic_scene.tscn" id="2_jbxe0"]
+[ext_resource type="PackedScene" uid="uid://2dj1d442mvd5" path="res://scenes/basic_level.tscn" id="2_t7l0a"]
+[ext_resource type="Script" path="res://scripts/end_animator.gd" id="3_gw85i"]
+[ext_resource type="Script" path="res://scripts/shaker_animator.gd" id="4_oqomv"]
+[ext_resource type="Script" path="res://scripts/better_camera.gd" id="5_j5rx4"]
+[ext_resource type="Script" path="res://scripts/shaker.gd" id="6_0oanw"]
 [ext_resource type="PackedScene" uid="uid://vy0hwr3ojkhq" path="res://scenes/objects/dragon_flag.tscn" id="6_fu5ed"]
 
 [sub_resource type="Animation" id="Animation_gymx7"]
@@ -12,7 +16,7 @@ length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("EditableScene/Player:allow_movement")
+tracks/0/path = NodePath("EditableLevel/Player:allow_movement")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -24,7 +28,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("EditableScene/Player:position:x")
+tracks/1/path = NodePath("EditableLevel/Player:position:x")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -35,7 +39,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("EditableScene/Player:position:y")
+tracks/2/path = NodePath("EditableLevel/Player:position:y")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -66,31 +70,51 @@ _data = {
 [node name="Level 1" type="Node2D"]
 script = ExtResource("1_0rqyx")
 
-[node name="BasicScene" parent="." instance=ExtResource("2_jbxe0")]
+[node name="BasicLevel" parent="." instance=ExtResource("2_t7l0a")]
 
-[node name="EditableScene" type="Node" parent="."]
+[node name="EditableLevel" type="Node" parent="."]
 
-[node name="BGLayer" type="TileMapLayer" parent="EditableScene"]
+[node name="BGLayer" type="TileMapLayer" parent="EditableLevel"]
 position = Vector2(152, 94)
 tile_map_data = PackedByteArray("AAAAABYAAAABAAMAAAABABYAAAACAAMAAAACABYAAAACAAMAAAAEABYAAAACAAMAAAADABYAAAACAAMAAAAGABYAAAACAAMAAAAFABYAAAACAAMAAAAIABYAAAACAAMAAAAHABYAAAACAAMAAAAJABYAAAACAAMAAAAKABYAAAACAAMAAAALABYAAAADAAMAAAALABUAAAADAAIAAAAKABUAAAACAAIAAAAJABUAAAACAAIAAAAIABUAAAACAAIAAAAHABUAAAACAAIAAAAGABUAAAACAAIAAAAFABUAAAACAAIAAAAEABUAAAACAAIAAAACABUAAAACAAIAAAADABUAAAACAAIAAAABABUAAAACAAIAAAAAABUAAAABAAIAAAAAABQAAAABAAIAAAABABQAAAACAAIAAAACABQAAAACAAIAAAADABQAAAACAAIAAAAEABQAAAACAAIAAAAFABQAAAACAAIAAAAGABQAAAACAAIAAAAHABQAAAACAAIAAAAIABQAAAACAAIAAAAKABQAAAACAAIAAAAJABQAAAACAAIAAAALABQAAAADAAIAAAAPABQAAAABAAIAAAAQABQAAAACAAIAAAAAABMAAAABAAIAAAABABMAAAACAAIAAAADABMAAAACAAIAAAACABMAAAACAAIAAAAFABMAAAACAAIAAAAEABMAAAACAAIAAAAGABMAAAACAAIAAAAIABMAAAACAAIAAAAHABMAAAACAAIAAAAJABMAAAACAAIAAAALABMAAAADAAIAAAAKABMAAAACAAIAAAAQABMAAAACAAIAAAAPABMAAAABAAIAAAAQABIAAAACAAEAAAAPABIAAAABAAEAAAALABIAAAADAAEAAAAKABIAAAACAAEAAAAJABIAAAACAAEAAAAIABIAAAACAAEAAAAHABIAAAACAAEAAAAGABIAAAACAAEAAAAFABIAAAACAAEAAAAEABIAAAACAAEAAAADABIAAAACAAEAAAACABIAAAACAAEAAAABABIAAAACAAEAAAAAABIAAAABAAEAAAAPABUAAAABAAIAAAAQABUAAAACAAIAAAAQABYAAAACAAMAAAAPABYAAAABAAMAAAARABYAAAACAAMAAAARABUAAAACAAIAAAARABQAAAACAAIAAAARABMAAAACAAIAAAARABIAAAACAAEAAAASABIAAAADAAEAAAASABMAAAADAAIAAAASABQAAAADAAIAAAASABUAAAADAAIAAAASABYAAAADAAMAAAAUABAAAAABAAQAAAAVABAAAAACAAQAAAAWABAAAAADAAQAAAAPAA0AAAACAAEAAAAQAA0AAAADAAEAAAAKAAoAAAADAAEAAAAJAAoAAAACAAQAAAAQAAgAAAABAAQAAAARAAgAAAACAAQAAAASAAgAAAACAAQAAAATAAgAAAACAAQAAAAUAAgAAAACAAQAAAAVAAgAAAADAAQAAAAWAAcAAAABAAQAAAAXAAcAAAACAAQAAAAYAAcAAAACAAQAAAAZAAcAAAACAAQAAAAaAAcAAAACAAQAAAAbAAcAAAACAAQAAAAcAAcAAAACAAQAAAAdAAcAAAACAAQAAAAeAAcAAAACAAQAAAAfAAcAAAACAAQAAAAgAAcAAAADAAQAAAAhAA8AAAABAAQAAAAiAA8AAAACAAQAAAAjAA8AAAACAAQAAAAkAA8AAAACAAQAAAAlAA8AAAACAAQAAAAmAA8AAAACAAQAAAAnAA8AAAACAAQAAAAoAA8AAAACAAQAAAApAA8AAAACAAQAAAAqAA8AAAADAAQAAAAaABYAAAABAAQAAAAbABYAAAACAAQAAAAcABYAAAADAAQAAAAhABYAAAABAAQAAAAiABYAAAACAAQAAAAjABYAAAACAAQAAAAkABYAAAADAAQAAAAoABUAAAABAAQAAAApABUAAAACAAQAAAAqABUAAAACAAQAAAArABUAAAADAAQAAAAuABQAAAABAAQAAAAvABQAAAACAAQAAAAwABQAAAACAAQAAAAxABQAAAADAAQAAAAyABIAAAABAAQAAAAzABIAAAACAAQAAAA0ABIAAAACAAQAAAA1ABIAAAACAAMAAAA2ABIAAAACAAMAAAA2ABEAAAACAAEAAAA1ABEAAAABAAEAAAAyAA0AAAACAAQAAAAxAA0AAAACAAQAAAAwAA0AAAABAAQAAAA3ABEAAAAGAAIAAAA3ABAAAAABAAEAAAA4ABEAAAADAAIAAAA4ABAAAAADAAEAAAA3ABIAAAACAAMAAAA4ABIAAAADAAMAAAAzAA0AAAADAAQAAAAIAAoAAAABAAQAAAAOAA0AAAABAAEAAAA=")
 tile_set = ExtResource("2_6q5gi")
 
-[node name="FGLayer" type="TileMapLayer" parent="EditableScene"]
+[node name="FGLayer" type="TileMapLayer" parent="EditableLevel"]
 tile_set = ExtResource("2_6q5gi")
 collision_enabled = false
 
-[node name="DragonFlag" parent="EditableScene" instance=ExtResource("6_fu5ed")]
+[node name="DragonFlag" parent="EditableLevel" instance=ExtResource("6_fu5ed")]
+unique_name_in_owner = true
 position = Vector2(758, 323)
 
-[node name="Player" parent="EditableScene" instance=ExtResource("1_somil")]
+[node name="Player" parent="EditableLevel" instance=ExtResource("1_somil")]
 unique_name_in_owner = true
 position = Vector2(256, 1.60693)
 allow_movement = false
 SPEED = 150.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="EditableScene"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="EditableLevel"]
 root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_7rhjm")
 }
 autoplay = "enter_animation"
+
+[node name="ShakerAnimator" type="Node" parent="EditableLevel"]
+script = ExtResource("4_oqomv")
+
+[node name="EndAnimator" type="Node" parent="EditableLevel"]
+script = ExtResource("3_gw85i")
+
+[node name="Camera2D" type="Camera2D" parent="EditableLevel" node_paths=PackedStringArray("follow_node")]
+physics_interpolation_mode = 1
+position = Vector2(256, 1.24965)
+position_smoothing_enabled = true
+script = ExtResource("5_j5rx4")
+follow_node = NodePath("../Player")
+
+[node name="CameraShaker" type="Node2D" parent="EditableLevel/Camera2D"]
+unique_name_in_owner = true
+position = Vector2(-256, -1.24965)
+script = ExtResource("6_0oanw")
+property_name = &"offset"
