@@ -12,7 +12,7 @@ func _ready() -> void:
 	focus_exited.connect(_on_focus_exited)
 	mouse_exited.connect(_on_focus_exited)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pivot_offset = size / 2
 
 func _on_focus_entered() -> void:

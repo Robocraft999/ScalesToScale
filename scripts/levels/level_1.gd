@@ -1,14 +1,9 @@
 extends Node2D
 
+
+# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$UpKeyCap.visible = ProgressStore.jump_enabled
-	pass
-
-# Collectible pickup
-func handle(_player: Player):
-	ProgressStore.jump_enabled = true
-	$UpKeyCap.visible = true
-
+	$DragonFlag.body_entered.connect(_on_dragon_flag_body_entered)
 
 func _on_dragon_flag_body_entered(body: Node2D) -> void:
 	if body is Player:
@@ -19,7 +14,6 @@ func _on_dragon_flag_body_entered(body: Node2D) -> void:
 		tween.tween_property(cam, "zoom", Vector2(3,3), 3)
 		tween.chain().tween_property(body, "position", Vector2(body.position.x, 0), 3)
 		tween.finished.connect(func(): OptionsManager.get_scene_manager())
-		await get_tree().create_timer(0.5).timeout
 		body.allow_movement = false
 		pass
 	pass

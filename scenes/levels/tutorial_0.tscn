@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://bpn1x8cdvpmgd"]
+[gd_scene load_steps=17 format=4 uid="uid://bpn1x8cdvpmgd"]
 
 [ext_resource type="Script" path="res://scripts/levels/tutorial_0.gd" id="1_m43d6"]
 [ext_resource type="TileSet" uid="uid://p75osdbfaruv" path="res://resources/test_tile_set.tres" id="1_sjhpa"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://scripts/collectible.gd" id="9_ofmtq"]
 [ext_resource type="Texture2D" uid="uid://loarm7an4wt3" path="res://resources/sprites/Collectible.png" id="10_fnph6"]
 [ext_resource type="Script" path="res://scripts/better_camera.gd" id="11_yt4kr"]
+[ext_resource type="PackedScene" uid="uid://bb53neelkiux7" path="res://scenes/parallax_background.tscn" id="12_ucxvc"]
 
 [sub_resource type="Animation" id="Animation_wqt0i"]
 length = 0.001
@@ -102,6 +103,8 @@ size = Vector2(16, 16)
 
 [node name="Tutorial0" type="Node2D"]
 script = ExtResource("1_m43d6")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("12_ucxvc")]
 
 [node name="DragonFlag" parent="." instance=ExtResource("2_2k8pp")]
 
