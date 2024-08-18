@@ -1,11 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://238f4tj7uuqs"]
+[gd_scene load_steps=5 format=3 uid="uid://238f4tj7uuqs"]
 
 [ext_resource type="Script" path="res://scripts/animated_button.gd" id="1_4pjmh"]
 [ext_resource type="Script" path="res://scripts/levels/level_select.gd" id="1_7g13e"]
+[ext_resource type="PackedScene" uid="uid://bb53neelkiux7" path="res://scenes/parallax_background.tscn" id="2_7kxwi"]
 [ext_resource type="PackedScene" uid="uid://dcnk5ak1x2etg" path="res://scenes/objects/button_focus_player.tscn" id="3_0omlt"]
 
 [node name="level_select" type="Node"]
 script = ExtResource("1_7g13e")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("2_7kxwi")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
