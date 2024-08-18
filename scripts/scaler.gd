@@ -47,10 +47,10 @@ func _physics_process(delta: float) -> void:
 	if editing:
 		# What axis are we editing?
 		var toggled = Input.is_action_pressed("scale_toggle")
-		if toggled:
+		if toggled and ProgressStore.vertical_scale_enabled:
 			$yArrow.visible = true
 			$xArrow.visible = false
-		else:
+		elif not toggled and ProgressStore.horizontal_scale_enabled:
 			$yArrow.visible = false
 			$xArrow.visible = true
 		
@@ -62,14 +62,14 @@ func _physics_process(delta: float) -> void:
 			
 			# Calculate new desired offset
 			if Input.is_action_just_released("mouse_wheel_up"):
-				if toggled:
+				if toggled and ProgressStore.vertical_scale_enabled:
 					target_offset.y += STEP
-				else:
+				elif not toggled and ProgressStore.horizontal_scale_enabled:
 					target_offset.x += STEP
 			elif Input.is_action_just_released("mouse_wheel_down"):
-				if toggled:
+				if toggled and ProgressStore.vertical_scale_enabled:
 					target_offset.y -= STEP
-				else:
+				elif not toggled and ProgressStore.horizontal_scale_enabled:
 					target_offset.x -= STEP
 			
 			# At most one entire step per 'frame'
