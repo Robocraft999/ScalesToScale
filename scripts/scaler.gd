@@ -91,12 +91,13 @@ func _physics_process(delta: float) -> void:
 		$yArrow.visible = false
 		$xArrow.visible = false
 	
-	
+	parent.collision_mask = 1
 	# Apply gravity
 	if not parent.is_on_floor():
 		parent.velocity += parent.get_gravity() * delta
 	parent.move_and_slide()
 	
+	parent.collision_mask = 3
 	
 	# Don't distort the sprite, it's in tiling mode anyway
 	sprite.global_scale = Vector2.ONE
