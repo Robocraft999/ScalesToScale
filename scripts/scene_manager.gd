@@ -19,6 +19,9 @@ func load_level_scene_by_index(scene_index : int):
 	
 	return load_level_scene(loadable_scenes[scene_index], scene_index);
 
+func load_next_level_scene():
+	return load_level_scene_by_index((current_scene.scene_index + 1) % editor_scenes.size())
+
 func load_level_scene_by_name(scene_name : String):
 	var i : int = 0;
 	while i < loadable_scenes.size():

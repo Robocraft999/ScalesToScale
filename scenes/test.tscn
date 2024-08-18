@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://333vqfbf2bv7"]
+[gd_scene load_steps=22 format=4 uid="uid://333vqfbf2bv7"]
 
 [ext_resource type="Script" path="res://scripts/test.gd" id="1_q0kfk"]
 [ext_resource type="Texture2D" uid="uid://sj0nvs17ukpj" path="res://sprites/background/parallax_1.png" id="2_6qo41"]
@@ -12,22 +12,14 @@
 [ext_resource type="Texture2D" uid="uid://dptxurkwnduax" path="res://sprites/background/parallax_4.png" id="5_shc07"]
 [ext_resource type="Texture2D" uid="uid://c5h4v3a1wb3i1" path="res://sprites/background/parallax_5.png" id="6_3dhhm"]
 [ext_resource type="Texture2D" uid="uid://ccgfhbnlqcp1b" path="res://sprites/background/parallax_6.png" id="7_e51mp"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="7_i41tc"]
 [ext_resource type="PackedScene" uid="uid://dce48rt84l5ft" path="res://scenes/objects/scaler.tscn" id="7_xs4ma"]
 [ext_resource type="Texture2D" uid="uid://bj8iqvloj1j2" path="res://sprites/background/parallax_7.png" id="8_lufao"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="8_svklm"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="9_76nb0"]
 [ext_resource type="Texture2D" uid="uid://b37g3do7v7hgs" path="res://sprites/arrow_clockwise.png" id="10_wxfkh"]
 [ext_resource type="Script" path="res://scripts/restart_button.gd" id="11_guhv7"]
+[ext_resource type="Script" path="res://scripts/better_camera.gd" id="15_ydhfy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o6i2r"]
 size = Vector2(14, 14)
-
-[sub_resource type="Resource" id="Resource_gquns"]
-script = ExtResource("8_svklm")
-duration = 0.4
-transition = 8
-ease = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_taspc"]
 corner_radius_top_left = 15
@@ -142,27 +134,18 @@ region_rect = Rect2(0, 0, 14, 14)
 [node name="Scaler" parent="StaticBody2D" instance=ExtResource("7_xs4ma")]
 
 [node name="Player" parent="." instance=ExtResource("4_j0igw")]
+position = Vector2(31, 136)
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
-position = Vector2(8, 153)
-script = ExtResource("7_i41tc")
-follow_mode = 2
-follow_target = NodePath("../Player")
-tween_resource = SubResource("Resource_gquns")
-follow_damping = true
-follow_damping_value = Vector2(0.5, 0.5)
-draw_limits = true
-
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("follow_node")]
 physics_interpolation_mode = 1
 position = Vector2(8, 153)
-
-[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
-script = ExtResource("9_76nb0")
+position_smoothing_enabled = true
+script = ExtResource("15_ydhfy")
+follow_node = NodePath("../Player")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

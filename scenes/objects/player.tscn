@@ -7,16 +7,16 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jtt55"]
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(8, 153)
+scale = Vector2(3, 2)
 collision_layer = 2
 script = ExtResource("1_au815")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.75, 0.75)
 shape = SubResource("RectangleShape2D_jtt55")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.08, 0.08)
+scale = Vector2(0.12, 0.12)
 texture = ExtResource("2_g8dv3")
 
 [node name="Inventory" type="Node" parent="."]

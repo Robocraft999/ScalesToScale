@@ -3,13 +3,16 @@ class_name Player
 
 signal dash_started
 
+
+@export var allow_movement := true
+
 @export_category("Speed, Velocity, Physics")
 @export var SPEED = 100.0
 @export var JUMP_VELOCITY = -250.0
 @export var DOUBLE_JUMP_VELOCITY = -250.0
 
 @export_category("Jump timings")
-# How long the jump will be buffered
+# How long the jump will be bufferedda
 @export var JUMP_BUFFER_TIMEOUT_MILLIS := 250
 # How long the coyote jump grace timing is
 @export var JUMP_COYOTE_TIMEOUT_MILLIS := 250
@@ -134,6 +137,10 @@ func _physics_dash() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
+	
+	if not allow_movement:
+		return
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_actual_gravity() * delta

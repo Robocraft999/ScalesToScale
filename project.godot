@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 OptionsManager="*res://scripts/options_manager.gd"
-PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 ProgressStore="*res://scripts/progress.gd"
 
 [display]
@@ -30,7 +29,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg", "res://addons/script-ide/plugin.cfg")
+enabled=PackedStringArray("res://addons/script-ide/plugin.cfg")
 
 [input]
 
