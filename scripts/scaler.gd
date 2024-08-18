@@ -83,11 +83,11 @@ func _physics_process(delta: float) -> void:
 			# Absolute target scale
 			
 			# Don't use vector lerp
-			new_scale = Vector2(lerp(1., MAX_SCALE.x, target_offset.x), lerp(1., MAX_SCALE.y, target_offset.y))
+			new_scale = Global.lerp(Vector2.ONE, MAX_SCALE, target_offset)
 			
 			try_scale()
 			
-			new_scale = Vector2(lerp(1., MAX_SCALE.x, target_offset.x), lerp(1., MAX_SCALE.y, target_offset.y))
+			new_scale = Global.lerp(Vector2.ONE, MAX_SCALE, target_offset)
 	else:
 		# Hide all arrows if the box is not focused
 		$yArrow.visible = false
