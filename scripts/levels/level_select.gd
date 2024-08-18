@@ -20,7 +20,7 @@ func _on_level_2_pressed() -> void:
 
 
 func _on_level_3_pressed() -> void:
-	print("TODO: missing Level 3 or SceneName entry")
+	SceneLoader.load_level_scene_by_name(Global.SceneName.LEVEL3)
 
 
 func _on_level_4_pressed() -> void:

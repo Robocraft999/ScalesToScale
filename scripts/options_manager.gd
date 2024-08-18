@@ -9,6 +9,7 @@ const SceneName  = {
 	TEST = "test",
 	LEVEL1 = "Level 1",
 	LEVEL2 = "Level 2",
+	LEVEL3 = "Level 3",
 	LEVEL_SELECT = "level_select"
 }
 
