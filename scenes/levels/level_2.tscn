@@ -1,6 +1,6 @@
-[gd_scene load_steps=20 format=4 uid="uid://ciq75ixk4ccpe"]
+[gd_scene load_steps=23 format=4 uid="uid://ciq75ixk4ccpe"]
 
-[ext_resource type="Script" path="res://scripts/levels/level_1.gd" id="1_afagq"]
+[ext_resource type="Script" path="res://scripts/levels/level_2.gd" id="1_kf5fq"]
 [ext_resource type="PackedScene" uid="uid://bb53neelkiux7" path="res://scenes/parallax_background.tscn" id="2_t33rp"]
 [ext_resource type="PackedScene" uid="uid://vy0hwr3ojkhq" path="res://scenes/objects/dragon_flag.tscn" id="3_1r384"]
 [ext_resource type="PackedScene" uid="uid://bnt67b4wf47qu" path="res://scenes/objects/player.tscn" id="4_r1kdi"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" path="res://scripts/shaker_animator.gd" id="9_hn1vr"]
 [ext_resource type="PackedScene" path="res://scenes/objects/restart_button.tscn" id="10_ysa67"]
 [ext_resource type="PackedScene" path="res://scenes/objects/button_focus_player.tscn" id="11_7j2rf"]
+[ext_resource type="Script" path="res://scripts/collectible.gd" id="12_qhokx"]
+[ext_resource type="Texture2D" uid="uid://loarm7an4wt3" path="res://resources/sprites/Collectible.png" id="13_4qll1"]
 
 [sub_resource type="Animation" id="Animation_7fh8t"]
 length = 0.001
@@ -230,8 +232,11 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aq3pb"]
 size = Vector2(16, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qs32i"]
+size = Vector2(16, 16)
+
 [node name="Level 2" type="Node2D"]
-script = ExtResource("1_afagq")
+script = ExtResource("1_kf5fq")
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("2_t33rp")]
 
@@ -301,3 +306,17 @@ shape = SubResource("RectangleShape2D_aq3pb")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BottomPlatform"]
 position = Vector2(1096, 224)
 shape = SubResource("RectangleShape2D_aq3pb")
+
+[node name="Collectible" type="Area2D" parent="." node_paths=PackedStringArray("type")]
+position = Vector2(1132, 171)
+script = ExtResource("12_qhokx")
+type = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectible"]
+position = Vector2(12, -3)
+shape = SubResource("RectangleShape2D_qs32i")
+
+[node name="Sprite2D" type="Sprite2D" parent="Collectible"]
+position = Vector2(12, -3)
+scale = Vector2(0.499998, 0.5)
+texture = ExtResource("13_4qll1")
