@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://bpn1x8cdvpmgd"]
+[gd_scene load_steps=22 format=4 uid="uid://bpn1x8cdvpmgd"]
 
 [ext_resource type="Script" path="res://scripts/levels/tutorial_0.gd" id="1_m43d6"]
 [ext_resource type="TileSet" uid="uid://p75osdbfaruv" path="res://resources/test_tile_set.tres" id="1_sjhpa"]
@@ -15,6 +15,8 @@
 [ext_resource type="Script" path="res://scripts/end_animator.gd" id="13_4l13b"]
 [ext_resource type="Script" path="res://scripts/shaker.gd" id="13_kipkx"]
 [ext_resource type="Script" path="res://scripts/shaker_animator.gd" id="14_37g71"]
+[ext_resource type="PackedScene" uid="uid://4ot2rbv3j22q" path="res://scenes/objects/restart_button.tscn" id="16_er8j7"]
+[ext_resource type="PackedScene" uid="uid://dcnk5ak1x2etg" path="res://scenes/objects/button_focus_player.tscn" id="17_uy40b"]
 
 [sub_resource type="Animation" id="Animation_wqt0i"]
 length = 0.001
@@ -199,3 +201,10 @@ script = ExtResource("13_4l13b")
 
 [node name="ShakerAnimator" type="Node" parent="."]
 script = ExtResource("14_37g71")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="RestartButton" parent="CanvasLayer" instance=ExtResource("16_er8j7")]
+
+[node name="ButtonFocusPlayer" parent="." instance=ExtResource("17_uy40b")]
+unique_name_in_owner = true

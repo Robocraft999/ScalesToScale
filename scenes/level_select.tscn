@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/animated_button.gd" id="1_4pjmh"]
 [ext_resource type="Script" path="res://scripts/levels/level_select.gd" id="1_7g13e"]
-[ext_resource type="PackedScene" path="res://scenes/objects/button_focus_player.tscn" id="3_0omlt"]
+[ext_resource type="PackedScene" uid="uid://dcnk5ak1x2etg" path="res://scenes/objects/button_focus_player.tscn" id="3_0omlt"]
 
 [node name="level_select" type="Node"]
 script = ExtResource("1_7g13e")

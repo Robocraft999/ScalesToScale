@@ -14,7 +14,7 @@ func on_flag_player_touched(player: Node2D) -> void:
 	var tween = create_tween()
 	tween.tween_property(cam, "zoom", Vector2(2, 2), 2)
 	tween.chain().tween_property(player, "position", Vector2(player.position.x, 0), 3)
-	tween.finished.connect(func(): SceneLoader.load_level_scene_by_name("MainMenu"))
+	tween.finished.connect(func(): SceneLoader.load_level_scene_by_name(OptionsManager.SceneName.MAIN_MENU))
 	await get_tree().create_timer(0.5).timeout
 	player.allow_movement = false
 	pass
