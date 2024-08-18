@@ -14,14 +14,14 @@ void fragment() {
 	vec2 distances         = abs(POINT_COORD - middle_point) / texture_size;
 	vec2 distance_square   = distances * distances;
 	float real_distance    = sqrt(distance_square.x + distance_square.y);
-	
+
 	float effective_distance = real_distance;
 	if (real_distance > percentage) {
 		effective_distance = 0.0f;
 	}
-	
+
 	COLOR = vec4(
-		mix(COLOR.x, overlay_color.x, effective_distance), 
+		mix(COLOR.x, overlay_color.x, effective_distance),
 		mix(COLOR.y, overlay_color.y, effective_distance),
 		mix(COLOR.z, overlay_color.z, effective_distance),
 		effective_distance
