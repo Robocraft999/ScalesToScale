@@ -237,7 +237,7 @@ script = ExtResource("12_hypqe")
 direction = Vector2(1, 0)
 
 [node name="UpperPuzzleBox" type="CharacterBody2D" parent="."]
-position = Vector2(312, 392)
+position = Vector2(359, 392)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UpperPuzzleBox"]
