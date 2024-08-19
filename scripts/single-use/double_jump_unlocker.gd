@@ -10,5 +10,3 @@ func handle(_node: Player):
 	tween.chain().set_trans(Tween.TRANS_LINEAR) \
 		.tween_property(label, "visible_ratio", 1.0, 3.0)
 	$"../EditableLevel/Camera2D".follow_node = $"../DoubleJumpFocusPoint"
-	await get_tree().create_timer(3.5).timeout
-	$Label.visible = false
