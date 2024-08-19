@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://bpn1x8cdvpmgd"]
+[gd_scene load_steps=23 format=4 uid="uid://bpn1x8cdvpmgd"]
 
 [ext_resource type="Script" path="res://scripts/levels/tutorial_0.gd" id="1_m43d6"]
 [ext_resource type="TileSet" uid="uid://p75osdbfaruv" path="res://resources/test_tile_set.tres" id="1_sjhpa"]
@@ -17,7 +17,6 @@
 [ext_resource type="Script" path="res://scripts/shaker.gd" id="13_kipkx"]
 [ext_resource type="PackedScene" uid="uid://b838jctkyqalv" path="res://scenes/objects/trees/tree_2.tscn" id="13_v7glt"]
 [ext_resource type="Script" path="res://scripts/shaker_animator.gd" id="14_37g71"]
-[ext_resource type="PackedScene" uid="uid://b8kluowvon7lg" path="res://scenes/objects/trees/tree_3.tscn" id="15_p6i1y"]
 [ext_resource type="Texture2D" uid="uid://dam3482d42w5l" path="res://sprites/trees/tree_1.png" id="16_iv7gx"]
 
 [sub_resource type="Animation" id="Animation_wqt0i"]
@@ -193,9 +192,6 @@ position = Vector2(121, 144)
 
 [node name="Tree1" parent="." instance=ExtResource("13_kgkec")]
 position = Vector2(368, 278)
-
-[node name="Tree7" parent="." instance=ExtResource("15_p6i1y")]
-position = Vector2(169, 192)
 
 [node name="Tree5" parent="." instance=ExtResource("13_kgkec")]
 position = Vector2(347, 190)
