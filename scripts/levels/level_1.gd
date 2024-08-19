@@ -29,7 +29,7 @@ func _trigger_explanation(body: Node2D):
 	if not ProgressStore.horizontal_scale_enabled:
 		return
 	$ScaleExplanation.hide()
-	await get_tree().create_timer(0.5)
+	await get_tree().create_timer(0.5).timeout
 	$UsageExplanation.show()
 	$EditableLevel/Camera2D.follow_node = $ExampleBox
 	create_tween().set_trans(Tween.TRANS_LINEAR).tween_property(
