@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://dv3ioqvuql3b6"]
 
-[ext_resource type="Texture2D" uid="uid://jsqanghxckw6" path="res://icon.svg" id="1_nttxu"]
+[ext_resource type="Texture2D" uid="uid://dg25wv3tw3vq7" path="res://sprites/spikes_small.png" id="1_odgb4"]
 [ext_resource type="PackedScene" uid="uid://bwp3u4dill1bd" path="res://scenes/objects/death_area.tscn" id="2_p51j1"]
 
 [node name="Spikes" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("1_nttxu")
+texture = ExtResource("1_odgb4")
 
 [node name="DeathArea" parent="." instance=ExtResource("2_p51j1")]
+visible = false
