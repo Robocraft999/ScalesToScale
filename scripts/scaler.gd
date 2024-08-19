@@ -194,5 +194,9 @@ func calculate_reach_box():
 	if get_parent().get_children().any(func(node): return node is WallGlue):
 		var glue: WallGlue = get_parent().find_children("*", "WallGlue")[0]
 		var dir = glue.direction.normalized() * -1
-		box.position = dir * (box.get_rect().size*2 - box.get_rect().size/2 * Global.lerp(Vector2.ONE, MAX_SCALE, target_offset))
+		
+		var current_box_count = Global.lerp(Vector2.ONE, MAX_SCALE, target_offset) - Vector2.ONE
+		var max_box_count = MAX_SCALE - Vector2.ONE
+		var distance = dir * (max_box_count - current_box_count) * box.get_rect().size/2
+		box.position = distance
 	
