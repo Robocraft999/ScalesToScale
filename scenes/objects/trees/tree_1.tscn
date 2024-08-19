@@ -1,78 +1,19 @@
-[gd_scene load_steps=17 format=3 uid="uid://bvj81idj6vou2"]
+[gd_scene load_steps=4 format=3 uid="uid://bvj81idj6vou2"]
 
-[ext_resource type="Texture2D" uid="uid://de3nu3ribprjv" path="res://sprites/trees/tree_1/tree_1000.png" id="1_8ilpt"]
-[ext_resource type="Texture2D" uid="uid://bgdmb8iqyaut1" path="res://sprites/trees/tree_1/tree_1001.png" id="2_a183s"]
-[ext_resource type="Texture2D" uid="uid://bee40luo0fjkd" path="res://sprites/trees/tree_1/tree_1002.png" id="3_5xps6"]
-[ext_resource type="Texture2D" uid="uid://bd3orf0xkj34v" path="res://sprites/trees/tree_1/tree_1003.png" id="4_cpw2d"]
-[ext_resource type="Texture2D" uid="uid://dnh46jtb0jik5" path="res://sprites/trees/tree_1/tree_1004.png" id="5_hydan"]
-[ext_resource type="Texture2D" uid="uid://rlrhsylvvj0g" path="res://sprites/trees/tree_1/tree_1005.png" id="6_2tpig"]
-[ext_resource type="Texture2D" uid="uid://cocgjtqtm5rut" path="res://sprites/trees/tree_1/tree_1006.png" id="7_8ujbo"]
-[ext_resource type="Texture2D" uid="uid://1rrepuvwukqy" path="res://sprites/trees/tree_1/tree_1007.png" id="8_8xbnw"]
-[ext_resource type="Texture2D" uid="uid://0p7mmrva0a36" path="res://sprites/trees/tree_1/tree_1008.png" id="9_2ac7d"]
-[ext_resource type="Texture2D" uid="uid://d054iywlgboax" path="res://sprites/trees/tree_1/tree_1009.png" id="10_jhdt5"]
-[ext_resource type="Texture2D" uid="uid://ygkjt8uhbtsc" path="res://sprites/trees/tree_1/tree_1010.png" id="11_0buov"]
-[ext_resource type="Texture2D" uid="uid://vd1ru34iku56" path="res://sprites/trees/tree_1/tree_1011.png" id="12_py1o3"]
-[ext_resource type="Texture2D" uid="uid://c7u5kn85ullc7" path="res://sprites/trees/tree_1/tree_1012.png" id="13_48ys5"]
-[ext_resource type="Texture2D" uid="uid://c0lbas36gglq3" path="res://sprites/trees/tree_1/tree_1013.png" id="14_qw8d8"]
-[ext_resource type="Texture2D" uid="uid://c7j2xwtnx54g5" path="res://sprites/trees/tree_1/tree_1014.png" id="15_66vcy"]
+[ext_resource type="Shader" path="res://shaders/wind.gdshader" id="1_5b0ea"]
+[ext_resource type="Texture2D" uid="uid://dam3482d42w5l" path="res://sprites/trees/tree_1.png" id="1_6ltj8"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_j1rbq"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_8ilpt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_a183s")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_5xps6")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_cpw2d")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_hydan")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_2tpig")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_8ujbo")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_8xbnw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_2ac7d")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_jhdt5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_0buov")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_py1o3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_48ys5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_qw8d8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_66vcy")
-}],
-"loop": true,
-"name": &"default",
-"speed": 12.0
-}]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0idsm"]
+shader = ExtResource("1_5b0ea")
+shader_parameter/shake_block_size = 10.0
+shader_parameter/shake_power = 0.02
+shader_parameter/shake_speed = 1.5
+shader_parameter/stop_y = 0.65
 
 [node name="Tree1" type="Node2D"]
+position = Vector2(2, -56)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, -57)
-sprite_frames = SubResource("SpriteFrames_j1rbq")
-autoplay = "default"
-frame_progress = 0.73956
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_0idsm")
+texture = ExtResource("1_6ltj8")

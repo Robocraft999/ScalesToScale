@@ -20,11 +20,11 @@ void fragment() {
 	vec2 pixel_size = TEXTURE_PIXEL_SIZE;
 	if (UV.y < stop_y){
 		fixed_uv.x += round((
-			trunc( ((1.0f - UV.y) / stop_y) * shake_block_size ) / shake_block_size
+			round( ((1.0f - UV.y) / stop_y) * shake_block_size ) / shake_block_size
 		) * shake_power * sin(TIME) * shake_speed / pixel_size.x) * pixel_size.x;
 	}
-	
-	
+
+
 	vec4 pixel_color = texture( TEXTURE, fixed_uv, 0.0 );
 	COLOR = pixel_color;
 }
