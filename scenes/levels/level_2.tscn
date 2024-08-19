@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=4 uid="uid://ciq75ixk4ccpe"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_2.gd" id="1_japu3"]
-[ext_resource type="PackedScene" uid="uid://2dj1d442mvd5" path="res://scenes/basic_level.tscn" id="2_51tnq"]
+[ext_resource type="PackedScene" path="res://scenes/basic_level.tscn" id="2_51tnq"]
 [ext_resource type="PackedScene" uid="uid://vy0hwr3ojkhq" path="res://scenes/objects/dragon_flag.tscn" id="3_1r384"]
 [ext_resource type="PackedScene" uid="uid://bnt67b4wf47qu" path="res://scenes/objects/player.tscn" id="4_r1kdi"]
 [ext_resource type="TileSet" uid="uid://p75osdbfaruv" path="res://resources/test_tile_set.tres" id="5_vgukq"]
@@ -300,13 +300,12 @@ script = ExtResource("12_gms23")
 direction = Vector2(-1, 0)
 
 [node name="Label" type="Label" parent="."]
-offset_left = 264.0
-offset_top = 130.0
-offset_right = 802.0
-offset_bottom = 205.0
+offset_left = 283.0
+offset_top = 188.0
+offset_right = 753.0
+offset_bottom = 263.0
 text = "Not all boxes have the same maximal scales
-Hold Control when hovering your mouse over the box
-This will reveal the box's maximum shape in an outline"
+Hold Control when hovering the boxes to see their outline"
 visible_characters = 0
 visible_ratio = 0.0
 
@@ -325,8 +324,9 @@ position = Vector2(37, -18)
 shape = SubResource("RectangleShape2D_i26kx")
 
 [node name="PlayerRegainFocusArea" type="Area2D" parent="."]
-position = Vector2(680, 280)
+position = Vector2(682, 280)
+collision_mask = 2
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerRegainFocusArea"]
-position = Vector2(4, 0)
 shape = SubResource("RectangleShape2D_0pwab")

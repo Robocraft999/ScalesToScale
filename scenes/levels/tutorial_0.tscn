@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://p75osdbfaruv" path="res://resources/test_tile_set.tres" id="1_sjhpa"]
 [ext_resource type="PackedScene" uid="uid://bnt67b4wf47qu" path="res://scenes/objects/player.tscn" id="2_0echh"]
 [ext_resource type="PackedScene" uid="uid://vy0hwr3ojkhq" path="res://scenes/objects/dragon_flag.tscn" id="2_2k8pp"]
-[ext_resource type="PackedScene" uid="uid://2dj1d442mvd5" path="res://scenes/basic_level.tscn" id="2_y2b1i"]
+[ext_resource type="PackedScene" path="res://scenes/basic_level.tscn" id="2_y2b1i"]
 [ext_resource type="Texture2D" uid="uid://161ing63rdfs" path="res://sprites/keycap_right_arrow.png" id="5_10umm"]
 [ext_resource type="Texture2D" uid="uid://6h3oh0xecxoo" path="res://sprites/keycap_up_arrow.png" id="5_pmvrd"]
 [ext_resource type="Script" path="res://scripts/animated_keycap.gd" id="6_vscq7"]
