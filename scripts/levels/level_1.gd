@@ -12,6 +12,8 @@ func start_animation_finished() -> void:
 
 func handle(_body: Player):
 	ProgressStore.horizontal_scale_enabled = true
+	%Player.allow_movement = false
+	%Player.get_node("AnimatedSprite2D").play("idle")
 	$ScaleExplanation/ScaleLabel.visible_ratio = 0.0
 	$ScaleExplanation.visible = true
 	$EditableLevel/Camera2D.follow_node = $ScaleExplanation
@@ -24,6 +26,7 @@ func handle(_body: Player):
 	)
 	await tween.finished
 	$EditableLevel/Camera2D.follow_node = %Player
+	%Player.allow_movement = true
 
 func _trigger_explanation(body: Node2D):
 	if not ProgressStore.horizontal_scale_enabled:
