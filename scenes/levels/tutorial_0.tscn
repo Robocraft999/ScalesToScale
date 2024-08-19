@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://bpn1x8cdvpmgd"]
+[gd_scene load_steps=22 format=4 uid="uid://bpn1x8cdvpmgd"]
 
 [ext_resource type="Script" path="res://scripts/levels/tutorial_0.gd" id="1_m43d6"]
 [ext_resource type="TileSet" uid="uid://p75osdbfaruv" path="res://resources/test_tile_set.tres" id="1_sjhpa"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://scripts/shaker.gd" id="13_kipkx"]
 [ext_resource type="Script" path="res://scripts/shaker_animator.gd" id="14_37g71"]
 [ext_resource type="Texture2D" uid="uid://dam3482d42w5l" path="res://sprites/trees/tree_1.png" id="16_iv7gx"]
+[ext_resource type="Texture2D" uid="uid://y3d54rd2rx8d" path="res://sprites/trees/tree_2.png" id="17_co0yi"]
 
 [sub_resource type="Animation" id="Animation_wqt0i"]
 length = 0.001
@@ -110,42 +111,6 @@ script = ExtResource("1_m43d6")
 
 [node name="BasicLevel" parent="." instance=ExtResource("2_y2b1i")]
 
-[node name="RightKeyCap" type="Sprite2D" parent="."]
-position = Vector2(136, 40)
-texture = ExtResource("5_10umm")
-script = ExtResource("6_vscq7")
-watched_action_name = &"move_right"
-
-[node name="UpKeyCap" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(104, 40)
-texture = ExtResource("5_pmvrd")
-script = ExtResource("6_vscq7")
-watched_action_name = &"jump"
-
-[node name="LeftKeyCap" type="Sprite2D" parent="."]
-position = Vector2(72, 40)
-texture = ExtResource("6_xr2ns")
-script = ExtResource("6_vscq7")
-watched_action_name = &"move_left"
-
-[node name="HintLabel" type="Label" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 65.0
-offset_top = 57.0
-offset_right = 516.0
-offset_bottom = 80.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-visible_characters = 0
-visible_ratio = 0.0
-metadata/_edit_use_anchors_ = true
-
 [node name="EditableLevel" type="Node" parent="."]
 
 [node name="DragonFlag" parent="EditableLevel" instance=ExtResource("2_2k8pp")]
@@ -210,10 +175,62 @@ unique_name_in_owner = true
 position = Vector2(296, 224)
 
 [node name="Tree2" type="Sprite2D" parent="."]
-position = Vector2(111, 277)
+position = Vector2(59, 287)
 scale = Vector2(-1, 1)
+texture = ExtResource("16_iv7gx")
+
+[node name="Tree6" type="Sprite2D" parent="."]
+position = Vector2(464, 284)
 texture = ExtResource("16_iv7gx")
 
 [node name="Tree1" type="Sprite2D" parent="."]
 position = Vector2(334, 184)
 texture = ExtResource("16_iv7gx")
+
+[node name="Tree4" type="Sprite2D" parent="."]
+position = Vector2(133, 145)
+texture = ExtResource("17_co0yi")
+
+[node name="Tree3" type="Sprite2D" parent="."]
+position = Vector2(162, 164)
+texture = ExtResource("17_co0yi")
+
+[node name="Tree5" type="Sprite2D" parent="."]
+position = Vector2(39, 163)
+texture = ExtResource("17_co0yi")
+
+[node name="RightKeyCap" type="Sprite2D" parent="."]
+position = Vector2(136, 40)
+texture = ExtResource("5_10umm")
+script = ExtResource("6_vscq7")
+watched_action_name = &"move_right"
+
+[node name="UpKeyCap" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(104, 40)
+texture = ExtResource("5_pmvrd")
+script = ExtResource("6_vscq7")
+watched_action_name = &"jump"
+
+[node name="LeftKeyCap" type="Sprite2D" parent="."]
+position = Vector2(72, 40)
+texture = ExtResource("6_xr2ns")
+script = ExtResource("6_vscq7")
+watched_action_name = &"move_left"
+
+[node name="HintLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 65.0
+offset_top = 57.0
+offset_right = 516.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+visible_characters = 0
+visible_ratio = 0.0
+metadata/_edit_use_anchors_ = true
