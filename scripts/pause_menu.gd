@@ -13,3 +13,7 @@ func _process(delta: float) -> void:
 func _on_animated_button_pressed() -> void:
 	get_tree().paused = false
 	SceneLoader.load_level_scene_by_name(Global.SceneName.MAIN_MENU)
+
+
+func _on_exit_game_pressed() -> void:
+	get_tree().quit()

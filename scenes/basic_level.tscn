@@ -30,12 +30,23 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_g0bjy")
 
-[node name="AnimatedButton" type="Button" parent="CanvasLayer/PauseMenu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseMenu"]
+layout_mode = 2
+
+[node name="MainMenu" type="Button" parent="CanvasLayer/PauseMenu/VBoxContainer"]
 layout_mode = 2
 text = "Back to Main Menu"
+script = ExtResource("4_581hl")
+
+[node name="ExitGame" type="Button" parent="CanvasLayer/PauseMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 10
+text = "Exit Game"
 script = ExtResource("4_581hl")
 
 [node name="ButtonFocusPlayer" parent="." instance=ExtResource("3_jadun")]
 unique_name_in_owner = true
 
-[connection signal="pressed" from="CanvasLayer/PauseMenu/AnimatedButton" to="CanvasLayer/PauseMenu" method="_on_animated_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/VBoxContainer/MainMenu" to="CanvasLayer/PauseMenu" method="_on_animated_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenu/VBoxContainer/ExitGame" to="CanvasLayer/PauseMenu" method="_on_exit_game_pressed"]
