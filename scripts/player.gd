@@ -28,6 +28,17 @@ signal landed_on_floor(impact_velocity: Vector2)
 @export var GHOST_DURATION_MILLIS   := 200
 @export var GHOST_SPAWN_PERCENTAGES: Array[int] = [5, 10, 15, 30, 50, 70, 80, 85, 95]
 
+var current_state = MovementState.IDLE
+var last_state    = MovementState.IDLE
+
+enum MovementState {
+	IDLE,
+	WALK,
+	JUMP,
+	LAND,
+	AIRBORNE
+}
+
 # msec ticks at which the jump was last buffered
 var jump_buffer_time  := 0
 # msec ticks at wich the player was last on the floor
@@ -88,6 +99,8 @@ func _physics_jump() -> void:
 		velocity.y = JUMP_VELOCITY
 		jump_buffer_time = 0
 		jump_coyote_time = 0
+		$AnimatedSprite2D.stop()
+		$AnimatedSprite2D.play("jump")
 		jumped.emit()
 	elif Input.is_action_just_pressed("jump") and jump_double_ready and not is_on_floor() and ProgressStore.double_jump_enabled:
 		# Double Jump
@@ -169,13 +182,78 @@ func update_direction():
 		pass
 	pass
 
-func update_animations():
-	if velocity.x == 0.0:
-		$AnimatedSprite2D.play("idle")
+func handle_walk():
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var direction := Input.get_axis("move_left", "move_right")
+	if direction:
+		velocity.x = direction * SPEED
 	else:
-		$AnimatedSprite2D.play("walking")
+		velocity.x = move_toward(velocity.x, 0, SPEED)
 		pass
 	pass
+
+# returns whether it actually jumped
+func handle_jump():
+	if ProgressStore.jump_enabled:
+		_physics_jump()
+
+func handle_movement_state():
+	var next_state = current_state
+	match current_state:
+		MovementState.IDLE:
+			handle_walk()
+			handle_jump()
+			if velocity.x != 0.0:
+				next_state = MovementState.WALK
+			if velocity.y != 0.0:
+				next_state = MovementState.JUMP
+			$AnimatedSprite2D.play("idle")
+			pass
+		MovementState.WALK:
+			handle_walk()
+			handle_jump()
+			$AnimatedSprite2D.play("walking")
+			if velocity.x == 0.0:
+				next_state = MovementState.IDLE
+			if velocity.y != 0.0:
+				next_state = MovementState.JUMP
+			pass
+		MovementState.JUMP:
+			handle_walk()
+			handle_jump()
+			if last_state != current_state:
+				$AnimatedSprite2D.play("jump")
+			elif not $AnimatedSprite2D.is_playing():
+				next_state = MovementState.AIRBORNE
+				pass
+			pass
+		MovementState.AIRBORNE:
+			if not $AnimatedSprite2D.is_playing():
+				$AnimatedSprite2D.play("fly")
+			handle_walk()
+			handle_jump()
+			if is_on_floor():
+				next_state = MovementState.LAND
+		MovementState.LAND:
+			if last_state != current_state:
+				$AnimatedSprite2D.play("land")
+				pass
+			if not $AnimatedSprite2D.is_playing():
+				next_state = MovementState.IDLE
+				pass
+			handle_walk()
+			handle_jump()
+			if velocity.x != 0.0:
+				next_state = MovementState.WALK
+			if velocity.y != 0.0:
+				next_state = MovementState.JUMP
+			pass
+		pass
+			
+	
+	last_state = current_state
+	current_state = next_state
 
 func _physics_process(delta: float) -> void:
 	
@@ -185,17 +263,8 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_actual_gravity() * delta
-
-	if ProgressStore.jump_enabled:
-		_physics_jump()
 	
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("move_left", "move_right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+	handle_movement_state()
 	
 	if ProgressStore.dash_enabled:
 		_physics_dash()
@@ -203,8 +272,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	update_direction()
-	
-	update_animations()
 	
 	# Emit signals
 	if not was_on_floor and is_on_floor():

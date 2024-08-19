@@ -157,7 +157,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tgdxk")
 }],
-"loop": true,
+"loop": false,
 "name": &"jump",
 "speed": 12.0
 }, {
@@ -180,7 +180,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_i3drf")
 }],
-"loop": true,
+"loop": false,
 "name": &"land",
 "speed": 12.0
 }, {
@@ -233,6 +233,4 @@ stream = ExtResource("3_843k5")
 position = Vector2(1.66667, 0)
 scale = Vector2(0.333333, 0.5)
 sprite_frames = SubResource("SpriteFrames_uqm2t")
-animation = &"fly"
-autoplay = "idle"
-frame_progress = 0.655419
+animation = &"walking"
