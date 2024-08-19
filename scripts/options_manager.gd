@@ -1,6 +1,10 @@
 extends Node
 
+# Options
 var enable_screen_shake := true
+var volume := 0
+
+# Time Scale stuff
 var time_scale = 1
 var time_scale_timer: SceneTreeTimer
 @onready var timer: Timer = preload("res://scenes/objects/timer.tscn").instantiate()
@@ -8,6 +12,7 @@ var time_scale_timer: SceneTreeTimer
 const SceneName  = {
 	MAIN_MENU = "MainMenu",
 	TUTORIAL = "Tutorial0",
+	OPTIONS = "options_menu",
 	TEST = "test",
 	LEVEL1 = "Level 1",
 	LEVEL2 = "Level 2",
@@ -26,6 +31,13 @@ func _process(delta: float) -> void:
 			time_scale = 0.25
 			timer.start(10)
 			timer.timeout.connect(func(): time_scale = 1)
+			
+	var master_bus_index = AudioServer.get_bus_index("Master")
+	if round(volume) == 0:
+		AudioServer.set_bus_mute(master_bus_index, true)
+	else:
+		AudioServer.set_bus_mute(master_bus_index, false)
+		AudioServer.set_bus_volume_db(master_bus_index, lerp(-10, 20, volume/100.0))
 		
 func lerp(from: Vector2, to: Vector2, weight: Vector2) -> Vector2:
 	return Vector2(lerp(from.x, to.x, weight.x), lerp(from.y, to.y, weight.y))
