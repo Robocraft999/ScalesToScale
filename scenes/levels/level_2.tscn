@@ -295,6 +295,7 @@ script = ExtResource("9_hn1vr")
 
 [node name="EndAnimator" type="Node" parent="EditableLevel"]
 script = ExtResource("8_g741q")
+next_level_name = "Level 3"
 
 [node name="Camera2D" type="Camera2D" parent="EditableLevel" node_paths=PackedStringArray("follow_node")]
 physics_interpolation_mode = 1
