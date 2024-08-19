@@ -111,6 +111,7 @@ func _physics_process(delta: float) -> void:
 	
 	# Don't distort the sprite, it's in tiling mode anyway
 	sprite.global_scale = Vector2.ONE
+	calculate_reach_box()
 	#sprite.region_rect.size = sprite_region_size * new_scale
 	
 
@@ -186,4 +187,12 @@ func scale_objects(new_position):
 	sprite_recp_tween.tween_property(sprite, "region_rect:size", sprite_region_size * new_scale, .2)
 	#create_tween().tween_property(region_rect, "size", sprite_region_size * new_scale, 0.2)
 	#parent.scale = new_scale
+	
+func calculate_reach_box():
+	var box: Sprite2D = $BoxOverlay
+	box.global_scale = MAX_SCALE
+	if get_parent().get_children().any(func(node): return node is WallGlue):
+		var glue: WallGlue = get_parent().find_children("*", "WallGlue")[0]
+		var dir = glue.direction.normalized() * -1
+		box.position = dir * (box.get_rect().size*2 - box.get_rect().size/2 * Global.lerp(Vector2.ONE, MAX_SCALE, target_offset))
 	
