@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=4 uid="uid://ciq75ixk4ccpe"]
 
-[ext_resource type="Script" path="res://scripts/levels/level_2.gd" id="1_kf5fq"]
+[ext_resource type="Script" path="res://scripts/levels/level_3.gd" id="1_japu3"]
 [ext_resource type="PackedScene" uid="uid://2dj1d442mvd5" path="res://scenes/basic_level.tscn" id="2_51tnq"]
 [ext_resource type="PackedScene" uid="uid://vy0hwr3ojkhq" path="res://scenes/objects/dragon_flag.tscn" id="3_1r384"]
 [ext_resource type="PackedScene" uid="uid://bnt67b4wf47qu" path="res://scenes/objects/player.tscn" id="4_r1kdi"]
@@ -9,10 +9,11 @@
 [ext_resource type="Script" path="res://scripts/shaker.gd" id="7_lmtjm"]
 [ext_resource type="Script" path="res://scripts/end_animator.gd" id="8_g741q"]
 [ext_resource type="Script" path="res://scripts/shaker_animator.gd" id="9_hn1vr"]
-[ext_resource type="Script" path="res://scripts/collectible.gd" id="12_qhokx"]
-[ext_resource type="Texture2D" uid="uid://loarm7an4wt3" path="res://resources/sprites/Collectible.png" id="13_4qll1"]
+[ext_resource type="Texture2D" uid="uid://cpmv4oo5l0bfv" path="res://sprites/scaleobstacle_small.png" id="10_5ghpu"]
+[ext_resource type="PackedScene" uid="uid://dce48rt84l5ft" path="res://scenes/objects/scaler.tscn" id="11_02gak"]
+[ext_resource type="Script" path="res://scripts/wall_glue.gd" id="12_gms23"]
 
-[sub_resource type="Animation" id="Animation_7fh8t"]
+[sub_resource type="Animation" id="Animation_w4hg0"]
 length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
@@ -22,7 +23,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(128, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(42, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/1/type = "bezier"
@@ -33,20 +34,8 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(67, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("TopPlatform/CollisionShape2D:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1096, 176)]
 }
 
 [sub_resource type="Animation" id="Animation_gymx7"]
@@ -59,7 +48,7 @@ tracks/0/path = NodePath("EditableLevel/Player:allow_movement")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.86667),
+"times": PackedFloat32Array(0, 1.997),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -72,8 +61,8 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(128, -0.25, 0, 0.25, 0, 128, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1.7)
+"points": PackedFloat32Array(42, -0.25, 0, 0.25, 0, 42, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.997)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -83,8 +72,8 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 144, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1.7)
+"points": PackedFloat32Array(67, -0.25, 0, 0.25, 0, 301, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.997)
 }
 tracks/3/type = "method"
 tracks/3/imported = false
@@ -93,7 +82,7 @@ tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(1.7),
+"times": PackedFloat32Array(1.95),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -101,168 +90,142 @@ tracks/3/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_pnv8j"]
-resource_name = "top_animatable_body"
-length = 7.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TopPlatform/CollisionShape2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 6.96667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1096, 176), Vector2(232, 176)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7rhjm"]
 _data = {
-"RESET": SubResource("Animation_7fh8t"),
-"enter_animation": SubResource("Animation_gymx7"),
-"top_animatable_body": SubResource("Animation_pnv8j")
+"RESET": SubResource("Animation_w4hg0"),
+"enter_animation": SubResource("Animation_gymx7")
 }
 
-[sub_resource type="Animation" id="Animation_7njpc"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r2q7l"]
+size = Vector2(14, 14)
+
+[sub_resource type="Animation" id="Animation_2pkwg"]
 length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TopPlatform/CollisionShape2D:position:x")
+tracks/0/path = NodePath("Label:visible_ratio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1096, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("TopPlatform/CollisionShape2D:position:y")
+tracks/1/path = NodePath("EditableLevel/Camera2D:dead_zone:x")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(176, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("BottomPlatform/CollisionShape2D:position:x")
+tracks/2/path = NodePath("EditableLevel/Camera2D:dead_zone:y")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1096, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("BottomPlatform/CollisionShape2D:position:y")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(224, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 
-[sub_resource type="Animation" id="Animation_jbn6x"]
-resource_name = "body_animator"
-length = 7.501
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_p6hfu"]
+resource_name = "typewriter_animation"
+length = 7.0
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TopPlatform/CollisionShape2D:position:x")
+tracks/0/path = NodePath("Label:visible_ratio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(1096, -0.25, 0, 0.25, 0, 220, -0.25, 0, 0.25, 0, 1096, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 3.5, 7.5)
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2.93333)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("TopPlatform/CollisionShape2D:position:y")
+tracks/1/path = NodePath("EditableLevel/Camera2D:dead_zone:x")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(176, -0.25, 0, 0.25, 0, 176, -0.25, 0, 0.25, 0, 176, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 3.5, 7.5)
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 5.23333, 6.9)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("BottomPlatform/CollisionShape2D:position:x")
+tracks/2/path = NodePath("EditableLevel/Camera2D:dead_zone:y")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(1096, -0.25, 0, 0.25, 0, 220, -0.25, 0, 0.25, 0, 1096, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 3.5, 7.5)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("BottomPlatform/CollisionShape2D:position:y")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(224, -0.25, 0, 0.25, 0, 224, -0.25, 0, 0.25, 0, 224, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 3.5, 7.5)
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 5.23333, 6.9)
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_bx64a"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h4cju"]
 _data = {
-"RESET": SubResource("Animation_7njpc"),
-"body_animator": SubResource("Animation_jbn6x")
+"RESET": SubResource("Animation_2pkwg"),
+"typewriter_animation": SubResource("Animation_p6hfu")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_aq3pb"]
-size = Vector2(16, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qs32i"]
-size = Vector2(16, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i26kx"]
+size = Vector2(38, 80)
 
 [node name="Level 2" type="Node2D"]
-script = ExtResource("1_kf5fq")
+script = ExtResource("1_japu3")
 
 [node name="BasicLevel" parent="." instance=ExtResource("2_51tnq")]
 
 [node name="EditableLevel" type="Node" parent="."]
 
-[node name="DragonFlag" parent="EditableLevel" instance=ExtResource("3_1r384")]
-unique_name_in_owner = true
-position = Vector2(1216, 184)
-
-[node name="Player" parent="EditableLevel" instance=ExtResource("4_r1kdi")]
-unique_name_in_owner = true
-position = Vector2(128, 0)
-allow_movement = false
-
 [node name="BGLayer" type="TileMapLayer" parent="EditableLevel"]
-tile_map_data = PackedByteArray("AAAEAAoAAAABAAEAAAAFAAoAAAACAAEAAAAGAAoAAAACAAEAAAAIAAoAAAACAAEAAAAHAAoAAAACAAEAAAAJAAoAAAACAAEAAAAKAAoAAAACAAEAAAALAAoAAAADAAEAAAALAAsAAAADAAIAAAALAAwAAAADAAIAAAALAA0AAAADAAMAAAAKAA0AAAACAAMAAAAJAA0AAAACAAMAAAAIAA0AAAACAAMAAAAHAA0AAAACAAMAAAAGAA0AAAACAAMAAAAFAA0AAAACAAMAAAAEAA0AAAABAAMAAAAEAAwAAAABAAIAAAAEAAsAAAABAAIAAAAFAAsAAAACAAIAAAAFAAwAAAACAAIAAAAGAAsAAAACAAIAAAAGAAwAAAACAAIAAAAHAAsAAAACAAIAAAAHAAwAAAACAAIAAAAIAAsAAAACAAIAAAAIAAwAAAACAAIAAAAJAAwAAAACAAIAAAAJAAsAAAACAAIAAAAKAAsAAAACAAIAAAAKAAwAAAACAAIAAAASAAwAAAABAAQAAAATAAwAAAACAAQAAAAUAAwAAAACAAQAAAAVAAwAAAADAAQAAAAYAA8AAAABAAQAAAAZAA8AAAACAAQAAAAaAA8AAAACAAQAAAAbAA8AAAADAAQAAAAeAAwAAAABAAQAAAAfAAwAAAACAAQAAAAgAAwAAAACAAQAAAAhAAwAAAADAAQAAAAkAAkAAAABAAQAAAAlAAkAAAACAAQAAAAmAAkAAAACAAQAAAAnAAkAAAADAAQAAAAsABEAAAABAAQAAAAtABEAAAACAAQAAAAuABEAAAACAAQAAAAvABEAAAADAAQAAAAyAA8AAAABAAQAAAAzAA8AAAACAAQAAAA0AA8AAAACAAQAAAA1AA8AAAADAAQAAAA4AAwAAAABAAQAAAA5AAwAAAACAAQAAAA6AAwAAAACAAQAAAA7AAwAAAADAAQAAAA+AAkAAAABAAQAAAA/AAkAAAACAAQAAABAAAkAAAACAAQAAABBAAkAAAADAAQAAABFAAwAAAABAAQAAABGAAwAAAACAAQAAABHAAwAAAACAAQAAABIAAwAAAACAAQAAABJAAwAAAACAAQAAABKAAwAAAACAAQAAABLAAwAAAACAAQAAABMAAwAAAACAAQAAABNAAwAAAACAAQAAABOAAwAAAADAAQAAAA=")
+tile_map_data = PackedByteArray("AAAHAAYAAAALAAEAAAAHAAcAAAALAAIAAAAHAAgAAAALAAMAAAAHAAoAAAALAAMAAAAHAAkAAAAEAAMAAAAHAAsAAAAEAAEAAAAHAAwAAAAIAAEAAAAHAA0AAAAIAAIAAAAIAA0AAAAJAAIAAAAJAA0AAAAJAAIAAAAKAA0AAAAJAAIAAAALAA0AAAAJAAIAAAAMAA0AAAAJAAIAAAANAA0AAAAJAAIAAAAOAA0AAAAJAAIAAAAPAA0AAAAJAAIAAAAIAAYAAAADAAQAAAAIAAcAAAAEAAMAAAAIAAgAAAAEAAMAAAAIAAkAAAALAAMAAAAIAAoAAAADAAQAAAAIAAsAAAALAAEAAAAIAAwAAAAJAAEAAAAJAAwAAAANAAQAAAAKAAwAAAANAAQAAAALAAwAAAAJAAEAAAAMAAwAAAANAAQAAAANAAwAAAANAAQAAAAOAAwAAAANAAQAAAAPAAwAAAAJAAEAAAAHAA4AAAAIAAMAAAAIAA4AAAAJAAMAAAAJAA4AAAAJAAMAAAAKAA4AAAAJAAMAAAALAA4AAAAJAAMAAAAMAA4AAAAJAAMAAAANAA4AAAAJAAMAAAAOAA4AAAAJAAMAAAAPAA4AAAAJAAMAAAAHABQAAAANAAQAAAAHABUAAAAJAAMAAAAIABUAAAAJAAMAAAAJABUAAAAJAAMAAAAKABUAAAAJAAMAAAALABUAAAAJAAMAAAAMABUAAAAJAAMAAAANABUAAAAJAAMAAAAOABUAAAAJAAMAAAAPABUAAAAKAAMAAAAPABQAAAAKAAEAAAAIABQAAAANAAQAAAAJABQAAAAJAAEAAAAKABQAAAAJAAEAAAALABQAAAAJAAEAAAAMABQAAAAJAAEAAAANABQAAAANAAQAAAAOABQAAAANAAQAAAAVABUAAAAKAAMAAAAVABQAAAAKAAEAAAAUABUAAAAJAAMAAAAUABQAAAAJAAEAAAATABUAAAAJAAMAAAATABQAAAAJAAEAAAASABUAAAAIAAMAAAASABQAAAAIAAEAAAAYAA4AAAAKAAMAAAAYAA0AAAAKAAIAAAAYAAwAAAAKAAEAAAAXAA4AAAAJAAMAAAAXAA0AAAAJAAIAAAAXAAwAAAAJAAEAAAAWAA4AAAAJAAMAAAAWAA0AAAAJAAIAAAAWAAwAAAAJAAEAAAAVAA4AAAAJAAMAAAAVAA0AAAAJAAIAAAAVAAwAAAANAAQAAAAUAA4AAAAJAAMAAAAUAA0AAAAJAAIAAAAUAAwAAAANAAQAAAATAA4AAAAJAAMAAAATAA0AAAAJAAIAAAATAAwAAAANAAQAAAASAA4AAAAJAAMAAAASAA0AAAAJAAIAAAASAAwAAAAJAAEAAAARAA4AAAAJAAMAAAARAA0AAAAJAAIAAAARAAwAAAAJAAEAAAAQAA4AAAAJAAMAAAAQAA0AAAAJAAIAAAAQAAwAAAANAAQAAAAhABUAAAAKAAQAAAAgABUAAAAIAAQAAAAuABUAAAAJAAMAAAAuABQAAAAKAAEAAAAtABUAAAAJAAMAAAAtABQAAAAJAAEAAAAsABUAAAAJAAMAAAAsABQAAAAJAAEAAAArABUAAAAJAAMAAAArABQAAAANAAQAAAAqABUAAAAJAAMAAAAqABQAAAAJAAEAAAApABUAAAAJAAMAAAApABQAAAANAAQAAAAoABUAAAAJAAMAAAAoABQAAAANAAQAAAAnABUAAAAJAAMAAAAnABQAAAAJAAEAAAAmABUAAAAIAAMAAAAmABQAAAAIAAEAAAAGABUAAAAJAAMAAAAGABQAAAANAAQAAAAFABUAAAAJAAMAAAAFABQAAAANAAQAAAAEABUAAAAJAAMAAAAEABQAAAAJAAEAAAADABUAAAAJAAMAAAADABQAAAANAAQAAAACABUAAAAJAAMAAAACABQAAAANAAQAAAABABUAAAAJAAMAAAABABQAAAAJAAEAAAAAABUAAAAIAAMAAAAAABQAAAAIAAEAAAAvABQAAAAIAAEAAAAvABUAAAAJAAMAAAAwABUAAAAJAAIAAAAwABQAAAAJAAEAAAAqAA0AAAADAAQAAAApAA0AAAACAAQAAAAoAA0AAAABAAQAAAAZAA4AAAAKAAQAAAAiAA0AAAACAAEAAAAxABQAAAAKAAEAAAAxABUAAAAKAAIAAAAvABMAAAABAAMAAAAvABIAAAABAAEAAAAwABIAAAAGAAIAAAAwABMAAAACAAMAAAAxABMAAAADAAMAAAAxABIAAAADAAIAAAAxABEAAAADAAIAAAAxABAAAAADAAIAAAAxAA8AAAADAAEAAAAwABEAAAABAAIAAAAwABAAAAABAAIAAAAvABAAAAABAAQAAAAwAA8AAAABAAEAAAA=")
 tile_set = ExtResource("5_vgukq")
+metadata/_edit_lock_ = true
 
 [node name="FGLayer" type="TileMapLayer" parent="EditableLevel"]
 tile_set = ExtResource("5_vgukq")
 collision_enabled = false
+metadata/_edit_lock_ = true
+
+[node name="DragonFlag" parent="EditableLevel" instance=ExtResource("3_1r384")]
+unique_name_in_owner = true
+position = Vector2(166, 181)
+
+[node name="Player" parent="EditableLevel" instance=ExtResource("4_r1kdi")]
+unique_name_in_owner = true
+position = Vector2(42, 67)
+allow_movement = false
+
+[node name="IntroAnimation" type="AnimationPlayer" parent="EditableLevel"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_7rhjm")
+}
+autoplay = "enter_animation"
+
+[node name="ShakerAnimator" type="Node" parent="EditableLevel"]
+script = ExtResource("9_hn1vr")
+
+[node name="EndAnimator" type="Node" parent="EditableLevel"]
+script = ExtResource("8_g741q")
 
 [node name="Camera2D" type="Camera2D" parent="EditableLevel" node_paths=PackedStringArray("follow_node")]
 physics_interpolation_mode = 1
-position = Vector2(256, 1.24965)
 position_smoothing_enabled = true
 script = ExtResource("6_5dgli")
 follow_node = NodePath("../Player")
+dead_zone = Vector2(0, 0)
 
 [node name="CameraShaker" type="Node2D" parent="EditableLevel/Camera2D"]
 unique_name_in_owner = true
@@ -270,48 +233,90 @@ position = Vector2(-256, -1.24965)
 script = ExtResource("7_lmtjm")
 property_name = &"offset"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="EditableLevel"]
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_7rhjm")
-}
-autoplay = "enter_animation"
-
-[node name="EndAnimator" type="Node" parent="EditableLevel"]
-script = ExtResource("8_g741q")
-
-[node name="ShakerAnimator" type="Node" parent="EditableLevel"]
-script = ExtResource("9_hn1vr")
-
-[node name="BodyAnimator" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_bx64a")
-}
-autoplay = "body_animator"
-
-[node name="TopPlatform" type="AnimatableBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TopPlatform"]
-position = Vector2(1096, 176)
-shape = SubResource("RectangleShape2D_aq3pb")
-
-[node name="BottomPlatform" type="AnimatableBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomPlatform"]
-position = Vector2(1096, 224)
-shape = SubResource("RectangleShape2D_aq3pb")
-
-[node name="Collectible" type="Area2D" parent="." node_paths=PackedStringArray("type")]
-position = Vector2(1132, 171)
+[node name="ExampleBox" type="CharacterBody2D" parent="EditableLevel"]
+position = Vector2(528, 327)
 collision_mask = 3
-script = ExtResource("12_qhokx")
-type = NodePath("..")
+input_pickable = true
+metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectible"]
-position = Vector2(12, -3)
-shape = SubResource("RectangleShape2D_qs32i")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EditableLevel/ExampleBox"]
+shape = SubResource("RectangleShape2D_r2q7l")
 
-[node name="Sprite2D" type="Sprite2D" parent="Collectible"]
-position = Vector2(12, -3)
-scale = Vector2(0.499998, 0.5)
-texture = ExtResource("13_4qll1")
+[node name="Sprite2D" type="Sprite2D" parent="EditableLevel/ExampleBox"]
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("10_5ghpu")
+region_enabled = true
+region_rect = Rect2(0, 0, 14, 14)
+
+[node name="Scaler" parent="EditableLevel/ExampleBox" instance=ExtResource("11_02gak")]
+MAX_SCALE = Vector2(10, 1)
+
+[node name="LadderBox" type="CharacterBody2D" parent="EditableLevel"]
+position = Vector2(759, 280)
+collision_mask = 3
+input_pickable = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EditableLevel/LadderBox"]
+shape = SubResource("RectangleShape2D_r2q7l")
+
+[node name="Sprite2D" type="Sprite2D" parent="EditableLevel/LadderBox"]
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("10_5ghpu")
+region_enabled = true
+region_rect = Rect2(0, 0, 14, 14)
+
+[node name="Scaler" parent="EditableLevel/LadderBox" instance=ExtResource("11_02gak")]
+MAX_SCALE = Vector2(4, 1)
+
+[node name="WallGlue" type="Node" parent="EditableLevel/LadderBox"]
+script = ExtResource("12_gms23")
+direction = Vector2(1, 0)
+
+[node name="PlatformBox" type="CharacterBody2D" parent="EditableLevel"]
+position = Vector2(407, 216)
+collision_mask = 3
+input_pickable = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EditableLevel/PlatformBox"]
+shape = SubResource("RectangleShape2D_r2q7l")
+
+[node name="Sprite2D" type="Sprite2D" parent="EditableLevel/PlatformBox"]
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("10_5ghpu")
+region_enabled = true
+region_rect = Rect2(0, 0, 14, 14)
+
+[node name="Scaler" parent="EditableLevel/PlatformBox" instance=ExtResource("11_02gak")]
+MAX_SCALE = Vector2(4, 1)
+
+[node name="WallGlue" type="Node" parent="EditableLevel/PlatformBox"]
+script = ExtResource("12_gms23")
+direction = Vector2(-1, 0)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 332.0
+offset_top = 366.0
+offset_right = 719.0
+offset_bottom = 389.0
+text = "Hover and scroll on the box to scale it horizontally"
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="TypewriterAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_h4cju")
+}
+
+[node name="TypewriterTrigger" type="Area2D" parent="."]
+position = Vector2(323, 298)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TypewriterTrigger"]
+position = Vector2(9, -18)
+shape = SubResource("RectangleShape2D_i26kx")
