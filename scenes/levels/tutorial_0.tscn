@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://bpn1x8cdvpmgd"]
+[gd_scene load_steps=21 format=4 uid="uid://bpn1x8cdvpmgd"]
 
 [ext_resource type="Script" path="res://scripts/levels/tutorial_0.gd" id="1_m43d6"]
 [ext_resource type="TileSet" uid="uid://p75osdbfaruv" path="res://resources/test_tile_set.tres" id="1_sjhpa"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://scripts/end_animator.gd" id="13_4l13b"]
 [ext_resource type="Script" path="res://scripts/shaker.gd" id="13_kipkx"]
 [ext_resource type="Script" path="res://scripts/shaker_animator.gd" id="14_37g71"]
+[ext_resource type="Texture2D" uid="uid://dam3482d42w5l" path="res://sprites/trees/tree_1.png" id="16_iv7gx"]
 
 [sub_resource type="Animation" id="Animation_wqt0i"]
 length = 0.001
@@ -207,3 +208,12 @@ script = ExtResource("14_37g71")
 [node name="Player" parent="EditableLevel" instance=ExtResource("2_0echh")]
 unique_name_in_owner = true
 position = Vector2(296, 224)
+
+[node name="Tree2" type="Sprite2D" parent="."]
+position = Vector2(111, 277)
+scale = Vector2(-1, 1)
+texture = ExtResource("16_iv7gx")
+
+[node name="Tree1" type="Sprite2D" parent="."]
+position = Vector2(334, 184)
+texture = ExtResource("16_iv7gx")
