@@ -149,6 +149,7 @@ metadata/_edit_group_ = true
 shape = SubResource("RectangleShape2D_3mgu4")
 
 [node name="Sprite2D" type="Sprite2D" parent="EditableLevel/Collectible"]
+visible = false
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_fnph6")
 

@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://o65fd7fxs2i7"]
+
+[ext_resource type="Texture2D" uid="uid://rpyc8ldsthg7" path="res://sprites/dragon_scale_item.png" id="1_kmj7n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2ggu"]
+atlas = ExtResource("1_kmj7n")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ykgme"]
+atlas = ExtResource("1_kmj7n")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbavv"]
+atlas = ExtResource("1_kmj7n")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1lly"]
+atlas = ExtResource("1_kmj7n")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t8qge"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2ggu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ykgme")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbavv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1lly")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="DragonScaleSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_t8qge")
+frame_progress = 0.101192
