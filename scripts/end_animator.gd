@@ -2,6 +2,13 @@ extends Node
 class_name EndAnimator
 
 @onready var flag = %DragonFlag
+@export_enum(
+	Global.SceneName.MAIN_MENU, 
+	Global.SceneName.TUTORIAL, 
+	Global.SceneName.LEVEL1, 
+	Global.SceneName.LEVEL2,
+	Global.SceneName.LEVEL3
+	) var next_level_name: String = Global.SceneName.MAIN_MENU
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,7 +21,7 @@ func on_flag_player_touched(player: Node2D) -> void:
 	var tween = create_tween()
 	tween.tween_property(cam, "zoom", Vector2(2, 2), 2)
 	tween.chain().tween_property(player, "position", Vector2(player.position.x, 0), 3)
-	tween.finished.connect(func(): SceneLoader.load_level_scene_by_name(Global.SceneName.MAIN_MENU))
+	tween.finished.connect(func(): SceneLoader.load_level_scene_by_name(next_level_name))
 	await get_tree().create_timer(0.5).timeout
 	player.allow_movement = false
 	pass

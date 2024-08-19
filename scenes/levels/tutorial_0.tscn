@@ -197,6 +197,7 @@ property_name = &"offset"
 
 [node name="EndAnimator" type="Node" parent="EditableLevel"]
 script = ExtResource("13_4l13b")
+next_level_name = "Level 1"
 
 [node name="ShakerAnimator" type="Node" parent="EditableLevel"]
 script = ExtResource("14_37g71")

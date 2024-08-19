@@ -104,6 +104,7 @@ script = ExtResource("4_oqomv")
 
 [node name="EndAnimator" type="Node" parent="EditableLevel"]
 script = ExtResource("3_gw85i")
+next_level_name = "Level 2"
 
 [node name="Camera2D" type="Camera2D" parent="EditableLevel" node_paths=PackedStringArray("follow_node")]
 physics_interpolation_mode = 1

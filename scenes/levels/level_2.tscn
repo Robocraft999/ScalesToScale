@@ -311,9 +311,6 @@ property_name = &"offset"
 
 [node name="ExampleBox" type="CharacterBody2D" parent="EditableLevel"]
 position = Vector2(528, 327)
-collision_mask = 3
-input_pickable = true
-metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EditableLevel/ExampleBox"]
 shape = SubResource("RectangleShape2D_r2q7l")
