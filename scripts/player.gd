@@ -171,10 +171,11 @@ func update_direction():
 
 func update_animations():
 	if velocity.x == 0.0:
-		# TODO: Proper walking state
-		$AnimatedSprite2D.pause()
-	if not $AnimatedSprite2D.is_playing() and velocity.x != 0.0:
-		$AnimatedSprite2D.play()
+		$AnimatedSprite2D.play("idle")
+	else:
+		$AnimatedSprite2D.play("walking")
+		pass
+	pass
 
 func _physics_process(delta: float) -> void:
 	

@@ -111,4 +111,3 @@ scale = Vector2(0.333333, 0.5)
 sprite_frames = SubResource("SpriteFrames_uqm2t")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.0141583
