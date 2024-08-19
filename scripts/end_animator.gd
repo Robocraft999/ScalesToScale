@@ -14,7 +14,8 @@ class_name EndAnimator
 func _ready() -> void:
 	flag.player_entered.connect(on_flag_player_touched)
 
-func on_flag_player_touched(player: Node2D) -> void:
+func on_flag_player_touched(body: Node2D) -> void:
+	var player: Player = body
 	var cam: BetterCamera2D = $"../Camera2D"
 	cam.follow_node = flag
 	cam.dead_zone = Vector2.ZERO
@@ -24,4 +25,5 @@ func on_flag_player_touched(player: Node2D) -> void:
 	tween.finished.connect(func(): SceneLoader.load_level_scene_by_name(next_level_name))
 	await get_tree().create_timer(0.5).timeout
 	player.allow_movement = false
+	player.get_node("AnimatedSprite2D").play("fly")
 	pass
