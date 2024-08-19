@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dce48rt84l5ft" path="res://scenes/objects/scaler.tscn" id="11_o4532"]
 [ext_resource type="Script" path="res://scripts/wall_glue.gd" id="12_hypqe"]
 [ext_resource type="Script" path="res://scripts/collectible.gd" id="13_iqcq7"]
-[ext_resource type="Texture2D" uid="uid://loarm7an4wt3" path="res://resources/sprites/Collectible.png" id="14_t3q6q"]
+[ext_resource type="PackedScene" path="res://scenes/objects/dragon_scale_sprite_2d.tscn" id="14_oqmdu"]
 [ext_resource type="Script" path="res://scripts/single-use/double_jump_unlocker.gd" id="15_o1red"]
 [ext_resource type="Script" path="res://scripts/single-use/vertical_scale_unlocker.gd" id="16_r78gw"]
 [ext_resource type="PackedScene" uid="uid://b838jctkyqalv" path="res://scenes/objects/trees/tree_2.tscn" id="17_amrwk"]
@@ -264,21 +264,17 @@ collision_mask = 2
 script = ExtResource("13_iqcq7")
 type = NodePath("../DoubleJumpUnlocker")
 
-[node name="Sprite2D" type="Sprite2D" parent="DoubleJumpScale"]
-position = Vector2(-9.53674e-07, -1.66893e-06)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("14_t3q6q")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoubleJumpScale"]
 shape = SubResource("RectangleShape2D_tjhgw")
+
+[node name="DragonScaleSprite2D" parent="DoubleJumpScale" instance=ExtResource("14_oqmdu")]
 
 [node name="DoubleJumpUnlocker" type="Node2D" parent="."]
 visible = false
 position = Vector2(-88, 392)
 script = ExtResource("15_o1red")
 
-[node name="Sprite2D" type="Sprite2D" parent="DoubleJumpUnlocker"]
-texture = ExtResource("14_t3q6q")
+[node name="DragonScaleSprite2D" parent="DoubleJumpUnlocker" instance=ExtResource("14_oqmdu")]
 
 [node name="Label" type="Label" parent="DoubleJumpUnlocker"]
 offset_left = 24.0
@@ -347,9 +343,8 @@ direction = Vector2(-1, 0)
 position = Vector2(938, -440)
 script = ExtResource("16_r78gw")
 
-[node name="Sprite2D" type="Sprite2D" parent="VerticalScaleUnlocker"]
+[node name="DragonScaleSprite2D" parent="VerticalScaleUnlocker" instance=ExtResource("14_oqmdu")]
 position = Vector2(-90, -80)
-texture = ExtResource("14_t3q6q")
 
 [node name="Label" type="Label" parent="VerticalScaleUnlocker"]
 offset_left = -66.0
@@ -375,10 +370,9 @@ script = ExtResource("13_iqcq7")
 type = NodePath("../VerticalScaleUnlocker")
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="VerticalScaleScale"]
+[node name="DragonScaleSprite2D" parent="VerticalScaleScale" instance=ExtResource("14_oqmdu")]
 position = Vector2(8, 8)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("14_t3q6q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VerticalScaleScale"]
 position = Vector2(8, 8)
