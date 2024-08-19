@@ -1,10 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://vy0hwr3ojkhq"]
+[gd_scene load_steps=8 format=3 uid="uid://vy0hwr3ojkhq"]
 
 [ext_resource type="Script" path="res://scripts/dragon_flag.gd" id="1_mga2q"]
 [ext_resource type="Texture2D" uid="uid://53ne81gplau0" path="res://sprites/dragon_flag.png" id="1_vuvr2"]
+[ext_resource type="Shader" path="res://shaders/god_rays.gdshader" id="3_dlpsu"]
+[ext_resource type="Shader" path="res://shaders/darken.gdshader" id="4_ky56y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uns3m"]
 size = Vector2(15, 22)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mghji"]
+shader = ExtResource("3_dlpsu")
+shader_parameter/angle = 0.28
+shader_parameter/position = 0.235
+shader_parameter/spread = 0.338
+shader_parameter/cutoff = -0.018
+shader_parameter/falloff = 0.695
+shader_parameter/edge_fade = 0.242
+shader_parameter/speed = 1.0
+shader_parameter/ray1_density = 10.0
+shader_parameter/ray2_density = 30.0
+shader_parameter/ray2_intensity = 0.163
+shader_parameter/color = Color(1, 0.9, 0.65, 0.8)
+shader_parameter/hdr = true
+shader_parameter/seed = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ak5if"]
+shader = ExtResource("4_ky56y")
+shader_parameter/alpha = 0.0
 
 [node name="DragonFlag" type="Area2D"]
 collision_layer = 4
@@ -17,3 +39,20 @@ texture = ExtResource("1_vuvr2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(5.5, 0)
 shape = SubResource("RectangleShape2D_uns3m")
+
+[node name="GodRays" type="ColorRect" parent="."]
+visible = false
+z_index = 1
+material = SubResource("ShaderMaterial_mghji")
+offset_left = -156.0
+offset_top = -333.0
+offset_right = 157.0
+offset_bottom = 121.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="DarkenShader" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_ak5if")
+offset_right = 640.0
+offset_bottom = 360.0
