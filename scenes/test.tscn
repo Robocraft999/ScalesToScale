@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://dce48rt84l5ft" path="res://scenes/objects/scaler.tscn" id="7_xs4ma"]
 [ext_resource type="PackedScene" uid="uid://4ot2rbv3j22q" path="res://scenes/objects/restart_button.tscn" id="9_pdhbj"]
 [ext_resource type="PackedScene" uid="uid://dcnk5ak1x2etg" path="res://scenes/objects/button_focus_player.tscn" id="10_px6fs"]
-[ext_resource type="PackedScene" path="res://scenes/objects/mover.tscn" id="11_lc823"]
-[ext_resource type="PackedScene" path="res://scenes/objects/spikes.tscn" id="12_s1jqh"]
+[ext_resource type="PackedScene" uid="uid://dtpmrs3m7ssao" path="res://scenes/objects/mover.tscn" id="11_lc823"]
+[ext_resource type="PackedScene" uid="uid://dv3ioqvuql3b6" path="res://scenes/objects/spikes.tscn" id="12_s1jqh"]
 [ext_resource type="Script" path="res://scripts/better_camera.gd" id="15_ydhfy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o6i2r"]
