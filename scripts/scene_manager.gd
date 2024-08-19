@@ -39,6 +39,9 @@ func load_level_scene(scene_to_load : LoadableScene, scene_index : int, should_u
 	if(!scene_to_load.scene.can_instantiate()):
 		return null;
 		
+	Global.timer.stop()
+	Global.timer.timeout.emit()
+		
 	if should_use_transition:
 		transition_scene.start()
 		await transition_scene.half_done

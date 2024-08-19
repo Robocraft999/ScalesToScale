@@ -22,7 +22,8 @@ func _process(delta: float) -> void:
 		visible = false
 		
 func start():
-	running = true
-	progress = 0
-	current_speed = SPEED
-	visible = true
+	if not running:
+		running = true
+		progress = 0
+		current_speed = SPEED
+		visible = true

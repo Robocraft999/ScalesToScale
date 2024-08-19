@@ -2,6 +2,8 @@ extends Node
 
 var enable_screen_shake := true
 var time_scale = 1
+var time_scale_timer: SceneTreeTimer
+@onready var timer: Timer = preload("res://scenes/objects/timer.tscn").instantiate()
 
 const SceneName  = {
 	MAIN_MENU = "MainMenu",
@@ -16,6 +18,14 @@ const SceneName  = {
 func _ready() -> void:
 	for scene: PackedScene in get_all_in_folder("res://scenes/levels"):
 		print(scene.resource_path)
+	get_tree().root.add_child.call_deferred(timer)
+		
+func _process(delta: float) -> void:
+	if ProgressStore.time_scale_enabled:
+		if Input.is_action_just_pressed("toggle_time_scale") and timer.is_stopped():
+			time_scale = 0.25
+			timer.start(10)
+			timer.timeout.connect(func(): time_scale = 1)
 		
 func lerp(from: Vector2, to: Vector2, weight: Vector2) -> Vector2:
 	return Vector2(lerp(from.x, to.x, weight.x), lerp(from.y, to.y, weight.y))

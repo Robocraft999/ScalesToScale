@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtpmrs3m7ssao"]
+
+[ext_resource type="Script" path="res://scenes/objects/mover.gd" id="1_c3lsh"]
+
+[node name="Mover" type="Path2D"]
+script = ExtResource("1_c3lsh")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
+remote_path = NodePath("../..")
+update_rotation = false
+update_scale = false
