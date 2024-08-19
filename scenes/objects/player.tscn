@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bnt67b4wf47qu"]
+[gd_scene load_steps=16 format=3 uid="uid://bnt67b4wf47qu"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_au815"]
 [ext_resource type="AudioStream" uid="uid://bwqdbhehtihcc" path="res://sfx/dash.wav" id="3_843k5"]
@@ -6,6 +6,14 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jtt55"]
 size = Vector2(19.5556, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8n1s5"]
+atlas = ExtResource("4_hlfl6")
+region = Rect2(768, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubonp"]
+atlas = ExtResource("4_hlfl6")
+region = Rect2(864, 0, 96, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i2sgo"]
 atlas = ExtResource("4_hlfl6")
@@ -41,6 +49,17 @@ region = Rect2(672, 0, 96, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uqm2t"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8n1s5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubonp")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_i2sgo")
@@ -90,4 +109,6 @@ stream = ExtResource("3_843k5")
 position = Vector2(1.66667, 0)
 scale = Vector2(0.333333, 0.5)
 sprite_frames = SubResource("SpriteFrames_uqm2t")
-animation = &"walking"
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.0141583
