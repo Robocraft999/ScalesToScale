@@ -1,7 +1,7 @@
 [gd_scene load_steps=26 format=4 uid="uid://ddgfqgv1xxb7b"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_3.gd" id="1_18opy"]
-[ext_resource type="PackedScene" uid="uid://2dj1d442mvd5" path="res://scenes/basic_level.tscn" id="1_iq124"]
+[ext_resource type="PackedScene" path="res://scenes/basic_level.tscn" id="1_iq124"]
 [ext_resource type="TileSet" uid="uid://p75osdbfaruv" path="res://resources/test_tile_set.tres" id="2_fetoa"]
 [ext_resource type="PackedScene" uid="uid://vy0hwr3ojkhq" path="res://scenes/objects/dragon_flag.tscn" id="3_0rc36"]
 [ext_resource type="PackedScene" uid="uid://bnt67b4wf47qu" path="res://scenes/objects/player.tscn" id="4_1c4qi"]
@@ -270,7 +270,21 @@ texture = ExtResource("14_t3q6q")
 shape = SubResource("RectangleShape2D_tjhgw")
 
 [node name="DoubleJumpUnlocker" type="Node2D" parent="."]
+visible = false
+position = Vector2(-88, 392)
 script = ExtResource("15_o1red")
+
+[node name="Sprite2D" type="Sprite2D" parent="DoubleJumpUnlocker"]
+texture = ExtResource("14_t3q6q")
+
+[node name="Label" type="Label" parent="DoubleJumpUnlocker"]
+offset_left = 24.0
+offset_top = -16.0
+offset_right = 152.0
+offset_bottom = 16.0
+text = "Double-Jump Scale"
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="DoubleJumpFocusPoint" type="Node2D" parent="."]
 position = Vector2(0, 320)
@@ -327,24 +341,25 @@ script = ExtResource("12_hypqe")
 direction = Vector2(-1, 0)
 
 [node name="VerticalScaleUnlocker" type="Node2D" parent="."]
-position = Vector2(656, -440)
+position = Vector2(938, -440)
 script = ExtResource("16_r78gw")
 
 [node name="VerticalScaleLabel" type="RichTextLabel" parent="."]
-offset_left = 456.0
-offset_top = -456.0
+offset_left = 485.0
+offset_top = -460.0
 offset_right = 584.0
-offset_bottom = -360.0
+offset_bottom = -312.0
 bbcode_enabled = true
 text = "[center]Hold shift when hovering the box to scale it vertically[/center]"
 visible_characters = 0
 visible_ratio = 0.0
 
 [node name="VerticalScaleScale" type="Area2D" parent="." node_paths=PackedStringArray("type")]
-position = Vector2(656, -440)
+position = Vector2(938, -440)
 collision_mask = 2
 script = ExtResource("13_iqcq7")
 type = NodePath("../VerticalScaleUnlocker")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="VerticalScaleScale"]
 position = Vector2(8, 8)
