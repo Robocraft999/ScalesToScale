@@ -8,3 +8,4 @@ func start_animation_finished() -> void:
 
 func handle(_body: Player):
 	ProgressStore.horizontal_scale_enabled = true
+	$ScaleExplanation.visible = true

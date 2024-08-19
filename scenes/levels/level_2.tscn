@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=4 uid="uid://ciq75ixk4ccpe"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_2.gd" id="1_japu3"]
-[ext_resource type="PackedScene" uid="uid://2dj1d442mvd5" path="res://scenes/basic_level.tscn" id="2_51tnq"]
+[ext_resource type="PackedScene" path="res://scenes/basic_level.tscn" id="2_51tnq"]
 [ext_resource type="PackedScene" uid="uid://vy0hwr3ojkhq" path="res://scenes/objects/dragon_flag.tscn" id="3_1r384"]
 [ext_resource type="PackedScene" uid="uid://bnt67b4wf47qu" path="res://scenes/objects/player.tscn" id="4_r1kdi"]
 [ext_resource type="TileSet" uid="uid://p75osdbfaruv" path="res://resources/test_tile_set.tres" id="5_vgukq"]
