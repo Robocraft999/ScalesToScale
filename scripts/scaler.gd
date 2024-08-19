@@ -5,6 +5,7 @@ var editing := false
 @export var MAX_SCALE = Vector2(5.0, 5.0)
 
 @export var target_offset := Vector2.ZERO
+@export var step_step := Vector2.ONE
 var current_offset = target_offset
 var new_scale     := Vector2.ONE
 
@@ -65,14 +66,14 @@ func _physics_process(delta: float) -> void:
 			# Calculate new desired offset
 			if Input.is_action_just_released("mouse_wheel_up"):
 				if toggled and ProgressStore.vertical_scale_enabled:
-					target_offset.y += STEP.y
+					target_offset.y += STEP.y * step_step.y
 				elif not toggled and ProgressStore.horizontal_scale_enabled:
-					target_offset.x += STEP.x
+					target_offset.x += STEP.x * step_step.x
 			elif Input.is_action_just_released("mouse_wheel_down"):
 				if toggled and ProgressStore.vertical_scale_enabled:
-					target_offset.y -= STEP.y
+					target_offset.y -= STEP.y * step_step.y
 				elif not toggled and ProgressStore.horizontal_scale_enabled:
-					target_offset.x -= STEP.x
+					target_offset.x -= STEP.x * step_step.x
 			
 			# At most one entire step per 'frame'
 			target_offset.x = clamp(target_offset.x, 0, 1)
