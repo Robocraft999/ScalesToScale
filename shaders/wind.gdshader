@@ -4,7 +4,7 @@ uniform float shake_block_size = 4;
 uniform float shake_power = 0.02;
 uniform float shake_speed = 1.5;
 uniform float stop_y = 0.65f;
-
+uniform float time_offset = 0.f;
 
 float random( float seed )
 {
@@ -21,7 +21,7 @@ void fragment() {
 	if (UV.y < stop_y){
 		fixed_uv.x += round((
 			round( ((1.0f - UV.y) / stop_y) * shake_block_size ) / shake_block_size
-		) * shake_power * sin(TIME) * shake_speed / pixel_size.x) * pixel_size.x;
+		) * shake_power * sin(TIME + time_offset) * shake_speed / pixel_size.x) * pixel_size.x;
 	}
 
 

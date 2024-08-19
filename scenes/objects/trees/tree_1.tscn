@@ -3,17 +3,15 @@
 [ext_resource type="Shader" path="res://shaders/wind.gdshader" id="1_5b0ea"]
 [ext_resource type="Texture2D" uid="uid://dam3482d42w5l" path="res://sprites/trees/tree_1.png" id="1_6ltj8"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0idsm"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ci532"]
 shader = ExtResource("1_5b0ea")
 shader_parameter/shake_block_size = 10.0
 shader_parameter/shake_power = 0.02
 shader_parameter/shake_speed = 1.5
 shader_parameter/stop_y = 0.65
+shader_parameter/time_offset = 0.0
 
-[node name="Tree1" type="Node2D"]
+[node name="Tree1" type="Sprite2D"]
+material = SubResource("ShaderMaterial_ci532")
 position = Vector2(2, -56)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
-material = SubResource("ShaderMaterial_0idsm")
 texture = ExtResource("1_6ltj8")
