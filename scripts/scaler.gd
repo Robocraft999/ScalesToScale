@@ -17,7 +17,7 @@ var new_scale     := Vector2.ONE
 
 var scaleTween: Tween
 var positionTween: Tween
-var sprite_recp_tween: Tween
+var sprite_rect_tween: Tween
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,22 +26,17 @@ func _ready() -> void:
 	line.default_color = Color.DARK_BLUE
 	scaleTween = create_tween()
 	positionTween = create_tween()
-	sprite_recp_tween = create_tween()
+	sprite_rect_tween = create_tween()
 	scaleTween.tween_interval(0.1)
 	positionTween.tween_interval(0.1)
-	sprite_recp_tween.tween_interval(0.1)
+	sprite_rect_tween.tween_interval(0.1)
 	scaleTween.stop()
 	positionTween.stop()
-	sprite_recp_tween.stop()
+	sprite_rect_tween.stop()
 	
 	if target_offset != Vector2.ZERO:
 		calculate_new_scale()
 		try_scale()
-	#line.z_index = 5
-	#parent.mouse_entered.connect(func(): editing = true)
-	#parent.mouse_exited.connect(func(): editing = false)
-	#parent.mouse_shape_exited.connect(func(_idx): print("t"))
-	#parent.input_event.connect(func(viewport, event, idx): print(event))
 
 func is_tweening():
 	return scaleTween.is_running() or positionTween.is_running()
@@ -112,6 +107,7 @@ func _physics_process(delta: float) -> void:
 	# Don't distort the sprite, it's in tiling mode anyway
 	sprite.global_scale = Vector2.ONE
 	calculate_reach_box()
+	$BoxOverlay.visible = Input.is_action_pressed("toggle_reach_box")
 	#sprite.region_rect.size = sprite_region_size * new_scale
 	
 
@@ -183,8 +179,8 @@ func scale_objects(new_position):
 	scaleTween.tween_property(parent, "scale", new_scale, .2)
 	positionTween = create_tween()
 	positionTween.set_ease(Tween.EASE_OUT).tween_property(parent, "position", parent.position + new_position, .1)
-	sprite_recp_tween = create_tween()
-	sprite_recp_tween.tween_property(sprite, "region_rect:size", sprite_region_size * new_scale, .2)
+	sprite_rect_tween = create_tween()
+	sprite_rect_tween.tween_property(sprite, "region_rect:size", sprite_region_size * new_scale, .2)
 	#create_tween().tween_property(region_rect, "size", sprite_region_size * new_scale, 0.2)
 	#parent.scale = new_scale
 	
