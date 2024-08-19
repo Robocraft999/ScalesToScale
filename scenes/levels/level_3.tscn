@@ -1,0 +1,155 @@
+[gd_scene load_steps=13 format=4 uid="uid://ddgfqgv1xxb7b"]
+
+[ext_resource type="Script" path="res://scripts/levels/level_3.gd" id="1_18opy"]
+[ext_resource type="PackedScene" uid="uid://2dj1d442mvd5" path="res://scenes/basic_level.tscn" id="1_iq124"]
+[ext_resource type="TileSet" uid="uid://p75osdbfaruv" path="res://resources/test_tile_set.tres" id="2_fetoa"]
+[ext_resource type="PackedScene" uid="uid://vy0hwr3ojkhq" path="res://scenes/objects/dragon_flag.tscn" id="3_0rc36"]
+[ext_resource type="PackedScene" uid="uid://bnt67b4wf47qu" path="res://scenes/objects/player.tscn" id="4_1c4qi"]
+[ext_resource type="Script" path="res://scripts/shaker_animator.gd" id="5_be1d2"]
+[ext_resource type="Script" path="res://scripts/end_animator.gd" id="6_6f65b"]
+[ext_resource type="Script" path="res://scripts/better_camera.gd" id="7_ownk0"]
+[ext_resource type="Script" path="res://scripts/shaker.gd" id="8_vfh38"]
+
+[sub_resource type="Animation" id="Animation_or4v1"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EditableLevel/Player:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(255, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EditableLevel/Player:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(161, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EditableLevel/IntroAnimation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_gymx7"]
+resource_name = "enter_animation"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EditableLevel/Player:allow_movement")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.86667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EditableLevel/Player:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(255, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1.96667)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EditableLevel/Player:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 161, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(-0.0333333, 1.96667)
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EditableLevel/ShakerAnimator")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"start_animation_finished"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7rhjm"]
+_data = {
+"RESET": SubResource("Animation_or4v1"),
+"enter_animation": SubResource("Animation_gymx7")
+}
+
+[node name="Level 3" type="Node2D"]
+script = ExtResource("1_18opy")
+
+[node name="BasicLevel" parent="." instance=ExtResource("1_iq124")]
+
+[node name="EditableLevel" type="Node" parent="."]
+
+[node name="BGLayer" type="TileMapLayer" parent="EditableLevel"]
+tile_map_data = PackedByteArray("AAAKABQAAAAIAAMAAAAKABMAAAAIAAIAAAAdABQAAAAKAAMAAAAdABMAAAAKAAIAAAAdABIAAAAKAAIAAAAdABEAAAAKAAIAAAAdABAAAAAKAAIAAAAdAA8AAAAKAAIAAAAdAA4AAAAKAAIAAAAdAA0AAAAKAAIAAAAdAAwAAAAKAAIAAAAdAAsAAAAKAAEAAAAcABQAAAAJAAMAAAAcABMAAAAJAAIAAAAcABIAAAAJAAIAAAAcABEAAAAJAAIAAAAcABAAAAAJAAIAAAAcAA8AAAAJAAIAAAAcAA4AAAAJAAIAAAAcAA0AAAAJAAIAAAAcAAwAAAAJAAIAAAAcAAsAAAANAAQAAAAbABQAAAAJAAMAAAAbABMAAAAJAAIAAAAbABIAAAAJAAIAAAAbABEAAAAJAAIAAAAbABAAAAAJAAIAAAAbAA8AAAAJAAIAAAAbAA4AAAAJAAIAAAAbAA0AAAAJAAIAAAAbAAwAAAAJAAIAAAAbAAsAAAAJAAEAAAAaABQAAAAJAAMAAAAaABMAAAAJAAIAAAAaABIAAAAJAAIAAAAaABEAAAAJAAIAAAAaABAAAAAJAAIAAAAaAA8AAAAJAAIAAAAaAA4AAAAJAAIAAAAaAA0AAAAJAAIAAAAaAAwAAAAJAAIAAAAaAAsAAAAJAAEAAAAZABQAAAAJAAMAAAAZABMAAAAJAAIAAAAZABIAAAAJAAIAAAAZABEAAAAJAAIAAAAZABAAAAAJAAIAAAAZAA8AAAAJAAIAAAAZAA4AAAAJAAIAAAAZAA0AAAAJAAIAAAAZAAwAAAAJAAIAAAAZAAsAAAAJAAEAAAAYABQAAAAJAAMAAAAYABMAAAAJAAIAAAAYABIAAAAJAAIAAAAYABEAAAAJAAIAAAAYABAAAAAJAAIAAAAYAA8AAAAJAAIAAAAYAA4AAAAJAAIAAAAYAA0AAAAJAAIAAAAYAAwAAAAJAAIAAAAYAAsAAAANAAQAAAAXABQAAAAJAAMAAAAXABMAAAAJAAIAAAAXABIAAAAJAAIAAAAXABEAAAAJAAIAAAAXABAAAAAJAAIAAAAXAA8AAAAJAAIAAAAXAA4AAAAJAAIAAAAXAA0AAAAJAAIAAAAXAAwAAAAJAAIAAAAXAAsAAAAJAAEAAAAWABQAAAAJAAMAAAAWABMAAAAJAAIAAAAWABIAAAAJAAIAAAAWABEAAAAJAAIAAAAWABAAAAAJAAIAAAAWAA8AAAAJAAIAAAAWAA4AAAAJAAIAAAAWAA0AAAAJAAIAAAAWAAwAAAAJAAIAAAAWAAsAAAAJAAEAAAAVABQAAAAJAAMAAAAVABMAAAAJAAIAAAAVABIAAAAJAAIAAAAVABEAAAAJAAIAAAAVABAAAAAJAAIAAAAVAA8AAAAJAAIAAAAVAA4AAAAJAAIAAAAVAA0AAAAJAAIAAAAVAAwAAAAJAAIAAAAVAAsAAAAJAAEAAAAUABQAAAAJAAMAAAAUABMAAAAJAAIAAAAUABIAAAAJAAIAAAAUABEAAAAJAAIAAAAUABAAAAAJAAIAAAAUAA8AAAAJAAIAAAAUAA4AAAAJAAIAAAAUAA0AAAAJAAIAAAAUAAwAAAAJAAIAAAAUAAsAAAANAAQAAAATABQAAAAJAAMAAAATABMAAAAJAAIAAAATABIAAAAJAAIAAAATABEAAAAJAAIAAAATABAAAAAJAAIAAAATAA8AAAAJAAIAAAATAA4AAAAJAAIAAAATAA0AAAAJAAIAAAATAAwAAAAJAAIAAAATAAsAAAAJAAEAAAASABQAAAAJAAMAAAASABMAAAAJAAIAAAASABIAAAAJAAIAAAASABEAAAAJAAIAAAASABAAAAAJAAIAAAASAA8AAAAJAAIAAAASAA4AAAAJAAIAAAASAA0AAAAJAAIAAAASAAwAAAAJAAIAAAASAAsAAAANAAQAAAARABQAAAAJAAMAAAARABMAAAAJAAIAAAARABIAAAAJAAIAAAARABEAAAAJAAIAAAARABAAAAAJAAIAAAARAA8AAAAJAAIAAAARAA4AAAAJAAIAAAARAA0AAAAJAAIAAAARAAwAAAAJAAIAAAARAAsAAAANAAQAAAAQABQAAAAJAAMAAAAQABMAAAAJAAIAAAAQABIAAAAJAAIAAAAQABEAAAAJAAIAAAAQABAAAAAJAAIAAAAQAA8AAAAJAAIAAAAQAA4AAAAJAAIAAAAQAA0AAAAJAAIAAAAQAAwAAAAJAAIAAAAQAAsAAAANAAQAAAAPABQAAAAJAAMAAAAPABMAAAAJAAIAAAAPABIAAAAJAAIAAAAPABEAAAAJAAIAAAAPABAAAAAJAAIAAAAPAA8AAAAJAAIAAAAPAA4AAAAJAAIAAAAPAA0AAAAJAAIAAAAPAAwAAAAJAAIAAAAPAAsAAAAJAAEAAAAOABQAAAAJAAMAAAAOABMAAAAJAAIAAAAOABIAAAAJAAIAAAAOABEAAAAJAAIAAAAOABAAAAAJAAIAAAAOAA8AAAAJAAIAAAAOAA4AAAAJAAIAAAAOAA0AAAAJAAIAAAAOAAwAAAAJAAIAAAAOAAsAAAANAAQAAAANABQAAAAJAAMAAAANABMAAAAJAAIAAAANABIAAAAJAAIAAAANABEAAAAJAAIAAAANABAAAAAJAAIAAAANAA8AAAAJAAIAAAANAA4AAAAJAAIAAAANAA0AAAAJAAIAAAANAAwAAAAJAAIAAAANAAsAAAAJAAEAAAAMABQAAAAJAAMAAAAMABMAAAAJAAIAAAAMABIAAAAJAAIAAAAMABEAAAAJAAIAAAAMABAAAAAJAAIAAAAMAA8AAAAJAAIAAAAMAA4AAAAJAAIAAAAMAA0AAAAJAAIAAAAMAAwAAAAJAAIAAAAMAAsAAAANAAQAAAALABQAAAAJAAMAAAALABMAAAAJAAIAAAALABIAAAAJAAIAAAALABEAAAAJAAIAAAALABAAAAAJAAIAAAALAA8AAAAJAAIAAAALAA4AAAAJAAIAAAALAA0AAAAJAAIAAAALAAwAAAAJAAIAAAALAAsAAAANAAQAAAAKABIAAAAIAAIAAAAKABEAAAAIAAIAAAAKABAAAAAIAAIAAAAKAA8AAAAIAAIAAAAKAA4AAAAIAAIAAAAKAA0AAAAIAAIAAAAKAAwAAAAIAAIAAAAKAAsAAAAIAAEAAAA=")
+tile_set = ExtResource("2_fetoa")
+
+[node name="FGLayer" type="TileMapLayer" parent="EditableLevel"]
+tile_set = ExtResource("2_fetoa")
+collision_enabled = false
+
+[node name="DragonFlag" parent="EditableLevel" instance=ExtResource("3_0rc36")]
+unique_name_in_owner = true
+position = Vector2(758, 323)
+
+[node name="Player" parent="EditableLevel" instance=ExtResource("4_1c4qi")]
+unique_name_in_owner = true
+position = Vector2(255, 161)
+allow_movement = false
+
+[node name="IntroAnimation" type="AnimationPlayer" parent="EditableLevel"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_7rhjm")
+}
+autoplay = "enter_animation"
+
+[node name="ShakerAnimator" type="Node" parent="EditableLevel"]
+script = ExtResource("5_be1d2")
+
+[node name="EndAnimator" type="Node" parent="EditableLevel"]
+script = ExtResource("6_6f65b")
+
+[node name="Camera2D" type="Camera2D" parent="EditableLevel" node_paths=PackedStringArray("follow_node")]
+physics_interpolation_mode = 1
+position = Vector2(256, 1.24965)
+position_smoothing_enabled = true
+script = ExtResource("7_ownk0")
+follow_node = NodePath("../Player")
+
+[node name="CameraShaker" type="Node2D" parent="EditableLevel/Camera2D"]
+unique_name_in_owner = true
+position = Vector2(-256, -1.24965)
+script = ExtResource("8_vfh38")
+property_name = &"offset"
