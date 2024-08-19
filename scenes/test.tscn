@@ -52,7 +52,7 @@ collision_enabled = false
 [node name="Collectible" parent="ScaleScale" instance=ExtResource("3_h7wox")]
 
 [node name="ScalableBox" type="CharacterBody2D" parent="."]
-position = Vector2(63, 149)
+position = Vector2(25, 153)
 collision_mask = 3
 input_pickable = true
 metadata/_edit_group_ = true
@@ -68,9 +68,10 @@ region_enabled = true
 region_rect = Rect2(0, 0, 14, 14)
 
 [node name="Scaler" parent="ScalableBox" instance=ExtResource("7_xs4ma")]
+MAX_SCALE = Vector2(4, 7)
 
 [node name="Player" parent="." instance=ExtResource("4_j0igw")]
-position = Vector2(48, 142)
+position = Vector2(95, 61)
 floor_max_angle = 0.261799
 
 [node name="Label" type="Label" parent="."]

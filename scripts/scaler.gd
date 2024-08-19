@@ -191,9 +191,14 @@ func scale_objects(new_position):
 func calculate_reach_box():
 	var box: Sprite2D = $BoxOverlay
 	box.global_scale = MAX_SCALE
-	if get_parent().get_children().any(func(node): return node is WallGlue):
-		var glue: WallGlue = get_parent().find_children("*", "WallGlue")[0]
-		var dir = glue.direction.normalized() * -1
+	var dir = Vector2.UP
+	if get_parent().get_children().any(func(node): return node is WallGlue) or test_move(dir * box.get_rect().size * -1):
+		var glues = get_parent().find_children("*", "WallGlue")
+		if glues.size() > 0:
+			var glue: WallGlue = glues[0]
+			var glue_dir = glue.direction.normalized() * -1
+			if glue_dir != dir:
+				dir += glue_dir
 		
 		var current_box_count = Global.lerp(Vector2.ONE, MAX_SCALE, target_offset) - Vector2.ONE
 		var max_box_count = MAX_SCALE - Vector2.ONE
