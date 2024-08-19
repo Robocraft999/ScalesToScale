@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://ciq75ixk4ccpe"]
+[gd_scene load_steps=27 format=4 uid="uid://ciq75ixk4ccpe"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_2.gd" id="1_japu3"]
 [ext_resource type="PackedScene" uid="uid://2dj1d442mvd5" path="res://scenes/basic_level.tscn" id="2_51tnq"]
@@ -12,6 +12,11 @@
 [ext_resource type="Texture2D" uid="uid://cpmv4oo5l0bfv" path="res://sprites/scaleobstacle_small.png" id="10_5ghpu"]
 [ext_resource type="PackedScene" uid="uid://dce48rt84l5ft" path="res://scenes/objects/scaler.tscn" id="11_02gak"]
 [ext_resource type="Script" path="res://scripts/wall_glue.gd" id="12_gms23"]
+[ext_resource type="PackedScene" uid="uid://cd0nnnr24upi4" path="res://scenes/objects/bush/bush_1.tscn" id="13_7dqb6"]
+[ext_resource type="PackedScene" uid="uid://bvj81idj6vou2" path="res://scenes/objects/trees/tree_1.tscn" id="13_esdff"]
+[ext_resource type="PackedScene" uid="uid://rn1x6aqbaxkt" path="res://scenes/objects/bush/bush_2.tscn" id="14_63txi"]
+[ext_resource type="PackedScene" uid="uid://g44yhmgiuyfg" path="res://scenes/objects/trees/tree_3.tscn" id="14_toigy"]
+[ext_resource type="PackedScene" uid="uid://b838jctkyqalv" path="res://scenes/objects/trees/tree_2.tscn" id="17_g3e4v"]
 
 [sub_resource type="Animation" id="Animation_w4hg0"]
 length = 0.001
@@ -186,6 +191,104 @@ size = Vector2(56, 48)
 
 [node name="Level 2" type="Node2D"]
 script = ExtResource("1_japu3")
+
+[node name="Flora" type="Node2D" parent="."]
+
+[node name="Tree1" parent="Flora" instance=ExtResource("13_esdff")]
+position = Vector2(853, 251)
+
+[node name="Tree6" parent="Flora" instance=ExtResource("14_toigy")]
+position = Vector2(181, 293)
+
+[node name="Bush1" parent="Flora" instance=ExtResource("13_7dqb6")]
+position = Vector2(10, 317)
+
+[node name="Bush4" parent="Flora" instance=ExtResource("13_7dqb6")]
+position = Vector2(405, 395)
+
+[node name="Bush5" parent="Flora" instance=ExtResource("13_7dqb6")]
+position = Vector2(439, 402)
+
+[node name="Bush6" parent="Flora" instance=ExtResource("13_7dqb6")]
+position = Vector2(532, 398)
+
+[node name="Bush7" parent="Flora" instance=ExtResource("13_7dqb6")]
+position = Vector2(471, 393)
+
+[node name="Bush20" parent="Flora" instance=ExtResource("13_7dqb6")]
+position = Vector2(869, 337)
+
+[node name="Bush23" parent="Flora" instance=ExtResource("13_7dqb6")]
+position = Vector2(962, 345)
+
+[node name="Bush24" parent="Flora" instance=ExtResource("13_7dqb6")]
+position = Vector2(1190, 337)
+
+[node name="Bush21" parent="Flora" instance=ExtResource("13_7dqb6")]
+position = Vector2(1250, 333)
+
+[node name="Bush22" parent="Flora" instance=ExtResource("13_7dqb6")]
+position = Vector2(1520, 108)
+
+[node name="Bush8" parent="Flora" instance=ExtResource("13_7dqb6")]
+position = Vector2(502, 414)
+
+[node name="Bush3" parent="Flora" instance=ExtResource("13_7dqb6")]
+position = Vector2(-76, 127)
+
+[node name="Bush2" parent="Flora" instance=ExtResource("14_63txi")]
+position = Vector2(32, 324)
+
+[node name="Bush9" parent="Flora" instance=ExtResource("14_63txi")]
+position = Vector2(933, 331)
+
+[node name="Bush10" parent="Flora" instance=ExtResource("13_7dqb6")]
+position = Vector2(221, 391)
+
+[node name="Bush11" parent="Flora" instance=ExtResource("13_7dqb6")]
+position = Vector2(253, 382)
+
+[node name="Bush12" parent="Flora" instance=ExtResource("14_63txi")]
+position = Vector2(284, 389)
+
+[node name="Bush13" parent="Flora" instance=ExtResource("13_7dqb6")]
+position = Vector2(221, 391)
+
+[node name="Bush19" parent="Flora" instance=ExtResource("13_7dqb6")]
+position = Vector2(654, 363)
+
+[node name="Bush14" parent="Flora" instance=ExtResource("13_7dqb6")]
+position = Vector2(253, 382)
+
+[node name="Bush16" parent="Flora" instance=ExtResource("14_63txi")]
+position = Vector2(345, 390)
+
+[node name="Bush17" parent="Flora" instance=ExtResource("13_7dqb6")]
+position = Vector2(282, 392)
+
+[node name="Bush18" parent="Flora" instance=ExtResource("13_7dqb6")]
+position = Vector2(314, 383)
+
+[node name="Bush15" parent="Flora" instance=ExtResource("14_63txi")]
+position = Vector2(284, 389)
+
+[node name="Tree2" parent="Flora" instance=ExtResource("13_esdff")]
+position = Vector2(1427, 171)
+
+[node name="Tree3" parent="Flora" instance=ExtResource("17_g3e4v")]
+position = Vector2(-41, 67)
+
+[node name="Tree5" parent="Flora" instance=ExtResource("17_g3e4v")]
+position = Vector2(69, 258)
+
+[node name="Tree7" parent="Flora" instance=ExtResource("17_g3e4v")]
+position = Vector2(362, 229)
+
+[node name="Tree8" parent="Flora" instance=ExtResource("17_g3e4v")]
+position = Vector2(760, 219)
+
+[node name="Tree4" parent="Flora" instance=ExtResource("17_g3e4v")]
+position = Vector2(29, 246)
 
 [node name="BasicLevel" parent="." instance=ExtResource("2_51tnq")]
 

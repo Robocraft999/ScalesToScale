@@ -399,19 +399,19 @@ target_offset = Vector2(0, 1)
 [node name="Foliage" type="Node" parent="."]
 
 [node name="Tree2" parent="Foliage" instance=ExtResource("17_amrwk")]
-position = Vector2(1333, -160)
+position = Vector2(1332, -256)
 
 [node name="Tree1" parent="Foliage" instance=ExtResource("18_3g47m")]
-position = Vector2(-190, -49)
+position = Vector2(-189, -104)
 
 [node name="Tree3" parent="Foliage" instance=ExtResource("18_3g47m")]
-position = Vector2(972, 80)
+position = Vector2(973, 25)
 
 [node name="Tree5" parent="Foliage" instance=ExtResource("18_3g47m")]
-position = Vector2(990, 351)
+position = Vector2(991, 296)
 
 [node name="Tree4" parent="Foliage" instance=ExtResource("17_amrwk")]
-position = Vector2(1210, 64)
+position = Vector2(1195, -32)
 
 [node name="VerticalExplanationTriggerArea" type="Area2D" parent="."]
 position = Vector2(704, -480)
