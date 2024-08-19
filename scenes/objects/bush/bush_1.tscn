@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cd0nnnr24upi4"]
+
+[ext_resource type="Shader" path="res://shaders/wind.gdshader" id="1_5k34j"]
+[ext_resource type="Texture2D" uid="uid://d24c52oemsoj6" path="res://sprites/bush/bush_1.png" id="2_heh6d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kqdbp"]
+shader = ExtResource("1_5k34j")
+shader_parameter/shake_block_size = 8.0
+shader_parameter/shake_power = 0.025
+shader_parameter/shake_speed = 2.0
+shader_parameter/stop_y = 0.8
+shader_parameter/time_offset = 0.0
+
+[node name="Bush1" type="Sprite2D"]
+material = SubResource("ShaderMaterial_kqdbp")
+position = Vector2(0, -24)
+texture = ExtResource("2_heh6d")
