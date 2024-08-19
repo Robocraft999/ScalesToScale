@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://g44yhmgiuyfg"]
+
+[ext_resource type="Shader" path="res://shaders/wind.gdshader" id="1_wgfb2"]
+[ext_resource type="Texture2D" uid="uid://duraggflap5lb" path="res://sprites/trees/tree_3.png" id="2_e68p2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_852ry"]
+shader = ExtResource("1_wgfb2")
+shader_parameter/shake_block_size = 5.0
+shader_parameter/shake_power = 0.02
+shader_parameter/shake_speed = 1.5
+shader_parameter/stop_y = 0.65
+shader_parameter/time_offset = 0.0
+
+[node name="Tree3" type="Sprite2D"]
+material = SubResource("ShaderMaterial_852ry")
+position = Vector2(0, -48)
+texture = ExtResource("2_e68p2")
