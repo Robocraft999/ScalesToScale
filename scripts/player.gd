@@ -11,8 +11,8 @@ signal landed_on_floor(impact_velocity: Vector2)
 
 @export_category("Speed, Velocity, Physics")
 @export var SPEED = 150.0
-@export var JUMP_VELOCITY = -300.0
-@export var DOUBLE_JUMP_VELOCITY = -250.0
+@export var JUMP_VELOCITY = -350.0
+@export var DOUBLE_JUMP_VELOCITY = -350.0
 
 @export_category("Jump timings")
 # How long the jump will be bufferedda

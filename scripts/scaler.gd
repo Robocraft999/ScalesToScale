@@ -4,7 +4,7 @@ var editing := false
 
 @export var MAX_SCALE = Vector2(5.0, 5.0)
 
-var target_offset := Vector2.ZERO
+@export var target_offset := Vector2.ZERO
 var current_offset = target_offset
 var new_scale     := Vector2.ONE
 
@@ -33,6 +33,10 @@ func _ready() -> void:
 	scaleTween.stop()
 	positionTween.stop()
 	sprite_recp_tween.stop()
+	
+	if target_offset != Vector2.ZERO:
+		calculate_new_scale()
+		try_scale()
 	#line.z_index = 5
 	#parent.mouse_entered.connect(func(): editing = true)
 	#parent.mouse_exited.connect(func(): editing = false)
@@ -41,6 +45,9 @@ func _ready() -> void:
 
 func is_tweening():
 	return scaleTween.is_running() or positionTween.is_running()
+
+func calculate_new_scale():
+	new_scale = Global.lerp(Vector2.ONE, MAX_SCALE, target_offset)
 
 func _physics_process(delta: float) -> void:
 	# if mouse is in body
@@ -83,11 +90,12 @@ func _physics_process(delta: float) -> void:
 			# Absolute target scale
 			
 			# Don't use vector lerp
-			new_scale = Global.lerp(Vector2.ONE, MAX_SCALE, target_offset)
+			
+			calculate_new_scale()
 			
 			try_scale()
 			
-			new_scale = Global.lerp(Vector2.ONE, MAX_SCALE, target_offset)
+			calculate_new_scale()
 	else:
 		# Hide all arrows if the box is not focused
 		$yArrow.visible = false
