@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://benlouuyuswqh"]
+[gd_scene load_steps=14 format=3 uid="uid://ce2xe5ht62br0"]
 
 [ext_resource type="Script" path="res://scripts/checkpoint.gd" id="1_hn4gf"]
 [ext_resource type="Texture2D" uid="uid://v6ntbp4x6xtn" path="res://sprites/flags/flag_checkpoint.png" id="2_u0oll"]
