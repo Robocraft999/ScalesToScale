@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://2dj1d442mvd5"]
+[gd_scene load_steps=9 format=3 uid="uid://2dj1d442mvd5"]
 
 [ext_resource type="PackedScene" uid="uid://bb53neelkiux7" path="res://scenes/parallax_background.tscn" id="1_d14oh"]
 [ext_resource type="PackedScene" uid="uid://4ot2rbv3j22q" path="res://scenes/objects/restart_button.tscn" id="2_i0t8j"]
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="3_g0bjy"]
 [ext_resource type="PackedScene" uid="uid://dcnk5ak1x2etg" path="res://scenes/objects/button_focus_player.tscn" id="3_jadun"]
 [ext_resource type="Script" path="res://scripts/animated_button.gd" id="4_581hl"]
+[ext_resource type="Texture2D" uid="uid://dswv4u67mo6it" path="res://sprites/progress_bars/progress bar medium rounded over.png" id="5_fmpp3"]
+[ext_resource type="Texture2D" uid="uid://u7lqb704i552" path="res://sprites/progress_bars/progress bar medium rounded progress green.png" id="6_n0yw7"]
+[ext_resource type="Script" path="res://scripts/dash_bar.gd" id="7_bsss4"]
 
 [node name="BasicLevel" type="Node"]
 
@@ -44,6 +47,17 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 10
 text = "Exit Game"
 script = ExtResource("4_581hl")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer"]
+visible = false
+offset_left = 20.0
+offset_top = 21.0
+offset_right = 60.0
+offset_bottom = 61.0
+scale = Vector2(3, 3)
+texture_over = ExtResource("5_fmpp3")
+texture_progress = ExtResource("6_n0yw7")
+script = ExtResource("7_bsss4")
 
 [node name="ButtonFocusPlayer" parent="." instance=ExtResource("3_jadun")]
 unique_name_in_owner = true
