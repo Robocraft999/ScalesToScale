@@ -1,7 +1,8 @@
-[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://p75osdbfaruv"]
+[gd_resource type="TileSet" load_steps=15 format=3 uid="uid://p75osdbfaruv"]
 
 [ext_resource type="Texture2D" uid="uid://jsqanghxckw6" path="res://icon.svg" id="1_bk2hu"]
 [ext_resource type="Texture2D" uid="uid://cpk5bxge5oqdj" path="res://sprites/tileset.png" id="1_gpt2u"]
+[ext_resource type="PackedScene" uid="uid://dv3ioqvuql3b6" path="res://scenes/objects/spikes.tscn" id="2_ico4v"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_v1413"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -559,6 +560,9 @@ texture = ExtResource("1_gpt2u")
 10:9/0/terrains_peering_bit/top_side = 2
 10:9/0/terrains_peering_bit/top_right_corner = 2
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_xy4ee"]
+scenes/1/scene = ExtResource("2_ico4v")
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_66jif"]
 texture = ExtResource("1_bk2hu")
 0:0/0 = 0
@@ -702,3 +706,4 @@ terrain_set_0/terrain_2/name = "cave"
 terrain_set_0/terrain_2/color = Color(0.238697, 0.461253, 0.841506, 1)
 sources/2 = SubResource("TileSetAtlasSource_66jif")
 sources/0 = SubResource("TileSetAtlasSource_x1vi6")
+sources/1 = SubResource("TileSetScenesCollectionSource_xy4ee")
