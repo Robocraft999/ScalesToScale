@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://dxvd3l4abx3td"]
+[gd_scene load_steps=33 format=4 uid="uid://dxvd3l4abx3td"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_5.gd" id="1_ekgxq"]
 [ext_resource type="PackedScene" uid="uid://2dj1d442mvd5" path="res://scenes/basic_level.tscn" id="1_o445r"]
@@ -11,10 +11,11 @@
 [ext_resource type="Script" path="res://scripts/better_camera.gd" id="7_0sb1t"]
 [ext_resource type="PackedScene" uid="uid://rn1x6aqbaxkt" path="res://scenes/objects/bush/bush_2.tscn" id="7_rfqpg"]
 [ext_resource type="Script" path="res://scripts/shaker.gd" id="8_lmbls"]
-[ext_resource type="PackedScene" uid="uid://dtpmrs3m7ssao" path="res://scenes/objects/mover.tscn" id="10_g0o2x"]
-[ext_resource type="PackedScene" path="res://scenes/objects/spikes_double.tscn" id="11_u34i0"]
+[ext_resource type="PackedScene" uid="uid://cr6mcdmp0xpd0" path="res://scenes/objects/cave_spikes/cave_spike_1.tscn" id="8_msj02"]
+[ext_resource type="PackedScene" path="res://scenes/objects/mover.tscn" id="10_g0o2x"]
+[ext_resource type="PackedScene" uid="uid://d30c1xil35ay" path="res://scenes/objects/spikes_double.tscn" id="11_u34i0"]
 [ext_resource type="PackedScene" uid="uid://cvg3yiw0w3rjb" path="res://scenes/objects/collectible.tscn" id="13_pbvee"]
-[ext_resource type="PackedScene" path="res://scenes/objects/checkpoint.tscn" id="13_sm4tl"]
+[ext_resource type="PackedScene" uid="uid://ce2xe5ht62br0" path="res://scenes/objects/checkpoint.tscn" id="13_sm4tl"]
 [ext_resource type="Script" path="res://scripts/single-use/time_scale_unlocker.gd" id="14_8bfoi"]
 [ext_resource type="Texture2D" uid="uid://cpmv4oo5l0bfv" path="res://sprites/scaleobstacle_small.png" id="15_fxouk"]
 [ext_resource type="PackedScene" uid="uid://dce48rt84l5ft" path="res://scenes/objects/scaler.tscn" id="16_onk60"]
@@ -157,11 +158,29 @@ position = Vector2(464, 240)
 [node name="Tree1" parent="EditableLevel/BackgroundFlora" instance=ExtResource("20_sai7r")]
 position = Vector2(-290, 281)
 
+[node name="Tree14" parent="EditableLevel/BackgroundFlora" instance=ExtResource("20_sai7r")]
+position = Vector2(144, 244)
+
+[node name="Tree15" parent="EditableLevel/BackgroundFlora" instance=ExtResource("20_sai7r")]
+position = Vector2(144, 244)
+
 [node name="Tree2" parent="EditableLevel/BackgroundFlora" instance=ExtResource("20_sai7r")]
-position = Vector2(145, 331)
+position = Vector2(161, 349)
 
 [node name="Tree4" parent="EditableLevel/BackgroundFlora" instance=ExtResource("22_ecq6u")]
-position = Vector2(-429, -128)
+position = Vector2(-434, -117)
+
+[node name="Tree12" parent="EditableLevel/BackgroundFlora" instance=ExtResource("22_ecq6u")]
+position = Vector2(171, 220)
+
+[node name="Tree16" parent="EditableLevel/BackgroundFlora" instance=ExtResource("22_ecq6u")]
+position = Vector2(795, 223)
+
+[node name="Tree17" parent="EditableLevel/BackgroundFlora" instance=ExtResource("22_ecq6u")]
+position = Vector2(867, 184)
+
+[node name="Tree13" parent="EditableLevel/BackgroundFlora" instance=ExtResource("22_ecq6u")]
+position = Vector2(308, 212)
 
 [node name="Tree5" parent="EditableLevel/BackgroundFlora" instance=ExtResource("20_sai7r")]
 position = Vector2(-679, -666)
@@ -192,17 +211,66 @@ position = Vector2(1040, -283)
 position = Vector2(917, 574)
 
 [node name="Bush7" parent="EditableLevel/BackgroundFlora" instance=ExtResource("3_bxgh8")]
-position = Vector2(614.846, 494.818)
+position = Vector2(593, 477)
+
+[node name="Bush8" parent="EditableLevel/BackgroundFlora" instance=ExtResource("3_bxgh8")]
+position = Vector2(622, 494)
+
+[node name="Bush9" parent="EditableLevel/BackgroundFlora" instance=ExtResource("3_bxgh8")]
+position = Vector2(639, 298)
+
+[node name="Bush10" parent="EditableLevel/BackgroundFlora" instance=ExtResource("3_bxgh8")]
+position = Vector2(816, 287)
+
+[node name="Bush11" parent="EditableLevel/BackgroundFlora" instance=ExtResource("3_bxgh8")]
+position = Vector2(509, 254)
+
+[node name="Bush12" parent="EditableLevel/BackgroundFlora" instance=ExtResource("3_bxgh8")]
+position = Vector2(479, 278)
+
+[node name="Bush13" parent="EditableLevel/BackgroundFlora" instance=ExtResource("3_bxgh8")]
+position = Vector2(259, 311)
+
+[node name="Bush14" parent="EditableLevel/BackgroundFlora" instance=ExtResource("3_bxgh8")]
+position = Vector2(82, 288)
+
+[node name="Bush15" parent="EditableLevel/BackgroundFlora" instance=ExtResource("3_bxgh8")]
+position = Vector2(-361, 300)
+
+[node name="Bush16" parent="EditableLevel/BackgroundFlora" instance=ExtResource("3_bxgh8")]
+position = Vector2(-384, 281)
+
+[node name="Bush17" parent="EditableLevel/BackgroundFlora" instance=ExtResource("3_bxgh8")]
+position = Vector2(-274, 325)
+
+[node name="Bush18" parent="EditableLevel/BackgroundFlora" instance=ExtResource("3_bxgh8")]
+position = Vector2(-193, 292)
 
 [node name="Tree9" parent="EditableLevel/BackgroundFlora" instance=ExtResource("20_sai7r")]
-position = Vector2(732, 684)
+position = Vector2(724, 695)
 
 [node name="Tree10" parent="EditableLevel/BackgroundFlora" instance=ExtResource("22_ecq6u")]
-position = Vector2(440, 516)
+position = Vector2(447, 472)
+rotation = -3.14159
+
+[node name="Tree18" parent="EditableLevel/BackgroundFlora" instance=ExtResource("22_ecq6u")]
+position = Vector2(384, 450)
 rotation = -3.14159
 
 [node name="Tree11" parent="EditableLevel/BackgroundFlora" instance=ExtResource("19_qwfic")]
 position = Vector2(106, 577)
+
+[node name="CaveSpike1" parent="EditableLevel/BackgroundFlora" instance=ExtResource("8_msj02")]
+position = Vector2(317, 529)
+scale = Vector2(1, -1)
+
+[node name="CaveSpike2" parent="EditableLevel/BackgroundFlora" instance=ExtResource("8_msj02")]
+position = Vector2(632, 577)
+scale = Vector2(1, -1)
+
+[node name="CaveSpike3" parent="EditableLevel/BackgroundFlora" instance=ExtResource("8_msj02")]
+position = Vector2(432, 624)
+scale = Vector2(1, -1)
 
 [node name="Player" parent="EditableLevel" instance=ExtResource("4_ws0kx")]
 unique_name_in_owner = true
@@ -212,7 +280,19 @@ allow_movement = false
 [node name="ForegroundFlora" type="Node" parent="EditableLevel"]
 
 [node name="Bush5" parent="EditableLevel/ForegroundFlora" instance=ExtResource("3_bxgh8")]
-position = Vector2(850.489, 652.062)
+position = Vector2(856, 651)
+
+[node name="Bush7" parent="EditableLevel/ForegroundFlora" instance=ExtResource("3_bxgh8")]
+position = Vector2(592, 729)
+
+[node name="Bush8" parent="EditableLevel/ForegroundFlora" instance=ExtResource("3_bxgh8")]
+position = Vector2(244, 647)
+
+[node name="Bush9" parent="EditableLevel/ForegroundFlora" instance=ExtResource("3_bxgh8")]
+position = Vector2(128, 613)
+
+[node name="Bush6" parent="EditableLevel/ForegroundFlora" instance=ExtResource("3_bxgh8")]
+position = Vector2(895, 620)
 
 [node name="Bush1" parent="EditableLevel/ForegroundFlora" instance=ExtResource("3_bxgh8")]
 position = Vector2(-375, 165)
@@ -228,7 +308,6 @@ tile_set = ExtResource("2_brvj7")
 metadata/_edit_lock_ = true
 
 [node name="FGLayer" type="TileMapLayer" parent="EditableLevel"]
-tile_map_data = PackedByteArray("AAAxAPr/AAABAAAAAAAwAPn/AAABAAAAAAAvAPn/AAABAAAAAAA=")
 tile_set = ExtResource("2_brvj7")
 collision_enabled = false
 metadata/_edit_lock_ = true
