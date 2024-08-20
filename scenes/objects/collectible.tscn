@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvg3yiw0w3rjb"]
+[gd_scene load_steps=6 format=3 uid="uid://cvg3yiw0w3rjb"]
 
 [ext_resource type="Script" path="res://scripts/collectible.gd" id="1_ealhe"]
+[ext_resource type="Texture2D" uid="uid://cxiv0eo25d11b" path="res://sprites/point light textures/point light texture-export 3.png" id="2_a4h0o"]
 [ext_resource type="Texture2D" uid="uid://loarm7an4wt3" path="res://resources/sprites/Collectible.png" id="2_c3rli"]
 [ext_resource type="PackedScene" uid="uid://o65fd7fxs2i7" path="res://scenes/objects/dragon_scale_sprite_2d.tscn" id="3_wpf3f"]
 
@@ -14,6 +15,13 @@ script = ExtResource("1_ealhe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_yli7k")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 6)
+color = Color(0.752521, 0.32985, 0, 1)
+energy = 0.25
+shadow_enabled = true
+texture = ExtResource("2_a4h0o")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false

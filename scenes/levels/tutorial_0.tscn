@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=4 uid="uid://bpn1x8cdvpmgd"]
+[gd_scene load_steps=22 format=4 uid="uid://bpn1x8cdvpmgd"]
 
 [ext_resource type="Script" path="res://scripts/levels/tutorial_0.gd" id="1_m43d6"]
 [ext_resource type="TileSet" uid="uid://p75osdbfaruv" path="res://resources/test_tile_set.tres" id="1_sjhpa"]
 [ext_resource type="PackedScene" uid="uid://bnt67b4wf47qu" path="res://scenes/objects/player.tscn" id="2_0echh"]
 [ext_resource type="PackedScene" uid="uid://vy0hwr3ojkhq" path="res://scenes/objects/dragon_flag.tscn" id="2_2k8pp"]
+[ext_resource type="Texture2D" uid="uid://dn5vj85qa1mnq" path="res://sprites/point light textures/point light texture-export 2t.png" id="2_gae2g"]
 [ext_resource type="PackedScene" uid="uid://2dj1d442mvd5" path="res://scenes/basic_level.tscn" id="2_y2b1i"]
 [ext_resource type="Texture2D" uid="uid://161ing63rdfs" path="res://sprites/keycap_right_arrow.png" id="5_10umm"]
 [ext_resource type="Texture2D" uid="uid://6h3oh0xecxoo" path="res://sprites/keycap_up_arrow.png" id="5_pmvrd"]
@@ -108,6 +109,10 @@ script = ExtResource("1_m43d6")
 
 [node name="BasicLevel" parent="." instance=ExtResource("2_y2b1i")]
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color(0.961299, 0.971183, 0.972387, 1)
+
 [node name="EditableLevel" type="Node" parent="."]
 
 [node name="DragonFlag" parent="EditableLevel" instance=ExtResource("2_2k8pp")]
@@ -160,6 +165,13 @@ position = Vector2(296, 224)
 [node name="Collectible" parent="EditableLevel" node_paths=PackedStringArray("type") instance=ExtResource("10_6yb1s")]
 position = Vector2(24, 228)
 type = NodePath("../..")
+
+[node name="PointLight2D2" type="PointLight2D" parent="EditableLevel/Collectible"]
+position = Vector2(0, 6)
+color = Color(0.752521, 0.32985, 0, 1)
+energy = 1.71
+shadow_enabled = true
+texture = ExtResource("2_gae2g")
 
 [node name="Tree2" type="Sprite2D" parent="."]
 position = Vector2(59, 287)
