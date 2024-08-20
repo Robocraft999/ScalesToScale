@@ -306,7 +306,7 @@ metadata/_edit_lock_ = true
 
 [node name="DragonFlag" parent="EditableLevel" instance=ExtResource("3_1r384")]
 unique_name_in_owner = true
-position = Vector2(1451, 196)
+position = Vector2(1451, 197)
 
 [node name="Player" parent="EditableLevel" instance=ExtResource("4_r1kdi")]
 unique_name_in_owner = true
