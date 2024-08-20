@@ -41,10 +41,11 @@ func load_level_scene(scene_to_load : LoadableScene, scene_index : int, should_u
 		
 	Global.timer.stop()
 	Global.timer.timeout.emit()
+	Global.checkpoint_id = -1
+	Global.checkpoint_position = Vector2.ZERO
 		
 	if should_use_transition:
-		transition_scene.start()
-		await transition_scene.half_done
+		await play_transition()
 
 	if(current_scene != null):
 		current_scene.scene.queue_free();
@@ -75,6 +76,18 @@ func reload_current_scene():
 		load_level_scene_by_name(get_tree().current_scene.name)
 	else:
 		load_level_scene_by_index(current_scene.scene_index)
+		
+func play_transition():
+	transition_scene.start()
+	await transition_scene.half_done
+
+func on_transition_ended():
+	await transition_scene.done
+	
+func reload_to_checkpoint():
+	Global.timer.stop()
+	Global.timer.timeout.emit()
+	await play_transition()
 		
 func add_level_scene_to_scene_array(scene):
 	if(scene == null):

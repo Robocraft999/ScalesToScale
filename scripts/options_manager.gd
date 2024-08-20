@@ -9,6 +9,10 @@ var time_scale = 1
 var time_scale_timer: SceneTreeTimer
 @onready var timer: Timer = preload("res://scenes/objects/timer.tscn").instantiate()
 
+# checkpoints
+var checkpoint_id = -1
+var checkpoint_position = Vector2.ZERO
+
 const SceneName  = {
 	MAIN_MENU = "MainMenu",
 	TUTORIAL = "Tutorial0",
