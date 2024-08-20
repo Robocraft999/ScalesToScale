@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://333vqfbf2bv7"]
+[gd_scene load_steps=16 format=4 uid="uid://333vqfbf2bv7"]
 
 [ext_resource type="Script" path="res://scripts/test.gd" id="1_q0kfk"]
 [ext_resource type="PackedScene" uid="uid://2dj1d442mvd5" path="res://scenes/basic_level.tscn" id="2_v6rel"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" path="res://scenes/objects/mover.tscn" id="11_lc823"]
 [ext_resource type="Texture2D" uid="uid://dswv4u67mo6it" path="res://sprites/progress_bars/progress bar medium rounded over.png" id="11_p0neo"]
 [ext_resource type="PackedScene" uid="uid://dv3ioqvuql3b6" path="res://scenes/objects/spikes.tscn" id="12_s1jqh"]
+[ext_resource type="PackedScene" uid="uid://benlouuyuswqh" path="res://scenes/objects/checkpoint.tscn" id="13_nh72o"]
 [ext_resource type="Script" path="res://scripts/better_camera.gd" id="15_ydhfy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o6i2r"]
@@ -97,3 +98,10 @@ target_node = NodePath("Spikes")
 SPEED = 0.1
 
 [node name="Spikes" parent="Mover" instance=ExtResource("12_s1jqh")]
+
+[node name="Checkpoint" parent="." instance=ExtResource("13_nh72o")]
+position = Vector2(335, 96)
+
+[node name="Checkpoint2" parent="." instance=ExtResource("13_nh72o")]
+position = Vector2(506, 160)
+id = 1
