@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://scripts/shaker.gd" id="6_0oanw"]
 [ext_resource type="PackedScene" uid="uid://vy0hwr3ojkhq" path="res://scenes/objects/dragon_flag.tscn" id="6_fu5ed"]
 [ext_resource type="Script" path="res://scripts/collectible.gd" id="10_j0nh5"]
-[ext_resource type="PackedScene" uid="uid://o65fd7fxs2i7" path="res://scenes/objects/dragon_scale_sprite_2d.tscn" id="11_huch2"]
+[ext_resource type="PackedScene" path="res://scenes/objects/dragon_scale_sprite_2d.tscn" id="11_huch2"]
 [ext_resource type="Texture2D" uid="uid://cpmv4oo5l0bfv" path="res://sprites/scaleobstacle_small.png" id="12_6tibr"]
 [ext_resource type="PackedScene" uid="uid://dce48rt84l5ft" path="res://scenes/objects/scaler.tscn" id="13_4vglb"]
 [ext_resource type="Script" path="res://scripts/wall_glue.gd" id="14_wgh0w"]
@@ -187,80 +187,6 @@ shape = SubResource("RectangleShape2D_hbtsi")
 
 [node name="DragonScaleSprite2D" parent="HorizontalScaleScale" instance=ExtResource("11_huch2")]
 
-[node name="ExampleBox" type="CharacterBody2D" parent="."]
-position = Vector2(760, 617)
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ExampleBox"]
-shape = SubResource("RectangleShape2D_egcov")
-
-[node name="Sprite2D" type="Sprite2D" parent="ExampleBox"]
-texture_filter = 1
-texture_repeat = 2
-texture = ExtResource("12_6tibr")
-region_enabled = true
-region_rect = Rect2(0, 0, 14, 14)
-
-[node name="Scaler" parent="ExampleBox" instance=ExtResource("13_4vglb")]
-MAX_SCALE = Vector2(10, 1)
-
-[node name="WallGlue" type="Node" parent="ExampleBox"]
-script = ExtResource("14_wgh0w")
-direction = Vector2(1, 0)
-
-[node name="ExplanationFinishArea" type="Area2D" parent="."]
-position = Vector2(1072, 1184)
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplanationFinishArea"]
-position = Vector2(-296, -624)
-shape = SubResource("RectangleShape2D_c2vyj")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="ExplanationFinishArea"]
-position = Vector2(-648, -592)
-shape = SubResource("RectangleShape2D_nqvmk")
-
-[node name="ExplanationTriggerArea" type="Area2D" parent="."]
-position = Vector2(536, 592)
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplanationTriggerArea"]
-position = Vector2(16, -12)
-shape = SubResource("RectangleShape2D_c2vyj")
-
-[node name="ScaleExplanation" type="Node2D" parent="."]
-visible = false
-position = Vector2(434, 621)
-
-[node name="DragonScaleSprite2D" parent="ScaleExplanation" instance=ExtResource("11_huch2")]
-position = Vector2(17, -23)
-
-[node name="ScaleLabel" type="RichTextLabel" parent="ScaleExplanation"]
-offset_left = -229.0
-offset_right = 259.0
-offset_bottom = 69.0
-bbcode_enabled = true
-text = "[center]Congratulations!
-You found the [i]Scale of horizontal Scaling[/i]
-You have now partially regained your power of object scaling[/center]"
-fit_content = true
-scroll_active = false
-
-[node name="UsageExplanation" type="Node2D" parent="."]
-
-[node name="Label" type="RichTextLabel" parent="UsageExplanation"]
-offset_left = 400.0
-offset_top = 632.0
-offset_right = 749.0
-offset_bottom = 711.0
-bbcode_enabled = true
-text = "[center]Hover the box with your mouse
-Scroll up with the mouse wheel to scale it up
-Use your power to create a platform[/center]"
-scroll_active = false
-visible_characters = 0
-visible_ratio = 0.0
-
 [node name="Flora" type="Node2D" parent="."]
 
 [node name="Bush4" parent="Flora" instance=ExtResource("15_yfpji")]
@@ -379,3 +305,80 @@ scale = Vector2(1, -1)
 
 [node name="CaveSpike5" parent="Flora" instance=ExtResource("20_yl8rt")]
 position = Vector2(719, 704)
+
+[node name="ExampleBox" type="CharacterBody2D" parent="."]
+position = Vector2(760, 617)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExampleBox"]
+shape = SubResource("RectangleShape2D_egcov")
+
+[node name="Sprite2D" type="Sprite2D" parent="ExampleBox"]
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("12_6tibr")
+region_enabled = true
+region_rect = Rect2(0, 0, 14, 14)
+
+[node name="Scaler" parent="ExampleBox" instance=ExtResource("13_4vglb")]
+MAX_SCALE = Vector2(10, 1)
+
+[node name="WallGlue" type="Node" parent="ExampleBox"]
+script = ExtResource("14_wgh0w")
+direction = Vector2(1, 0)
+
+[node name="ExplanationFinishArea" type="Area2D" parent="."]
+position = Vector2(1072, 1184)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplanationFinishArea"]
+position = Vector2(-296, -624)
+shape = SubResource("RectangleShape2D_c2vyj")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ExplanationFinishArea"]
+position = Vector2(-648, -592)
+shape = SubResource("RectangleShape2D_nqvmk")
+
+[node name="ExplanationTriggerArea" type="Area2D" parent="."]
+position = Vector2(536, 592)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplanationTriggerArea"]
+position = Vector2(16, -12)
+shape = SubResource("RectangleShape2D_c2vyj")
+
+[node name="ScaleExplanation" type="Node2D" parent="."]
+visible = false
+position = Vector2(434, 621)
+
+[node name="DragonScaleSprite2D" parent="ScaleExplanation" instance=ExtResource("11_huch2")]
+z_index = 6
+position = Vector2(17, -23)
+
+[node name="ScaleLabel" type="RichTextLabel" parent="ScaleExplanation"]
+z_index = 6
+offset_left = -229.0
+offset_right = 259.0
+offset_bottom = 69.0
+bbcode_enabled = true
+text = "[center]Congratulations!
+You found the [i]Scale of horizontal Scaling[/i]
+You have now partially regained your power of object scaling[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="UsageExplanation" type="Node2D" parent="."]
+
+[node name="Label" type="RichTextLabel" parent="UsageExplanation"]
+z_index = 6
+offset_left = 400.0
+offset_top = 632.0
+offset_right = 749.0
+offset_bottom = 711.0
+bbcode_enabled = true
+text = "[center]Hover the box with your mouse
+Scroll up with the mouse wheel to scale it up
+Use your power to create a platform[/center]"
+scroll_active = false
+visible_characters = 0
+visible_ratio = 0.0
