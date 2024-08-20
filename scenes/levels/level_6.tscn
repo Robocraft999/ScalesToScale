@@ -19,10 +19,10 @@
 [ext_resource type="Texture2D" uid="uid://cpmv4oo5l0bfv" path="res://sprites/scaleobstacle_small.png" id="11_blog4"]
 [ext_resource type="PackedScene" uid="uid://dce48rt84l5ft" path="res://scenes/objects/scaler.tscn" id="12_v15wc"]
 [ext_resource type="Script" path="res://scripts/wall_glue.gd" id="13_nuoex"]
-[ext_resource type="PackedScene" path="res://scenes/objects/mover.tscn" id="14_m4d5h"]
+[ext_resource type="PackedScene" uid="uid://dtpmrs3m7ssao" path="res://scenes/objects/mover.tscn" id="14_m4d5h"]
 [ext_resource type="PackedScene" uid="uid://dv3ioqvuql3b6" path="res://scenes/objects/spikes.tscn" id="15_7ihde"]
-[ext_resource type="PackedScene" uid="uid://d30c1xil35ay" path="res://scenes/objects/spikes_double.tscn" id="16_0klpm"]
-[ext_resource type="PackedScene" uid="uid://ce2xe5ht62br0" path="res://scenes/objects/checkpoint.tscn" id="16_nfbhg"]
+[ext_resource type="PackedScene" path="res://scenes/objects/spikes_double.tscn" id="16_0klpm"]
+[ext_resource type="PackedScene" path="res://scenes/objects/checkpoint.tscn" id="16_nfbhg"]
 [ext_resource type="Texture2D" uid="uid://cpk5bxge5oqdj" path="res://sprites/tileset.png" id="17_vkgqe"]
 [ext_resource type="Texture2D" uid="uid://cwfpntmks6nqh" path="res://sprites/endplatform.png" id="19_7m2o3"]
 
@@ -777,15 +777,17 @@ region_rect = Rect2(16.1218, 16.0864, 47.8782, 15.9136)
 
 [node name="EndPlatformMover" parent="MovingPlatform" node_paths=PackedStringArray("target_node") instance=ExtResource("14_m4d5h")]
 curve = SubResource("Curve2D_uiswp")
-target_node = NodePath("AnimatableBody2D")
+target_node = NodePath("EndPlatform")
+autostart = false
+loop = false
 
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="MovingPlatform/EndPlatformMover"]
+[node name="EndPlatform" type="AnimatableBody2D" parent="MovingPlatform/EndPlatformMover"]
 position = Vector2(7007.41, 48.8729)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MovingPlatform/EndPlatformMover/AnimatableBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovingPlatform/EndPlatformMover/EndPlatform"]
 position = Vector2(0.588867, -8.87289)
 shape = SubResource("RectangleShape2D_l3obk")
 
-[node name="Sprite2D" type="Sprite2D" parent="MovingPlatform/EndPlatformMover/AnimatableBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="MovingPlatform/EndPlatformMover/EndPlatform"]
 position = Vector2(0.588867, -8.87289)
 texture = ExtResource("19_7m2o3")
