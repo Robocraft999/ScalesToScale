@@ -85,8 +85,6 @@ func on_transition_ended():
 	await transition_scene.done
 	
 func reload_to_checkpoint():
-	Global.timer.stop()
-	Global.timer.timeout.emit()
 	await play_transition()
 		
 func add_level_scene_to_scene_array(scene):

@@ -6,7 +6,6 @@ var volume := 0.0
 
 # Time Scale stuff
 var time_scale = 1
-var time_scale_timer: SceneTreeTimer
 @onready var timer: Timer = preload("res://scenes/objects/timer.tscn").instantiate()
 
 # checkpoints
