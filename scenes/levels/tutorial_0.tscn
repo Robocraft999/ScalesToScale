@@ -163,8 +163,9 @@ unique_name_in_owner = true
 position = Vector2(296, 224)
 
 [node name="Collectible" parent="EditableLevel" node_paths=PackedStringArray("type") instance=ExtResource("10_6yb1s")]
-position = Vector2(24, 228)
+position = Vector2(168, 228)
 type = NodePath("../..")
+metadata/_edit_group_ = true
 
 [node name="PointLight2D2" type="PointLight2D" parent="EditableLevel/Collectible"]
 position = Vector2(0, 6)
@@ -238,3 +239,13 @@ size_flags_horizontal = 4
 visible_characters = 0
 visible_ratio = 0.0
 metadata/_edit_use_anchors_ = true
+
+[node name="NameLabel" type="Label" parent="."]
+offset_left = 120.0
+offset_top = 120.0
+offset_right = 296.0
+offset_bottom = 169.0
+text = "You have collected the Scale of Jumping
+Press up or 'w' to jump"
+visible_characters = 0
+visible_ratio = 0.0
