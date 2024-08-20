@@ -77,7 +77,7 @@ func is_dash_active() -> bool:
 func get_actual_gravity() -> Vector2:
 	if velocity.y < 0:
 		return get_gravity()
-	return get_gravity() * 1.5
+	return get_gravity() * 1.25
 
 func _physics_jump() -> void:
 	if is_on_floor():
