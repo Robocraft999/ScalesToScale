@@ -3,7 +3,7 @@ extends Node
 # Options
 var enable_screen_shake := true
 var master_volume := 80.0
-var music_volume := 50.0
+var music_volume := 5.0
 var is_menu_music
 
 # Time Scale stuff
