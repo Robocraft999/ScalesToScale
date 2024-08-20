@@ -9,7 +9,7 @@ func _ready() -> void:
 	get_tree().create_timer(0.1).timeout.connect(func(): parent = get_parent())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	#var parent = get_parent()
 	if not parent:
 		return

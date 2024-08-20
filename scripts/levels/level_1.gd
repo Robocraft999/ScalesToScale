@@ -30,7 +30,7 @@ func handle(_body: Player):
 	$EditableLevel/Camera2D.follow_node = %Player
 	%Player.allow_movement = true
 
-func _trigger_explanation(body: Node2D):
+func _trigger_explanation(_body: Node2D):
 	if not ProgressStore.horizontal_scale_enabled:
 		return
 	$ScaleExplanation.hide()
@@ -44,7 +44,7 @@ func _trigger_explanation(body: Node2D):
 		5.0
 	)
 
-func _stop_explanation(body: Node2D):
+func _stop_explanation(_body: Node2D):
 	$EditableLevel/Camera2D.follow_node = %Player
 	$UsageExplanation.hide()
 	pass

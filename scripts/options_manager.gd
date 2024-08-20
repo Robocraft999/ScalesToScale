@@ -2,7 +2,7 @@ extends Node
 
 # Options
 var enable_screen_shake := true
-var volume := 0
+var volume := 0.0
 
 # Time Scale stuff
 var time_scale = 1
@@ -32,7 +32,7 @@ func _ready() -> void:
 		print(scene.resource_path)
 	get_tree().root.add_child.call_deferred(timer)
 		
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if ProgressStore.time_scale_enabled:
 		if Input.is_action_just_pressed("toggle_time_scale") and timer.is_stopped():
 			time_scale = 0.25
