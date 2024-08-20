@@ -13,4 +13,4 @@ func handle(_body: Player):
 	$Scale/UsageLabel.visible = true
 	var tween = create_tween()
 	tween.tween_property($Scale/NameLabel, "visible_ratio", 1.0, 1.0)
-	tween.chain().tween_property($Scale/UsageLabel, "visible_ratio", 1.0, 1.0)
+	tween.chain().tween_property($Scale/UsageLabel, "visible_ratio", 1.0, 5.0)
