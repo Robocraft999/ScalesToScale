@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://d30c1xil35ay"]
+
+[ext_resource type="Texture2D" uid="uid://bg4so73a7frmc" path="res://sprites/spikes_small_double.png" id="1_kpbu2"]
+[ext_resource type="PackedScene" uid="uid://bwp3u4dill1bd" path="res://scenes/objects/death_area.tscn" id="2_sjt0s"]
+
+[node name="Spikes" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_kpbu2")
+
+[node name="DeathArea" parent="." instance=ExtResource("2_sjt0s")]
+visible = false
