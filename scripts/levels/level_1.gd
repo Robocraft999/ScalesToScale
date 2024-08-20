@@ -3,6 +3,8 @@ extends Node2D
 func _ready() -> void:
 	$ExplanationTriggerArea.body_entered.connect(_trigger_explanation)
 	$ExplanationFinishArea.body_entered.connect(_stop_explanation)
+	ProgressStore.disable_all()
+	ProgressStore.jump_enabled = true
 
 func start_animation_finished() -> void:
 	%CameraShaker.shake_strength = Vector2(0, 15.0)
