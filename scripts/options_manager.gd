@@ -42,7 +42,7 @@ func _process(_delta: float) -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(master_volume/100.0))
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(music_volume/100.0))
 	
-	var new_music := SceneLoader.current_scene.scene_name in [SceneName.OPTIONS, SceneName.MAIN_MENU, SceneName.LEVEL_SELECT]
+	var new_music := SceneLoader.current_scene.scene_name in [SceneName.OPTIONS, SceneName.MAIN_MENU, SceneName.LEVEL_SELECT, SceneName.CREDITS]
 	if new_music != is_menu_music:
 		is_menu_music = new_music
 		var menu: AudioStreamPlayer =  MusicPlayer.get_child(0)
