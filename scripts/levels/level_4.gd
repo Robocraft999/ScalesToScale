@@ -1,5 +1,12 @@
 extends Node2D
 
+func _ready() -> void:
+	ProgressStore.disable_all()
+	ProgressStore.jump_enabled = true
+	ProgressStore.double_jump_enabled = true
+	ProgressStore.horizontal_scale_enabled = true
+	ProgressStore.vertical_scale_enabled = true
+
 func handle(_body: Player):
 	ProgressStore.dash_enabled = true
 	$Scale/NameLabel.visible = true
