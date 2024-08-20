@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cd0nnnr24upi4" path="res://scenes/objects/bush/bush_1.tscn" id="13_7dqb6"]
 [ext_resource type="PackedScene" uid="uid://bvj81idj6vou2" path="res://scenes/objects/trees/tree_1.tscn" id="13_esdff"]
 [ext_resource type="PackedScene" uid="uid://rn1x6aqbaxkt" path="res://scenes/objects/bush/bush_2.tscn" id="14_63txi"]
-[ext_resource type="PackedScene" path="res://scenes/objects/trees/tree_3.tscn" id="14_toigy"]
+[ext_resource type="PackedScene" uid="uid://g44yhmgiuyfg" path="res://scenes/objects/trees/tree_3.tscn" id="14_toigy"]
 [ext_resource type="PackedScene" uid="uid://b838jctkyqalv" path="res://scenes/objects/trees/tree_2.tscn" id="17_g3e4v"]
 
 [sub_resource type="Animation" id="Animation_w4hg0"]
