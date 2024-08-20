@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://bxp6ydt8s2ost"]
+[gd_scene load_steps=27 format=4 uid="uid://bxp6ydt8s2ost"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_4.gd" id="1_gip2n"]
 [ext_resource type="PackedScene" uid="uid://2dj1d442mvd5" path="res://scenes/basic_level.tscn" id="1_kbt57"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://vy0hwr3ojkhq" path="res://scenes/objects/dragon_flag.tscn" id="3_xj0qp"]
 [ext_resource type="PackedScene" uid="uid://bnt67b4wf47qu" path="res://scenes/objects/player.tscn" id="4_ulkbb"]
 [ext_resource type="Script" path="res://scripts/shaker_animator.gd" id="5_adoah"]
-[ext_resource type="PackedScene" path="res://scenes/objects/trees/tree_3.tscn" id="5_b5bww"]
+[ext_resource type="PackedScene" uid="uid://g44yhmgiuyfg" path="res://scenes/objects/trees/tree_3.tscn" id="5_b5bww"]
 [ext_resource type="Script" path="res://scripts/end_animator.gd" id="6_btw22"]
 [ext_resource type="PackedScene" uid="uid://b838jctkyqalv" path="res://scenes/objects/trees/tree_2.tscn" id="6_ikcep"]
 [ext_resource type="Script" path="res://scripts/better_camera.gd" id="7_fn0cu"]
@@ -18,7 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://cpmv4oo5l0bfv" path="res://sprites/scaleobstacle_small.png" id="13_ymp3s"]
 [ext_resource type="PackedScene" uid="uid://dce48rt84l5ft" path="res://scenes/objects/scaler.tscn" id="14_oavor"]
 [ext_resource type="Script" path="res://scripts/wall_glue.gd" id="15_8v1g4"]
-[ext_resource type="PackedScene" path="res://scenes/objects/dragon_scale_sprite_2d.tscn" id="16_82g38"]
+[ext_resource type="PackedScene" uid="uid://benlouuyuswqh" path="res://scenes/objects/checkpoint.tscn" id="15_axvs6"]
+[ext_resource type="PackedScene" uid="uid://o65fd7fxs2i7" path="res://scenes/objects/dragon_scale_sprite_2d.tscn" id="16_82g38"]
 [ext_resource type="Script" path="res://scripts/collectible.gd" id="16_dg6nq"]
 
 [sub_resource type="Animation" id="Animation_onrla"]
@@ -295,6 +296,9 @@ unique_name_in_owner = true
 position = Vector2(72, 198.75)
 script = ExtResource("8_ceo28")
 property_name = &"offset"
+
+[node name="Checkpoint" parent="EditableLevel" instance=ExtResource("15_axvs6")]
+position = Vector2(1241, 160)
 
 [node name="Spikes" type="Node" parent="."]
 

@@ -6,6 +6,7 @@ var SPEED = 3
 var current_speed = SPEED
 
 signal half_done
+signal done
 
 func _process(delta: float) -> void:
 	if running:
@@ -20,6 +21,7 @@ func _process(delta: float) -> void:
 	if progress < 0:
 		running = false
 		visible = false
+		done.emit()
 		
 func start():
 	if not running:
