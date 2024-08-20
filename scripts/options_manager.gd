@@ -17,6 +17,9 @@ const SceneName  = {
 	LEVEL1 = "Level 1",
 	LEVEL2 = "Level 2",
 	LEVEL3 = "Level 3",
+	LEVEL4 = "Level 4",
+	LEVEL5 = "Level 5",
+	LEVEL6 = "Level 6",
 	LEVEL_SELECT = "level_select"
 }
 
@@ -37,7 +40,7 @@ func _process(delta: float) -> void:
 		AudioServer.set_bus_mute(master_bus_index, true)
 	else:
 		AudioServer.set_bus_mute(master_bus_index, false)
-		AudioServer.set_bus_volume_db(master_bus_index, lerp(-10, 20, volume/100.0))
+		AudioServer.set_bus_volume_db(master_bus_index, lerp(-60, 0, volume/100.0))
 		
 func lerp(from: Vector2, to: Vector2, weight: Vector2) -> Vector2:
 	return Vector2(lerp(from.x, to.x, weight.x), lerp(from.y, to.y, weight.y))

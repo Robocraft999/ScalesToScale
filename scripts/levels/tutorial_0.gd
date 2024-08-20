@@ -1,7 +1,7 @@
 extends Node2D
 
 func _ready() -> void:
-	$UpKeyCap.visible = ProgressStore.jump_enabled
+	ProgressStore.disable_all()
 	pass
 
 # Collectible pickup

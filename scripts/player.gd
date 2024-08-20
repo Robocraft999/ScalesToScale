@@ -77,7 +77,7 @@ func is_dash_active() -> bool:
 func get_actual_gravity() -> Vector2:
 	if velocity.y < 0:
 		return get_gravity()
-	return get_gravity() * 1.5
+	return get_gravity() * 1.25
 
 func _physics_jump() -> void:
 	if is_on_floor():
@@ -159,7 +159,7 @@ func _physics_dash() -> void:
 			# DASH
 			dash_start_time = Time.get_ticks_msec()
 			velocity.y = active_dash_direction.y * DASH_VELOCITY.y
-			$AudioStreamPlayer2D.play(0.30)
+			$AudioStreamPlayer2D.play(0)
 			dash_next_ghost_percentage_index = 0
 			dash_started.emit()
 		pass

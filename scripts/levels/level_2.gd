@@ -5,6 +5,9 @@ extends Node2D
 func _ready() -> void:
 	$TypewriterTrigger.body_entered.connect(_trigger_animation)
 	$PlayerRegainFocusArea.body_entered.connect(_regain_player_focus)
+	ProgressStore.disable_all()
+	ProgressStore.jump_enabled = true
+	ProgressStore.horizontal_scale_enabled = true
 
 func _regain_player_focus(body: Node2D):
 	if body is Player:

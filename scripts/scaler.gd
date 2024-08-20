@@ -5,15 +5,17 @@ var editing := false
 @export var MAX_SCALE = Vector2(5.0, 5.0)
 
 @export var target_offset := Vector2.ZERO
+@export var step_step := Vector2.ONE
 var current_offset = target_offset
 var new_scale     := Vector2.ONE
 
 @onready var parent: CollisionObject2D = $".."
-@onready var line: Line2D = $Line2D
 @onready var sprite: Sprite2D = $"../Sprite2D"
 @onready var sprite_region_size: Vector2 = sprite.region_rect.size
 @onready var collider_size: Vector2 = parent.get_child(0).shape.get_rect().size
 @onready var STEP = Vector2.ONE / (MAX_SCALE - Vector2.ONE)
+
+var toggled = false
 
 var scaleTween: Tween
 var positionTween: Tween
@@ -21,9 +23,6 @@ var sprite_rect_tween: Tween
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
-	line.width = 1
-	line.default_color = Color.DARK_BLUE
 	scaleTween = create_tween()
 	positionTween = create_tween()
 	sprite_rect_tween = create_tween()
@@ -34,9 +33,12 @@ func _ready() -> void:
 	positionTween.stop()
 	sprite_rect_tween.stop()
 	
-	if target_offset != Vector2.ZERO:
-		calculate_new_scale()
-		try_scale()
+	get_tree().create_timer(1).timeout.connect(
+		func(): 
+		if target_offset != Vector2.ZERO:
+			calculate_new_scale()
+			try_scale()
+		)
 
 func is_tweening():
 	return scaleTween.is_running() or positionTween.is_running()
@@ -48,7 +50,8 @@ func _physics_process(delta: float) -> void:
 	# if mouse is in body
 	if editing:
 		# What axis are we editing?
-		var toggled = Input.is_action_pressed("scale_toggle")
+		if Input.is_action_just_pressed("scale_toggle"):
+			toggled = not toggled
 		if toggled and ProgressStore.vertical_scale_enabled:
 			$yArrow.visible = true
 			$xArrow.visible = false
@@ -65,14 +68,14 @@ func _physics_process(delta: float) -> void:
 			# Calculate new desired offset
 			if Input.is_action_just_released("mouse_wheel_up"):
 				if toggled and ProgressStore.vertical_scale_enabled:
-					target_offset.y += STEP.y
+					target_offset.y += STEP.y * step_step.y
 				elif not toggled and ProgressStore.horizontal_scale_enabled:
-					target_offset.x += STEP.x
+					target_offset.x += STEP.x * step_step.x
 			elif Input.is_action_just_released("mouse_wheel_down"):
 				if toggled and ProgressStore.vertical_scale_enabled:
-					target_offset.y -= STEP.y
+					target_offset.y -= STEP.y * step_step.y
 				elif not toggled and ProgressStore.horizontal_scale_enabled:
-					target_offset.x -= STEP.x
+					target_offset.x -= STEP.x * step_step.x
 			
 			# At most one entire step per 'frame'
 			target_offset.x = clamp(target_offset.x, 0, 1)
@@ -143,11 +146,6 @@ func try_scale() -> void:
 		motion_down = Vector2.ZERO
 		scale_objects(Vector2.ZERO if expansion.x != 0 else motion_down)
 		return
-	
-	# Debug line
-	line.clear_points()
-	line.add_point(position)
-	line.add_point(position + expansion)
 	
 	# check if expandable to both sides
 	if not test_move(expansion * -1) and not test_move(expansion):

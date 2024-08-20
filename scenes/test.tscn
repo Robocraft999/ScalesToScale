@@ -1,15 +1,13 @@
-[gd_scene load_steps=18 format=4 uid="uid://333vqfbf2bv7"]
+[gd_scene load_steps=16 format=4 uid="uid://333vqfbf2bv7"]
 
 [ext_resource type="Script" path="res://scripts/test.gd" id="1_q0kfk"]
-[ext_resource type="PackedScene" uid="uid://bb53neelkiux7" path="res://scenes/parallax_background.tscn" id="2_225lb"]
+[ext_resource type="PackedScene" uid="uid://2dj1d442mvd5" path="res://scenes/basic_level.tscn" id="2_v6rel"]
 [ext_resource type="TileSet" uid="uid://p75osdbfaruv" path="res://resources/test_tile_set.tres" id="2_y1o7q"]
 [ext_resource type="PackedScene" uid="uid://cvg3yiw0w3rjb" path="res://scenes/objects/collectible.tscn" id="3_h7wox"]
 [ext_resource type="PackedScene" uid="uid://bnt67b4wf47qu" path="res://scenes/objects/player.tscn" id="4_j0igw"]
 [ext_resource type="Texture2D" uid="uid://cpmv4oo5l0bfv" path="res://sprites/scaleobstacle_small.png" id="5_26fnp"]
 [ext_resource type="PackedScene" uid="uid://dce48rt84l5ft" path="res://scenes/objects/scaler.tscn" id="7_xs4ma"]
-[ext_resource type="PackedScene" uid="uid://4ot2rbv3j22q" path="res://scenes/objects/restart_button.tscn" id="9_pdhbj"]
-[ext_resource type="PackedScene" uid="uid://dcnk5ak1x2etg" path="res://scenes/objects/button_focus_player.tscn" id="10_px6fs"]
-[ext_resource type="PackedScene" path="res://scenes/objects/mover.tscn" id="11_lc823"]
+[ext_resource type="PackedScene" uid="uid://dtpmrs3m7ssao" path="res://scenes/objects/mover.tscn" id="11_lc823"]
 [ext_resource type="PackedScene" uid="uid://dv3ioqvuql3b6" path="res://scenes/objects/spikes.tscn" id="12_s1jqh"]
 [ext_resource type="Script" path="res://scripts/better_camera.gd" id="15_ydhfy"]
 
@@ -42,7 +40,7 @@ point_count = 2
 [node name="test" type="Node"]
 script = ExtResource("1_q0kfk")
 
-[node name="ParallaxBackground" parent="." instance=ExtResource("2_225lb")]
+[node name="BasicLevel" parent="." instance=ExtResource("2_v6rel")]
 
 [node name="Node" type="Node" parent="."]
 
@@ -112,11 +110,6 @@ grow_vertical = 0
 theme = SubResource("Theme_egryi")
 value = 50.0
 show_percentage = false
-
-[node name="RestartButton" parent="CanvasLayer" instance=ExtResource("9_pdhbj")]
-
-[node name="ButtonFocusPlayer" parent="." instance=ExtResource("10_px6fs")]
-unique_name_in_owner = true
 
 [node name="Mover" parent="." node_paths=PackedStringArray("target_node") instance=ExtResource("11_lc823")]
 position = Vector2(542, 16)

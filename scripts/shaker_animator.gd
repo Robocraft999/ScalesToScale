@@ -9,7 +9,8 @@ func _ready() -> void:
 	player.landed_on_floor.connect(_on_player_landed_on_floor)
 
 func _on_player_landed_on_floor(impact_velocity: Vector2) -> void:
-	var squashed_speed = atan(impact_velocity.y / 100) * 3
+	var squashed_speed = atan(impact_velocity.y / 75) * 3
+	# TODO: Tweak this function
 	camera_shaker.shake_strength = Vector2(0.0, squashed_speed)
 	camera_shaker.shake_roughness = 15.0
 	camera_shaker.shake_decay_rate = 5.0
