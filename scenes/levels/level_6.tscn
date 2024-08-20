@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://bt85x4c4l2mov"]
+[gd_scene load_steps=43 format=4 uid="uid://bt85x4c4l2mov"]
 
 [ext_resource type="PackedScene" uid="uid://2dj1d442mvd5" path="res://scenes/basic_level.tscn" id="1_5axld"]
 [ext_resource type="Script" path="res://scripts/levels/level_6.gd" id="1_inces"]
@@ -171,7 +171,7 @@ _data = {
 point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iiqn7"]
-size = Vector2(64, 16)
+size = Vector2(48, 16)
 
 [sub_resource type="Curve2D" id="Curve2D_5powi"]
 _data = {
@@ -179,11 +179,14 @@ _data = {
 }
 point_count = 6
 
-[sub_resource type="Curve2D" id="Curve2D_13onf"]
+[sub_resource type="Curve2D" id="Curve2D_uiswp"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 89.9067, 148.337, 0, 0, 0, 0, 89.9067, -147.663, 0, 0, 0, 0, 89.9067, -359.663)
+"points": PackedVector2Array(0, 0, 0, 0, 7008, 40, 0, 0, 0, 0, 7008, -472)
 }
-point_count = 3
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l3obk"]
+size = Vector2(64, 16)
 
 [node name="Level 6" type="Node2D"]
 script = ExtResource("1_inces")
@@ -630,17 +633,16 @@ region_enabled = true
 region_rect = Rect2(16.1218, 16.0864, 47.8782, 15.9136)
 
 [node name="EndPlatformMover" parent="MovingPlatform" node_paths=PackedStringArray("target_node") instance=ExtResource("14_m4d5h")]
-position = Vector2(6918.09, -108.337)
-curve = SubResource("Curve2D_13onf")
+curve = SubResource("Curve2D_uiswp")
 target_node = NodePath("AnimatableBody2D")
-loop = false
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="MovingPlatform/EndPlatformMover"]
-position = Vector2(89.9067, 148.337)
-metadata/_edit_group_ = true
+position = Vector2(7007.41, 48.8729)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MovingPlatform/EndPlatformMover/AnimatableBody2D"]
-shape = SubResource("RectangleShape2D_iiqn7")
+position = Vector2(0.588867, -8.87289)
+shape = SubResource("RectangleShape2D_l3obk")
 
 [node name="Sprite2D" type="Sprite2D" parent="MovingPlatform/EndPlatformMover/AnimatableBody2D"]
+position = Vector2(0.588867, -8.87289)
 texture = ExtResource("19_7m2o3")
