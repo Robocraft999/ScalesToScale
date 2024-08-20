@@ -13,6 +13,9 @@ config_version=5
 config/name="Scales to scale"
 run/main_scene="res://scenes/root.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/image="res://sprites/icon/icon_512x512.png"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
 config/icon="res://sprites/icon/icon_64x64.png"
 
 [autoload]
