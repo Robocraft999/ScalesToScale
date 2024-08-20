@@ -239,6 +239,9 @@ position = Vector2(1311, -176)
 [node name="Bush23" parent="Foliage" instance=ExtResource("4_nc6ge")]
 position = Vector2(1296, 17)
 
+[node name="Bush33" parent="Foliage" instance=ExtResource("4_nc6ge")]
+position = Vector2(900, 345)
+
 [node name="Bush32" parent="Foliage" instance=ExtResource("4_nc6ge")]
 position = Vector2(1459, 189)
 
