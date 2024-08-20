@@ -1,18 +1,82 @@
-[gd_scene load_steps=4 format=3 uid="uid://benlouuyuswqh"]
+[gd_scene load_steps=14 format=3 uid="uid://benlouuyuswqh"]
 
 [ext_resource type="Script" path="res://scripts/checkpoint.gd" id="1_hn4gf"]
-[ext_resource type="Texture2D" uid="uid://53ne81gplau0" path="res://sprites/dragon_flag.png" id="1_m3gy7"]
+[ext_resource type="Texture2D" uid="uid://v6ntbp4x6xtn" path="res://sprites/flags/flag_checkpoint.png" id="2_u0oll"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7pw6y"]
 size = Vector2(20, 27)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqyg6"]
+atlas = ExtResource("2_u0oll")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8di70"]
+atlas = ExtResource("2_u0oll")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3n2xb"]
+atlas = ExtResource("2_u0oll")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpfl7"]
+atlas = ExtResource("2_u0oll")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1kpm"]
+atlas = ExtResource("2_u0oll")
+region = Rect2(64, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cw88x"]
+atlas = ExtResource("2_u0oll")
+region = Rect2(80, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pm5ik"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqyg6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8di70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3n2xb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpfl7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q1kpm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cw88x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="Curve" id="Curve_v3qgn"]
+_data = [Vector2(0.0033557, 1), 0.0, 0.0, 0, 0, Vector2(0.996644, 0.235811), 0.000981805, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_aavo2"]
+curve = SubResource("Curve_v3qgn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uekbj"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 86.72
+initial_velocity_max = 86.72
+gravity = Vector3(0, 0, 0)
+color = Color(0.0470588, 1, 0.262745, 1)
+alpha_curve = SubResource("CurveTexture_aavo2")
+hue_variation_min = -0.28
+hue_variation_max = 0.37
+
 [node name="Checkpoint" type="Node2D"]
 script = ExtResource("1_hn4gf")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1, -16)
-rotation = 3.14159
-texture = ExtResource("1_m3gy7")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 2
@@ -20,5 +84,21 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -13.5)
 shape = SubResource("RectangleShape2D_7pw6y")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(4, -16)
+sprite_frames = SubResource("SpriteFrames_pm5ik")
+autoplay = "default"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, -19)
+emitting = false
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_uekbj")
+lifetime = 0.6
+one_shot = true
+explosiveness = 0.85
+trail_enabled = true
+trail_lifetime = 0.02
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
