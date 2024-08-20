@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://dce48rt84l5ft" path="res://scenes/objects/scaler.tscn" id="11_o4532"]
 [ext_resource type="Script" path="res://scripts/wall_glue.gd" id="12_hypqe"]
 [ext_resource type="Script" path="res://scripts/collectible.gd" id="13_iqcq7"]
-[ext_resource type="PackedScene" path="res://scenes/objects/dragon_scale_sprite_2d.tscn" id="14_oqmdu"]
+[ext_resource type="PackedScene" uid="uid://o65fd7fxs2i7" path="res://scenes/objects/dragon_scale_sprite_2d.tscn" id="14_oqmdu"]
 [ext_resource type="Script" path="res://scripts/single-use/double_jump_unlocker.gd" id="15_o1red"]
 [ext_resource type="Script" path="res://scripts/single-use/vertical_scale_unlocker.gd" id="16_r78gw"]
 [ext_resource type="PackedScene" uid="uid://b838jctkyqalv" path="res://scenes/objects/trees/tree_2.tscn" id="17_amrwk"]

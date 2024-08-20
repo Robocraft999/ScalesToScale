@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://rn1x6aqbaxkt" path="res://scenes/objects/bush/bush_2.tscn" id="7_rfqpg"]
 [ext_resource type="Script" path="res://scripts/shaker.gd" id="8_lmbls"]
 [ext_resource type="PackedScene" uid="uid://cr6mcdmp0xpd0" path="res://scenes/objects/cave_spikes/cave_spike_1.tscn" id="8_msj02"]
-[ext_resource type="PackedScene" path="res://scenes/objects/mover.tscn" id="10_g0o2x"]
+[ext_resource type="PackedScene" uid="uid://dtpmrs3m7ssao" path="res://scenes/objects/mover.tscn" id="10_g0o2x"]
 [ext_resource type="PackedScene" uid="uid://d30c1xil35ay" path="res://scenes/objects/spikes_double.tscn" id="11_u34i0"]
 [ext_resource type="PackedScene" uid="uid://cvg3yiw0w3rjb" path="res://scenes/objects/collectible.tscn" id="13_pbvee"]
 [ext_resource type="PackedScene" uid="uid://ce2xe5ht62br0" path="res://scenes/objects/checkpoint.tscn" id="13_sm4tl"]
