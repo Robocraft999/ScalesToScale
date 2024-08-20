@@ -47,13 +47,6 @@ layout_mode = 2
 layout_mode = 2
 text = "Enable Screenshake"
 
-[node name="CheckButton2" type="CheckButton" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-
-[node name="Label2" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-text = "Enable Screenshake"
-
 [node name="HSeparator" type="HSeparator" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -62,16 +55,35 @@ layout_mode = 2
 
 [node name="VolumeLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "Volume"
+text = "Master Volume"
 
-[node name="AmountLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="MasterAmountLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 text = "100 %"
 horizontal_alignment = 2
 
-[node name="Volumeslider" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="MasterVolumeslider" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VolumeLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Music Volume"
+
+[node name="MusicAmountLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+text = "100 %"
+horizontal_alignment = 2
+
+[node name="MusicVolumeslider" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
@@ -89,5 +101,6 @@ script = ExtResource("2_aomh7")
 unique_name_in_owner = true
 
 [connection signal="toggled" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer/EnableScreenshake" to="." method="_on_enable_screenshake_toggled"]
-[connection signal="value_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Volumeslider" to="." method="_on_volumeslider_value_changed"]
+[connection signal="value_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MasterVolumeslider" to="." method="_on_master_volumeslider_value_changed"]
+[connection signal="value_changed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MusicVolumeslider" to="." method="_on_music_volumeslider_value_changed"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]

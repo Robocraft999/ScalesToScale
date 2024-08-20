@@ -23,6 +23,7 @@ config/icon="res://sprites/icon/icon_64x64.png"
 Global="*res://scripts/options_manager.gd"
 ProgressStore="*res://scripts/progress.gd"
 SceneLoader="*res://scripts/scene_manager.gd"
+MusicPlayer="*res://scenes/music_player.tscn"
 
 [display]
 

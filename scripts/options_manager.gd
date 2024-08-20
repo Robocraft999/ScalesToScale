@@ -2,7 +2,9 @@ extends Node
 
 # Options
 var enable_screen_shake := true
-var volume := 0.0
+var master_volume := 80.0
+var music_volume := 50.0
+var is_menu_music
 
 # Time Scale stuff
 var time_scale = 1
@@ -27,8 +29,6 @@ const SceneName  = {
 }
 
 func _ready() -> void:
-	for scene: PackedScene in get_all_in_folder("res://scenes/levels"):
-		print(scene.resource_path)
 	get_tree().root.add_child.call_deferred(timer)
 		
 func _process(_delta: float) -> void:
@@ -38,12 +38,17 @@ func _process(_delta: float) -> void:
 			timer.start(10)
 			timer.timeout.connect(func(): time_scale = 1)
 			
-	var master_bus_index = AudioServer.get_bus_index("Master")
-	if round(volume) == 0:
-		AudioServer.set_bus_mute(master_bus_index, true)
-	else:
-		AudioServer.set_bus_mute(master_bus_index, false)
-		AudioServer.set_bus_volume_db(master_bus_index, lerp(-60, 0, volume/100.0))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(master_volume/100.0))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(music_volume/100.0))
+	
+	var new_music := SceneLoader.current_scene.scene_name in [SceneName.OPTIONS, SceneName.MAIN_MENU, SceneName.LEVEL_SELECT]
+	if new_music != is_menu_music:
+		is_menu_music = new_music
+		var menu: AudioStreamPlayer =  MusicPlayer.get_child(0)
+		menu.playing = is_menu_music
+		var game: AudioStreamPlayer =  MusicPlayer.get_child(1)
+		game.playing = not is_menu_music
+		
 		
 func lerp(from: Vector2, to: Vector2, weight: Vector2) -> Vector2:
 	return Vector2(lerp(from.x, to.x, weight.x), lerp(from.y, to.y, weight.y))
