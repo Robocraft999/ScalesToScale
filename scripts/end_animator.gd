@@ -21,7 +21,7 @@ func on_flag_player_touched(body: Node2D) -> void:
 	cam.dead_zone = Vector2.ZERO
 	var tween = create_tween()
 	tween.tween_property(cam, "zoom", Vector2(2, 2), 2)
-	tween.chain().tween_property(player, "position", Vector2(player.position.x, 0), 3)
+	tween.chain().tween_property(player, "position", Vector2(player.position.x, flag.position.y - 300), 3)
 	tween.finished.connect(func(): SceneLoader.load_level_scene_by_name(next_level_name))
 	await get_tree().create_timer(0.5).timeout
 	player.allow_movement = false
