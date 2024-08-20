@@ -206,6 +206,9 @@ position = Vector2(3480, -744)
 [node name="Bush17" parent="BackgroundFlora" instance=ExtResource("2_vj3x7")]
 position = Vector2(2656, 200)
 
+[node name="Bush18" parent="BackgroundFlora" instance=ExtResource("2_vj3x7")]
+position = Vector2(536, 296)
+
 [node name="BasicLevel" parent="." instance=ExtResource("1_kbt57")]
 
 [node name="EditableLevel" type="Node" parent="."]
@@ -526,3 +529,6 @@ position = Vector2(2680, 8)
 
 [node name="Tree3" parent="." instance=ExtResource("5_b5bww")]
 position = Vector2(2248, -16)
+
+[node name="Bush4" parent="." instance=ExtResource("1_kc3lx")]
+position = Vector2(-272, -488)
