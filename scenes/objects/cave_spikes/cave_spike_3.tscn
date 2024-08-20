@@ -43,4 +43,4 @@ z_index = 5
 position = Vector2(0, -40)
 sprite_frames = SubResource("SpriteFrames_gsura")
 autoplay = "default"
-frame_progress = 0.96799
+frame_progress = 0.918
