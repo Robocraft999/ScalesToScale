@@ -37,7 +37,7 @@ func _process(delta: float) -> void:
 		AudioServer.set_bus_mute(master_bus_index, true)
 	else:
 		AudioServer.set_bus_mute(master_bus_index, false)
-		AudioServer.set_bus_volume_db(master_bus_index, lerp(-10, 20, volume/100.0))
+		AudioServer.set_bus_volume_db(master_bus_index, lerp(-60, 0, volume/100.0))
 		
 func lerp(from: Vector2, to: Vector2, weight: Vector2) -> Vector2:
 	return Vector2(lerp(from.x, to.x, weight.x), lerp(from.y, to.y, weight.y))
