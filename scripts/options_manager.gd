@@ -19,6 +19,7 @@ const SceneName  = {
 	TUTORIAL = "Tutorial0",
 	OPTIONS = "options_menu",
 	TEST = "test",
+	CREDITS = "credits",
 	LEVEL1 = "Level 1",
 	LEVEL2 = "Level 2",
 	LEVEL3 = "Level 3",

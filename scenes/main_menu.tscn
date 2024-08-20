@@ -9,9 +9,9 @@
 script = ExtResource("1_qfm38")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_top = 64.0
+offset_top = 48.0
 offset_right = 640.0
-offset_bottom = 104.0
+offset_bottom = 88.0
 bbcode_enabled = true
 text = "[center][b]Scales to Scale[/b][/center]"
 
@@ -45,6 +45,12 @@ script = ExtResource("1_fg5ul")
 unique_name_in_owner = true
 layout_mode = 2
 text = "Options"
+script = ExtResource("1_fg5ul")
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Credits"
 script = ExtResource("1_fg5ul")
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
