@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://c7ymucposmqju"]
+[gd_scene load_steps=30 format=4 uid="uid://c7ymucposmqju"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_1.gd" id="1_0rqyx"]
 [ext_resource type="PackedScene" uid="uid://bnt67b4wf47qu" path="res://scenes/objects/player.tscn" id="1_somil"]
@@ -10,15 +10,18 @@
 [ext_resource type="Script" path="res://scripts/shaker.gd" id="6_0oanw"]
 [ext_resource type="PackedScene" uid="uid://vy0hwr3ojkhq" path="res://scenes/objects/dragon_flag.tscn" id="6_fu5ed"]
 [ext_resource type="Script" path="res://scripts/collectible.gd" id="10_j0nh5"]
-[ext_resource type="PackedScene" path="res://scenes/objects/dragon_scale_sprite_2d.tscn" id="11_huch2"]
+[ext_resource type="PackedScene" uid="uid://o65fd7fxs2i7" path="res://scenes/objects/dragon_scale_sprite_2d.tscn" id="11_huch2"]
 [ext_resource type="Texture2D" uid="uid://cpmv4oo5l0bfv" path="res://sprites/scaleobstacle_small.png" id="12_6tibr"]
 [ext_resource type="PackedScene" uid="uid://dce48rt84l5ft" path="res://scenes/objects/scaler.tscn" id="13_4vglb"]
 [ext_resource type="Script" path="res://scripts/wall_glue.gd" id="14_wgh0w"]
 [ext_resource type="PackedScene" uid="uid://cd0nnnr24upi4" path="res://scenes/objects/bush/bush_1.tscn" id="15_yfpji"]
-[ext_resource type="PackedScene" path="res://scenes/objects/trees/tree_3.tscn" id="16_mntkv"]
+[ext_resource type="PackedScene" uid="uid://dwcjrb3rmykl6" path="res://scenes/objects/cave_spikes/cave_spike_2.tscn" id="16_io202"]
+[ext_resource type="PackedScene" uid="uid://g44yhmgiuyfg" path="res://scenes/objects/trees/tree_3.tscn" id="16_mntkv"]
 [ext_resource type="PackedScene" uid="uid://b838jctkyqalv" path="res://scenes/objects/trees/tree_2.tscn" id="17_ivnqu"]
 [ext_resource type="PackedScene" uid="uid://rn1x6aqbaxkt" path="res://scenes/objects/bush/bush_2.tscn" id="18_53dn6"]
 [ext_resource type="PackedScene" uid="uid://bvj81idj6vou2" path="res://scenes/objects/trees/tree_1.tscn" id="19_5ax8n"]
+[ext_resource type="PackedScene" uid="uid://cr6mcdmp0xpd0" path="res://scenes/objects/cave_spikes/cave_spike_1.tscn" id="20_yl8rt"]
+[ext_resource type="PackedScene" uid="uid://clnnvdg18uu3b" path="res://scenes/objects/cave_spikes/cave_spike_3.tscn" id="22_0711q"]
 
 [sub_resource type="Animation" id="Animation_44bf7"]
 length = 0.001
@@ -263,6 +266,15 @@ visible_ratio = 0.0
 [node name="Bush4" parent="Flora" instance=ExtResource("15_yfpji")]
 position = Vector2(341, 229)
 
+[node name="CaveSpike2" parent="Flora" instance=ExtResource("16_io202")]
+position = Vector2(204, 704)
+
+[node name="CaveSpike3" parent="Flora" instance=ExtResource("16_io202")]
+position = Vector2(400, 704)
+
+[node name="CaveSpike6" parent="Flora" instance=ExtResource("16_io202")]
+position = Vector2(686, 704)
+
 [node name="Bush14" parent="Flora" instance=ExtResource("15_yfpji")]
 position = Vector2(696, 225)
 
@@ -339,3 +351,31 @@ position = Vector2(702, 185)
 
 [node name="Tree4" parent="Flora" instance=ExtResource("19_5ax8n")]
 position = Vector2(51, 254)
+
+[node name="CaveSpike1" parent="Flora" instance=ExtResource("20_yl8rt")]
+position = Vector2(172, 704)
+
+[node name="CaveSpike7" parent="Flora" instance=ExtResource("22_0711q")]
+position = Vector2(507, 680)
+
+[node name="CaveSpike8" parent="Flora" instance=ExtResource("22_0711q")]
+position = Vector2(610, 536)
+scale = Vector2(1, -1)
+
+[node name="CaveSpike4" parent="Flora" instance=ExtResource("20_yl8rt")]
+position = Vector2(517, 704)
+
+[node name="CaveSpike9" parent="Flora" instance=ExtResource("20_yl8rt")]
+position = Vector2(496, 480)
+scale = Vector2(1, -1)
+
+[node name="CaveSpike11" parent="Flora" instance=ExtResource("20_yl8rt")]
+position = Vector2(1050, 336)
+scale = Vector2(1, -1)
+
+[node name="CaveSpike10" parent="Flora" instance=ExtResource("20_yl8rt")]
+position = Vector2(271, 496)
+scale = Vector2(1, -1)
+
+[node name="CaveSpike5" parent="Flora" instance=ExtResource("20_yl8rt")]
+position = Vector2(719, 704)

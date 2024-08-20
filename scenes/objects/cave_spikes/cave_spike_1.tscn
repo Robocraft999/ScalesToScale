@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://cr6mcdmp0xpd0"]
+
+[ext_resource type="Texture2D" uid="uid://drlvf0f58ah5t" path="res://sprites/cave_spikes/cave_spike_1.png" id="1_bbudn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iaavl"]
+atlas = ExtResource("1_bbudn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ts5j3"]
+atlas = ExtResource("1_bbudn")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86r35"]
+atlas = ExtResource("1_bbudn")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5o6p"]
+atlas = ExtResource("1_bbudn")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_er6mh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iaavl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ts5j3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86r35")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5o6p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="CaveSpike1" type="AnimatedSprite2D"]
+z_index = 5
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_er6mh")
+autoplay = "default"
+frame_progress = 0.178931
