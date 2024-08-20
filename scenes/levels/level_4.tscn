@@ -20,7 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://cpmv4oo5l0bfv" path="res://sprites/scaleobstacle_small.png" id="13_ymp3s"]
 [ext_resource type="PackedScene" uid="uid://dce48rt84l5ft" path="res://scenes/objects/scaler.tscn" id="14_oavor"]
 [ext_resource type="Script" path="res://scripts/wall_glue.gd" id="15_8v1g4"]
-[ext_resource type="PackedScene" uid="uid://benlouuyuswqh" path="res://scenes/objects/checkpoint.tscn" id="15_axvs6"]
+[ext_resource type="PackedScene" uid="uid://ce2xe5ht62br0" path="res://scenes/objects/checkpoint.tscn" id="15_axvs6"]
 [ext_resource type="PackedScene" uid="uid://o65fd7fxs2i7" path="res://scenes/objects/dragon_scale_sprite_2d.tscn" id="16_82g38"]
 [ext_resource type="Script" path="res://scripts/collectible.gd" id="16_dg6nq"]
 
