@@ -21,6 +21,12 @@ texture = ExtResource("2_8ympx")
 region_enabled = true
 region_rect = Rect2(224, 240, 16, 16)
 
+[node name="VisibilityChecker" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-7, -7, 14, 14)
+
 [node name="BoxOverlay" type="Sprite2D" parent="."]
 z_index = -1
 texture = ExtResource("3_j5jqh")
+
+[connection signal="screen_entered" from="VisibilityChecker" to="." method="_on_box_visible"]
+[connection signal="screen_exited" from="VisibilityChecker" to="." method="_on_box_invisible"]

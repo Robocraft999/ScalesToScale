@@ -9,6 +9,7 @@ func _ready() -> void:
 	%MusicVolumeslider.value = Global.music_volume
 	%MasterAmountLabel.text = "%s%%" % Global.master_volume
 	%MusicAmountLabel.text = "%s%%" % Global.music_volume
+	%MenuButton.grab_focus()
 
 
 func _on_enable_screenshake_toggled(toggled_on: bool) -> void:

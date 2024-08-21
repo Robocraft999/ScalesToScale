@@ -1,6 +1,5 @@
 extends Node2D
-
-var editing := false
+class_name Scaler
 
 @export var MAX_SCALE = Vector2(5.0, 5.0)
 
@@ -48,7 +47,7 @@ func calculate_new_scale():
 
 func _physics_process(delta: float) -> void:
 	# if mouse is in body
-	if editing:
+	if Global.is_scaler_selected(self):
 		# What axis are we editing?
 		if Input.is_action_just_pressed("scale_toggle"):
 			toggled = not toggled
@@ -121,11 +120,12 @@ func _process(_delta: float) -> void:
 	var state = get_world_2d().direct_space_state
 	var point_params = PhysicsPointQueryParameters2D.new()
 	point_params.position = get_global_mouse_position()
-	editing = false
-	for x in state.intersect_point(point_params, 1):
-		if x.collider == parent:
-			editing = true
-			break
+	
+	if not Global.is_scaler_selected(self):
+		for x in state.intersect_point(point_params, 1):
+			if x.collider == parent:
+				Global.select_scaler(self)
+				break
 	
 	# Prevent the arrows from looking very bad
 	global_scale = Vector2.ONE
@@ -198,4 +198,13 @@ func calculate_reach_box():
 		var max_box_count = MAX_SCALE - Vector2.ONE
 		var distance = dir * (max_box_count - current_box_count) * box.get_rect().size/2
 		box.position = distance
+		
+func _on_box_visible():
+	Global.add_scaler(self)
+	
+func _on_box_invisible():
+	Global.remove_scaler(self)
+	
+func _exit_tree() -> void:
+	Global.remove_scaler(self)
 	

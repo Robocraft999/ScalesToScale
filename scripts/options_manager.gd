@@ -14,6 +14,12 @@ var time_scale = 1
 var checkpoint_id = -1
 var checkpoint_position = Vector2.ZERO
 
+# Box Selection
+var visible_boxes: Array[Scaler] = []
+var current_box_index = 0
+var current_select_cooldown = 0
+var max_select_cooldown = 0.15
+
 const SceneName  = {
 	MAIN_MENU = "MainMenu",
 	TUTORIAL = "Tutorial0",
@@ -32,7 +38,7 @@ const SceneName  = {
 func _ready() -> void:
 	get_tree().root.add_child.call_deferred(timer)
 		
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if ProgressStore.time_scale_enabled:
 		if Input.is_action_just_pressed("toggle_time_scale") and timer.is_stopped():
 			time_scale = 0.25
@@ -42,17 +48,55 @@ func _process(_delta: float) -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(master_volume/100.0))
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(music_volume/100.0))
 	
-	var new_music := SceneLoader.current_scene.scene_name in [SceneName.OPTIONS, SceneName.MAIN_MENU, SceneName.LEVEL_SELECT, SceneName.CREDITS]
-	if new_music != is_menu_music:
-		is_menu_music = new_music
+	var is_menu := SceneLoader.current_scene.scene_name in [SceneName.OPTIONS, SceneName.MAIN_MENU, SceneName.LEVEL_SELECT, SceneName.CREDITS]
+	if is_menu != is_menu_music:
+		is_menu_music = is_menu
 		var menu: AudioStreamPlayer =  MusicPlayer.get_child(0)
 		menu.playing = is_menu_music
 		var game: AudioStreamPlayer =  MusicPlayer.get_child(1)
 		game.playing = not is_menu_music
 		
+	if current_select_cooldown <= 0:
+		var box_select_dir = Input.get_axis("box_cycle_left", "box_cycle_right")
+		if box_select_dir != 0 and not is_menu and visible_boxes.size() > 0:
+			current_box_index = (visible_boxes.size() + current_box_index + int(box_select_dir)) % visible_boxes.size()
+			current_select_cooldown = max_select_cooldown
+	else:
+		current_select_cooldown -= delta
+		
 		
 func lerp(from: Vector2, to: Vector2, weight: Vector2) -> Vector2:
 	return Vector2(lerp(from.x, to.x, weight.x), lerp(from.y, to.y, weight.y))
+	
+func select_scaler(scaler: Scaler):
+	for i in range(visible_boxes.size()):
+		if visible_boxes[i] == scaler:
+			current_box_index = i
+			break
+			
+#TODO add unselect box
+
+func add_scaler(scaler: Scaler):
+	visible_boxes.append(scaler)
+
+func remove_scaler(scaler: Scaler):
+	var remove_index = -1
+	for i in range(visible_boxes.size()):
+		if visible_boxes[i] == scaler:
+			remove_index = i
+			break
+	if remove_index >= 0:
+		if remove_index < current_box_index:
+			current_box_index -= 1
+		elif remove_index == current_box_index and current_box_index == visible_boxes.size() - 1:
+			current_box_index = 0
+		visible_boxes.remove_at(remove_index)
+	
+
+func is_scaler_selected(scaler: Scaler) -> bool:
+	if visible_boxes.is_empty():
+		return false
+	return visible_boxes[current_box_index] == scaler
 	
 func get_all_scenes_in_folder(path) -> Array[PackedScene]:
 	var wrapped: Array[PackedScene] = []
