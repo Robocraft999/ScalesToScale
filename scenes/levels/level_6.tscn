@@ -15,13 +15,13 @@
 [ext_resource type="PackedScene" uid="uid://dwcjrb3rmykl6" path="res://scenes/objects/cave_spikes/cave_spike_2.tscn" id="8_247yu"]
 [ext_resource type="Script" path="res://scripts/shaker.gd" id="8_leiyj"]
 [ext_resource type="PackedScene" uid="uid://b838jctkyqalv" path="res://scenes/objects/trees/tree_2.tscn" id="9_cwcl8"]
-[ext_resource type="PackedScene" uid="uid://g44yhmgiuyfg" path="res://scenes/objects/trees/tree_3.tscn" id="10_bspil"]
+[ext_resource type="PackedScene" path="res://scenes/objects/trees/tree_3.tscn" id="10_bspil"]
 [ext_resource type="Texture2D" uid="uid://cpmv4oo5l0bfv" path="res://sprites/scaleobstacle_small.png" id="11_blog4"]
 [ext_resource type="PackedScene" uid="uid://dce48rt84l5ft" path="res://scenes/objects/scaler.tscn" id="12_v15wc"]
 [ext_resource type="Script" path="res://scripts/wall_glue.gd" id="13_nuoex"]
 [ext_resource type="PackedScene" uid="uid://dtpmrs3m7ssao" path="res://scenes/objects/mover.tscn" id="14_m4d5h"]
 [ext_resource type="PackedScene" uid="uid://dv3ioqvuql3b6" path="res://scenes/objects/spikes.tscn" id="15_7ihde"]
-[ext_resource type="PackedScene" uid="uid://d30c1xil35ay" path="res://scenes/objects/spikes_double.tscn" id="16_0klpm"]
+[ext_resource type="PackedScene" path="res://scenes/objects/spikes_double.tscn" id="16_0klpm"]
 [ext_resource type="PackedScene" uid="uid://ce2xe5ht62br0" path="res://scenes/objects/checkpoint.tscn" id="16_nfbhg"]
 [ext_resource type="Texture2D" uid="uid://cpk5bxge5oqdj" path="res://sprites/tileset.png" id="17_vkgqe"]
 [ext_resource type="Texture2D" uid="uid://cwfpntmks6nqh" path="res://sprites/endplatform.png" id="19_7m2o3"]
@@ -443,6 +443,7 @@ script = ExtResource("5_wgqwf")
 
 [node name="EndAnimator" type="Node" parent="EditableLevel"]
 script = ExtResource("6_vkb6p")
+next_level_name = "credits"
 
 [node name="Camera2D" type="Camera2D" parent="EditableLevel" node_paths=PackedStringArray("follow_node")]
 physics_interpolation_mode = 1

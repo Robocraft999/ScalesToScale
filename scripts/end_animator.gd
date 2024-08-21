@@ -3,14 +3,15 @@ class_name EndAnimator
 
 @onready var flag = %DragonFlag
 @export_enum(
-	Global.SceneName.MAIN_MENU, 
-	Global.SceneName.TUTORIAL, 
-	Global.SceneName.LEVEL1, 
+	Global.SceneName.MAIN_MENU,
+	Global.SceneName.CREDITS,
+	Global.SceneName.TUTORIAL,
+	Global.SceneName.LEVEL1,
 	Global.SceneName.LEVEL2,
 	Global.SceneName.LEVEL3,
 	Global.SceneName.LEVEL4,
 	Global.SceneName.LEVEL5,
-	Global.SceneName.LEVEL6
+	Global.SceneName.LEVEL6,
 	) var next_level_name: String = Global.SceneName.MAIN_MENU
 
 # Called when the node enters the scene tree for the first time.
