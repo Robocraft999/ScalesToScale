@@ -513,8 +513,9 @@ direction = Vector2(-3, 0)
 
 [node name="Scale" type="Node" parent="."]
 
-[node name="DashScale" parent="Scale" instance=ExtResource("21_b5apl")]
+[node name="DashScale" parent="Scale" node_paths=PackedStringArray("type") instance=ExtResource("21_b5apl")]
 position = Vector2(655, 102)
+type = NodePath("../..")
 
 [node name="NameLabel" type="Label" parent="Scale"]
 offset_left = 664.0
