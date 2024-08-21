@@ -1,15 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvg3yiw0w3rjb"]
+[gd_scene load_steps=5 format=3 uid="uid://cvg3yiw0w3rjb"]
 
 [ext_resource type="Script" path="res://scripts/collectible.gd" id="1_ealhe"]
 [ext_resource type="Texture2D" uid="uid://cxiv0eo25d11b" path="res://sprites/point light textures/point light texture-export 3.png" id="2_a4h0o"]
-[ext_resource type="Texture2D" uid="uid://loarm7an4wt3" path="res://resources/sprites/Collectible.png" id="2_c3rli"]
 [ext_resource type="PackedScene" uid="uid://o65fd7fxs2i7" path="res://scenes/objects/dragon_scale_sprite_2d.tscn" id="3_wpf3f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yli7k"]
-size = Vector2(10, 10)
+size = Vector2(16, 16)
 
 [node name="Collectible" type="Area2D"]
-position = Vector2(120, 152)
 collision_mask = 3
 script = ExtResource("1_ealhe")
 
@@ -22,11 +20,6 @@ color = Color(0.752521, 0.32985, 0, 1)
 energy = 0.5
 shadow_enabled = true
 texture = ExtResource("2_a4h0o")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-scale = Vector2(0.3125, 0.3125)
-texture = ExtResource("2_c3rli")
 
 [node name="DragonScaleSprite2D" parent="." instance=ExtResource("3_wpf3f")]
 autoplay = "default"

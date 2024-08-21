@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://c7ymucposmqju"]
+[gd_scene load_steps=29 format=4 uid="uid://c7ymucposmqju"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_1.gd" id="1_0rqyx"]
 [ext_resource type="PackedScene" uid="uid://bnt67b4wf47qu" path="res://scenes/objects/player.tscn" id="1_somil"]
@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://scripts/better_camera.gd" id="5_j5rx4"]
 [ext_resource type="Script" path="res://scripts/shaker.gd" id="6_0oanw"]
 [ext_resource type="PackedScene" uid="uid://vy0hwr3ojkhq" path="res://scenes/objects/dragon_flag.tscn" id="6_fu5ed"]
-[ext_resource type="Script" path="res://scripts/collectible.gd" id="10_j0nh5"]
+[ext_resource type="PackedScene" uid="uid://cvg3yiw0w3rjb" path="res://scenes/objects/collectible.tscn" id="10_f30up"]
 [ext_resource type="PackedScene" uid="uid://o65fd7fxs2i7" path="res://scenes/objects/dragon_scale_sprite_2d.tscn" id="11_huch2"]
 [ext_resource type="Texture2D" uid="uid://cpmv4oo5l0bfv" path="res://sprites/scaleobstacle_small.png" id="12_6tibr"]
 [ext_resource type="PackedScene" uid="uid://dce48rt84l5ft" path="res://scenes/objects/scaler.tscn" id="13_4vglb"]
@@ -106,9 +106,6 @@ _data = {
 "enter_animation": SubResource("Animation_gymx7")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hbtsi"]
-size = Vector2(16, 16)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_egcov"]
 size = Vector2(14, 14)
 
@@ -175,17 +172,9 @@ position = Vector2(-256, -1.24965)
 script = ExtResource("6_0oanw")
 property_name = &"offset"
 
-[node name="HorizontalScaleScale" type="Area2D" parent="." node_paths=PackedStringArray("type")]
+[node name="HorizontalScaleScale" parent="EditableLevel" node_paths=PackedStringArray("type") instance=ExtResource("10_f30up")]
 position = Vector2(448, 520)
-collision_mask = 2
-script = ExtResource("10_j0nh5")
-type = NodePath("..")
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HorizontalScaleScale"]
-shape = SubResource("RectangleShape2D_hbtsi")
-
-[node name="DragonScaleSprite2D" parent="HorizontalScaleScale" instance=ExtResource("11_huch2")]
+type = NodePath("../..")
 
 [node name="Flora" type="Node2D" parent="."]
 

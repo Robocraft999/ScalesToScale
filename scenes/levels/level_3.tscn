@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://ddgfqgv1xxb7b"]
+[gd_scene load_steps=29 format=4 uid="uid://ddgfqgv1xxb7b"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_3.gd" id="1_18opy"]
 [ext_resource type="PackedScene" uid="uid://2dj1d442mvd5" path="res://scenes/basic_level.tscn" id="1_iq124"]
@@ -17,12 +17,11 @@
 [ext_resource type="Texture2D" uid="uid://cpmv4oo5l0bfv" path="res://sprites/scaleobstacle_small.png" id="10_y5g4a"]
 [ext_resource type="PackedScene" uid="uid://dce48rt84l5ft" path="res://scenes/objects/scaler.tscn" id="11_o4532"]
 [ext_resource type="Script" path="res://scripts/wall_glue.gd" id="12_hypqe"]
-[ext_resource type="Script" path="res://scripts/collectible.gd" id="13_iqcq7"]
-[ext_resource type="PackedScene" uid="uid://o65fd7fxs2i7" path="res://scenes/objects/dragon_scale_sprite_2d.tscn" id="14_oqmdu"]
 [ext_resource type="Script" path="res://scripts/single-use/double_jump_unlocker.gd" id="15_o1red"]
 [ext_resource type="Script" path="res://scripts/single-use/vertical_scale_unlocker.gd" id="16_r78gw"]
 [ext_resource type="PackedScene" uid="uid://b838jctkyqalv" path="res://scenes/objects/trees/tree_2.tscn" id="17_amrwk"]
 [ext_resource type="PackedScene" uid="uid://bvj81idj6vou2" path="res://scenes/objects/trees/tree_1.tscn" id="18_3g47m"]
+[ext_resource type="PackedScene" uid="uid://cvg3yiw0w3rjb" path="res://scenes/objects/collectible.tscn" id="23_gpret"]
 
 [sub_resource type="Animation" id="Animation_or4v1"]
 length = 0.001
@@ -121,14 +120,8 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b17io"]
 size = Vector2(14, 14)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tjhgw"]
-size = Vector2(16, 16)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qkjyb"]
 size = Vector2(96, 152)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1j38y"]
-size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4yn47"]
 size = Vector2(136, 128)
@@ -430,35 +423,26 @@ target_offset = Vector2(1, 0)
 script = ExtResource("12_hypqe")
 direction = Vector2(-1, 0)
 
-[node name="DoubleJumpScale" type="Area2D" parent="." node_paths=PackedStringArray("type")]
-position = Vector2(192, 368)
-collision_mask = 2
-script = ExtResource("13_iqcq7")
-type = NodePath("../DoubleJumpUnlocker")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DoubleJumpScale"]
-shape = SubResource("RectangleShape2D_tjhgw")
-
-[node name="DragonScaleSprite2D" parent="DoubleJumpScale" instance=ExtResource("14_oqmdu")]
-
 [node name="DoubleJumpUnlocker" type="Node2D" parent="."]
 visible = false
 position = Vector2(-88, 392)
 script = ExtResource("15_o1red")
 
-[node name="DragonScaleSprite2D" parent="DoubleJumpUnlocker" instance=ExtResource("14_oqmdu")]
-
 [node name="Label" type="Label" parent="DoubleJumpUnlocker"]
-offset_left = 24.0
-offset_top = -16.0
-offset_right = 152.0
-offset_bottom = 16.0
+offset_left = 7.0
+offset_top = -17.0
+offset_right = 135.0
+offset_bottom = 15.0
 text = "Double-Jump Scale"
 visible_characters = 0
 visible_ratio = 0.0
 
 [node name="DoubleJumpFocusPoint" type="Node2D" parent="."]
 position = Vector2(0, 320)
+
+[node name="DoubleJumpScale" parent="." node_paths=PackedStringArray("type") instance=ExtResource("23_gpret")]
+position = Vector2(191, 373)
+type = NodePath("../DoubleJumpUnlocker")
 
 [node name="DoubleJumpExitArea" type="Area2D" parent="."]
 position = Vector2(88, 71)
@@ -511,13 +495,14 @@ MAX_SCALE = Vector2(3, 1)
 script = ExtResource("12_hypqe")
 direction = Vector2(-1, 0)
 
+[node name="VerticalScaleScale" parent="." node_paths=PackedStringArray("type") instance=ExtResource("23_gpret")]
+position = Vector2(936, -428)
+type = NodePath("../VerticalScaleUnlocker")
+
 [node name="VerticalScaleUnlocker" type="Node2D" parent="."]
 visible = false
-position = Vector2(938, -440)
+position = Vector2(898, -436)
 script = ExtResource("16_r78gw")
-
-[node name="DragonScaleSprite2D" parent="VerticalScaleUnlocker" instance=ExtResource("14_oqmdu")]
-position = Vector2(-90, -80)
 
 [node name="Label" type="Label" parent="VerticalScaleUnlocker"]
 offset_left = -66.0
@@ -535,20 +520,6 @@ bbcode_enabled = true
 text = "[center]Tap shift when hovering the box to change the direction of scaling[/center]"
 visible_characters = 0
 visible_ratio = 0.0
-
-[node name="VerticalScaleScale" type="Area2D" parent="." node_paths=PackedStringArray("type")]
-position = Vector2(938, -440)
-collision_mask = 2
-script = ExtResource("13_iqcq7")
-type = NodePath("../VerticalScaleUnlocker")
-metadata/_edit_group_ = true
-
-[node name="DragonScaleSprite2D" parent="VerticalScaleScale" instance=ExtResource("14_oqmdu")]
-position = Vector2(8, 8)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="VerticalScaleScale"]
-position = Vector2(8, 8)
-shape = SubResource("RectangleShape2D_1j38y")
 
 [node name="ExampleDoorBox" type="CharacterBody2D" parent="."]
 position = Vector2(616, -408)
