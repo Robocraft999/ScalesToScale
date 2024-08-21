@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://vy0hwr3ojkhq" path="res://scenes/objects/dragon_flag.tscn" id="3_xj0qp"]
 [ext_resource type="PackedScene" uid="uid://bnt67b4wf47qu" path="res://scenes/objects/player.tscn" id="4_ulkbb"]
 [ext_resource type="Script" path="res://scripts/shaker_animator.gd" id="5_adoah"]
-[ext_resource type="PackedScene" uid="uid://g44yhmgiuyfg" path="res://scenes/objects/trees/tree_3.tscn" id="5_b5bww"]
+[ext_resource type="PackedScene" path="res://scenes/objects/trees/tree_3.tscn" id="5_b5bww"]
 [ext_resource type="Script" path="res://scripts/end_animator.gd" id="6_btw22"]
 [ext_resource type="PackedScene" uid="uid://b838jctkyqalv" path="res://scenes/objects/trees/tree_2.tscn" id="6_ikcep"]
 [ext_resource type="Script" path="res://scripts/better_camera.gd" id="7_fn0cu"]
@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://dce48rt84l5ft" path="res://scenes/objects/scaler.tscn" id="14_oavor"]
 [ext_resource type="Script" path="res://scripts/wall_glue.gd" id="15_8v1g4"]
 [ext_resource type="PackedScene" uid="uid://ce2xe5ht62br0" path="res://scenes/objects/checkpoint.tscn" id="15_axvs6"]
-[ext_resource type="PackedScene" uid="uid://o65fd7fxs2i7" path="res://scenes/objects/dragon_scale_sprite_2d.tscn" id="16_82g38"]
+[ext_resource type="PackedScene" path="res://scenes/objects/dragon_scale_sprite_2d.tscn" id="16_82g38"]
 [ext_resource type="Script" path="res://scripts/collectible.gd" id="16_dg6nq"]
 
 [sub_resource type="Animation" id="Animation_onrla"]
@@ -344,10 +344,6 @@ tile_set = ExtResource("2_xehy3")
 collision_enabled = false
 metadata/_edit_lock_ = true
 
-[node name="BoxHolder" type="TileMapLayer" parent="EditableLevel"]
-tile_map_data = PackedByteArray("AAA0AB4AAAAFAAQAAAA0AB0AAAAFAAQAAAA0ABwAAAAFAAQAAAA7AB4AAAAFAAQAAAA7AB0AAAAFAAQAAAA7ABwAAAAFAAQAAAA=")
-tile_set = ExtResource("2_xehy3")
-
 [node name="DragonFlag" parent="EditableLevel" instance=ExtResource("3_xj0qp")]
 unique_name_in_owner = true
 position = Vector2(3176, -155)
@@ -460,7 +456,7 @@ script = ExtResource("15_8v1g4")
 direction = Vector2(1, 0)
 
 [node name="ElevatorBox" type="CharacterBody2D" parent="Boxes"]
-position = Vector2(856, 504)
+position = Vector2(872, 504)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boxes/ElevatorBox"]
@@ -478,16 +474,8 @@ MAX_SCALE = Vector2(3, 25)
 target_offset = Vector2(1, 0)
 step_step = Vector2(3, 3)
 
-[node name="WallGlue" type="Node" parent="Boxes/ElevatorBox"]
-script = ExtResource("15_8v1g4")
-direction = Vector2(-1, 0)
-
-[node name="WallGlue2" type="Node" parent="Boxes/ElevatorBox"]
-script = ExtResource("15_8v1g4")
-direction = Vector2(0, 1)
-
 [node name="ElevatorBox2" type="CharacterBody2D" parent="Boxes"]
-position = Vector2(936, 504)
+position = Vector2(920, 504)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boxes/ElevatorBox2"]
@@ -504,14 +492,6 @@ region_rect = Rect2(0, 0, 14, 14)
 MAX_SCALE = Vector2(3, 25)
 target_offset = Vector2(1, 0)
 step_step = Vector2(3, 3)
-
-[node name="WallGlue" type="Node" parent="Boxes/ElevatorBox2"]
-script = ExtResource("15_8v1g4")
-direction = Vector2(1, 0)
-
-[node name="WallGlue3" type="Node" parent="Boxes/ElevatorBox2"]
-script = ExtResource("15_8v1g4")
-direction = Vector2(0, 1)
 
 [node name="PlankBox" type="CharacterBody2D" parent="Boxes"]
 position = Vector2(2680, 24)
