@@ -8,6 +8,8 @@ class_name Scaler
 var current_offset = target_offset
 var new_scale     := Vector2.ONE
 
+@export var retraction_direction := Vector2.DOWN
+
 @onready var parent: CollisionObject2D = $".."
 @onready var sprite: Sprite2D = $"../Sprite2D"
 @onready var sprite_region_size: Vector2 = sprite.region_rect.size
@@ -139,12 +141,10 @@ func try_scale() -> void:
 	var scale_down = new_scale.x - parent.scale.x < -0.01 or new_scale.y - parent.scale.y < -0.01
 	
 	# get expansion size (half)
-	var expansion = Vector2(collider_size.x * new_scale.x/2 - collider_size.x * parent.scale.x/2, collider_size.y * new_scale.y/2 - collider_size.y * parent.scale.y/2)
+	var expansion = collider_size * new_scale/2 - collider_size*parent.scale/2
 	
 	if scale_down:
-		var motion_down = Vector2(0, collider_size.y * new_scale.y/4 - 0.1)
-		motion_down = Vector2.ZERO
-		scale_objects(Vector2.ZERO if expansion.x != 0 else motion_down)
+		scale_objects(retraction_direction * collider_size/2 * (parent.scale - new_scale))
 		return
 	
 	# check if expandable to both sides
@@ -172,27 +172,33 @@ func try_scale() -> void:
 func test_move(motion: Vector2) -> bool:
 	return parent.test_move(parent.transform, motion, null, 0, false)
 	
-func scale_objects(new_position):
-	scaleTween = create_tween()
-	scaleTween.tween_property(parent, "scale", new_scale, .2)
-	positionTween = create_tween()
-	positionTween.set_ease(Tween.EASE_OUT).tween_property(parent, "position", parent.position + new_position, .1)
-	sprite_rect_tween = create_tween()
-	sprite_rect_tween.tween_property(sprite, "region_rect:size", sprite_region_size * new_scale, .2)
-	#create_tween().tween_property(region_rect, "size", sprite_region_size * new_scale, 0.2)
-	#parent.scale = new_scale
+func scale_objects(delta_position):
+	print()
+	scaleTween = create_tween().set_trans(Tween.TRANS_SINE)
+	scaleTween.tween_method(_scale_tween_callback.bind(delta_position, parent.scale, parent.position), parent.scale, new_scale, .2)
+
+func _scale_tween_callback(t_scale: Vector2, delta_position: Vector2, start_scale: Vector2, start_position: Vector2):
+	parent.scale = t_scale
+	if t_scale.x < start_scale.x or t_scale.y < start_scale.y:
+		parent.position = start_position + retraction_direction * collider_size/2 * (start_scale - t_scale)
+	else:
+		parent.position = start_position + delta_position * (t_scale - start_scale)
+	sprite.region_rect.size = sprite_region_size * t_scale
+	
 	
 func calculate_reach_box():
 	var box: Sprite2D = $BoxOverlay
 	box.global_scale = MAX_SCALE
 	var dir = Vector2.UP
+	dir = retraction_direction * -1
 	if get_parent().get_children().any(func(node): return node is WallGlue) or test_move(dir * box.get_rect().size * -1):
 		var glues = get_parent().find_children("*", "WallGlue")
 		if glues.size() > 0:
 			var glue: WallGlue = glues[0]
 			var glue_dir = glue.direction.normalized() * -1
 			if glue_dir != dir:
-				dir += glue_dir
+				#dir += glue_dir
+				pass
 		
 		var current_box_count = Global.lerp(Vector2.ONE, MAX_SCALE, target_offset) - Vector2.ONE
 		var max_box_count = MAX_SCALE - Vector2.ONE
